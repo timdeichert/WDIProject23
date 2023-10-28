@@ -6,7 +6,7 @@ import java.util.List;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 
-public class Game {
+public class Game implements Matchable {
 
     protected String id;
     private String Name;
