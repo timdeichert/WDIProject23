@@ -4,8 +4,12 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 //import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,10 +40,20 @@ public class GameXMLLoader {
         // Adjust the path to the XML file as necessary with the below lines
 
         File sourceFile = new File("data/input/DBpedia_Video_Game(Final).XML");
-        String elementPath = "/games/game"; // Adjust the element path as per your XML structure
+        String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
 
         // Load data from the XML file into the dataset
-        new GameXMLReader("id",nodeMapping).loadFromXML(sourceFile,elementPath,ds);
+        try {
+            new GameXMLReader().loadFromXML(sourceFile,elementPath,ds);
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (XPathExpressionException e) {
+            throw new RuntimeException(e);
+        }
         //new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
 
         //'ds' contains the Game objects with data from the XML file
