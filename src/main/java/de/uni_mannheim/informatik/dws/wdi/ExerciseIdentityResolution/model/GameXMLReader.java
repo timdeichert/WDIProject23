@@ -2,12 +2,22 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
+import de.uni_mannheim.informatik.dws.winter.model.DataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import org.w3c.dom.Node;
 
+import java.util.Map;
+
 public class GameXMLReader extends XMLMatchableReader<Game, Attribute> {
+
+    @Override
+    protected void initialiseDataset(DataSet<Game, Attribute> dataset) {
+        super.initialiseDataset(dataset);
+
+
+    }
 
     @Override
     public Game createModelFromElement(Node node, String provenanceInfo) {

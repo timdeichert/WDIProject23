@@ -35,10 +35,11 @@ public class GameXMLLoader {
 
         // Adjust the path to the XML file as necessary with the below lines
 
-        //File sourceFile = new File("your-xml-file.xml");
-        //String elementPath = "/games/game"; // Adjust the element path as per your XML structure
+        File sourceFile = new File("data/input/DBpedia_Video_Game(Final).XML");
+        String elementPath = "/games/game"; // Adjust the element path as per your XML structure
 
         // Load data from the XML file into the dataset
+        new GameXMLReader("id",nodeMapping).loadFromXML(sourceFile,elementPath,ds);
         //new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
 
         //'ds' contains the Game objects with data from the XML file
