@@ -9,6 +9,8 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 public class Game implements Matchable {
 
     protected String id;
+    protected String provenance;
+
     private String Name;
 
     private List<String> Platform;
@@ -26,8 +28,9 @@ public class Game implements Matchable {
     private Integer User_Score;
     private String Rating;
 
-    public Game(String identifier) {
+    public Game(String identifier,String provenance) {
         id = identifier;
+        this.provenance = provenance;;
     }
 
     public String getName() {
@@ -55,9 +58,6 @@ public class Game implements Matchable {
     }
 
 
-    public String getId() {
-        return id;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -157,5 +157,15 @@ public class Game implements Matchable {
 
     public void setRating(String rating) {
         Rating = rating;
+    }
+
+    @Override
+    public String getIdentifier() {
+        return id;
+    }
+
+    @Override
+    public String getProvenance() {
+        return null;
     }
 }

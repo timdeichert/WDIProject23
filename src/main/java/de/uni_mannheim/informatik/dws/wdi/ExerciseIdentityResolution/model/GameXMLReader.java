@@ -4,6 +4,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 
+import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import org.w3c.dom.Node;
 
 public class GameXMLReader extends XMLMatchableReader<Game, Attribute> {
@@ -11,18 +12,19 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute> {
     @Override
     public Game createModelFromElement(Node node, String provenanceInfo) {
         // Create a new Game object with provenance information
-        Game game = new Game(provenanceInfo);
+        String id =  getValueFromChildElement(node,"ID");
+        Game game = new Game(id ,provenanceInfo);
 
         // Read data from XML and set attributes
         game.setId(getValueFromChildElement(node, "id"));
         game.setName(getValueFromChildElement(node, "Name"));
         
         // You can continue reading other attributes similarly
-        game.setPlatform(getValuesFromChildElements(node, "Platform"));
-        game.setGenre(getValuesFromChildElements(node, "Genre"));
-        game.setMode(getValuesFromChildElements(node, "Mode"));
-        game.setPublisher(getValuesFromChildElements(node, "Publisher"));
-        game.setDeveloper(getValuesFromChildElements(node, "Developer"));
+        game.setPlatform(getListFromChildElement(node, "Platform"));
+        game.setGenre(getListFromChildElement(node, "Genre"));
+        game.setMode(getListFromChildElement(node, "Mode"));
+        game.setPublisher(getListFromChildElement(node, "Publisher"));
+        game.setDeveloper(getListFromChildElement(node, "Developer"));
 
         game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
         game.setEU_Sales(Float.parseFloat(getValueFromChildElement(node, "EU_Sales")));
