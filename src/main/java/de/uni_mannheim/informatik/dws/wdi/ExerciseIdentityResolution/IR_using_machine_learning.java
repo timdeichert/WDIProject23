@@ -2,6 +2,8 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution;
 
 import java.io.File;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import org.slf4j.Logger;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking.MovieBlockingKeyByDecadeGenerator;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking.MovieBlockingKeyByTitleGenerator;
@@ -50,13 +52,21 @@ public class IR_using_machine_learning {
 	
     public static void main( String[] args ) throws Exception
     {
-		// loading data
+
+
+		// Exercise loading data
 		logger.info("*\tLoading datasets\t*");
 		HashedDataSet<Movie, Attribute> dataAcademyAwards = new HashedDataSet<>();
 		new MovieXMLReader().loadFromXML(new File("data/input/academy_awards.xml"), "/movies/movie", dataAcademyAwards);
 		HashedDataSet<Movie, Attribute> dataActors = new HashedDataSet<>();
 		new MovieXMLReader().loadFromXML(new File("data/input/actors.xml"), "/movies/movie", dataActors);
-		
+
+		// Own Game data loading
+		File sourceFile = new File("data/input/DBpedia_Video_Game(Final).XML");
+		String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
+		HashedDataSet<Game, Attribute> ds = new HashedDataSet<>();
+		new GameXMLReader().loadFromXML(sourceFile,elementPath,ds);
+
 		// load the training set
 		MatchingGoldStandard gsTraining = new MatchingGoldStandard();
 		gsTraining.loadFromCSVFile(new File("data/goldstandard/gs_academy_awards_2_actors_training.csv"));

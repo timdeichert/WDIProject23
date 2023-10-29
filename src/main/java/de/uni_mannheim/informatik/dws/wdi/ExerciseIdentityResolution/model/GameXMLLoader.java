@@ -4,6 +4,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 //import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 
 import de.uni_mannheim.informatik.dws.winter.model.HashedDataSet;
+import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.XMLRecordReader;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -54,7 +55,7 @@ public class GameXMLLoader {
         } catch (XPathExpressionException e) {
             throw new RuntimeException(e);
         }
-        //new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
+       // new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
 
         //'ds' contains the Game objects with data from the XML file
     }
