@@ -15,7 +15,7 @@ public class Game implements Matchable {
     private String Name;
 
 
-    private List<String> Platform;
+    private List<Platforms> Platform;
     private List<String> Genre;
     private List<String> Mode;
     private List<String> Publisher;
@@ -34,7 +34,8 @@ public class Game implements Matchable {
 
     public Game(String identifier,String provenance) {
         id = identifier;
-        this.provenance = provenance;;
+        this.provenance = provenance;
+        Platform = new LinkedList<>();
     }
 
     public String getName() {
@@ -45,14 +46,13 @@ public class Game implements Matchable {
         Name = name;
     }
 
-    public List<String> getPlatform() {
+    public List<Platforms> getPlatforms() {
         return Platform;
     }
 
-    public void setPlatform(List<String> platform) {
-        Platform = platform;
+    public void setPlatforms(List<Platforms> Platform) {
+        this.Platform = Platform;
     }
-
 
     public List<String> getGenre() {
         return Genre;
@@ -96,8 +96,8 @@ public class Game implements Matchable {
         return Release;
     }
 
-    public void setRelease(LocalDateTime Release) {
-        this.Release = Release;
+    public void setRelease(LocalDateTime release) {
+        this.Release = release;
     }
 
     public Float getNA_Sales() {

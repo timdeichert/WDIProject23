@@ -2,6 +2,10 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.winter.model.DataSet;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 
@@ -27,10 +31,33 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         // Read data from XML and set attributes
         game.setId(getValueFromChildElement(node, "id"));
         game.setName(getValueFromChildElement(node, "Name"));
-        
+
+
         // You can continue reading other attributes similarly
-        game.setPlatform(getListFromChildElement(node, "Release"));
-        game.setPlatform(getListFromChildElement(node, "Platform"));
+        String releaseDateStr = getValueFromChildElement(node, "Release");
+        if (releaseDateStr != null && !releaseDateStr.isEmpty() && !releaseDateStr.equalsIgnoreCase("N/A")) {
+            LocalDateTime dateTime;
+            try {
+                if (releaseDateStr.length() == 4) {
+                    // If only the year is provided
+                    dateTime = LocalDate.of(Integer.parseInt(releaseDateStr), 1, 1).atStartOfDay();
+                } else {
+                    // If full date is provided
+                    LocalDate releaseDate = LocalDate.parse(releaseDateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    dateTime = releaseDate.atStartOfDay();
+                }
+                game.setRelease(dateTime);
+            } catch (DateTimeParseException e) {
+                System.err.println("Failed to parse release date: " + releaseDateStr);
+            }
+        }
+
+        // load the list of platforms
+        List<Platforms> platforms = getObjectListFromChildElement(node, "Platforms",
+                "Platform", new PlatformXMLReader(), provenanceInfo);
+        game.setPlatforms(platforms);
+
+
         game.setGenre(getListFromChildElement(node, "Genre"));
         game.setMode(getListFromChildElement(node, "Mode"));
         game.setPublisher(getListFromChildElement(node, "Publisher"));
@@ -50,10 +77,13 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         } else {
             game.setUser_Score(null);  // or set a default value if needed
         }
-
         game.setRating(getValueFromChildElement(node, "Rating"));
+
         return game;
     }
+
+
+
 
     private Float getFloatValueFromChildElement(Node node, String childName) {
         String valueStr = getValueFromChildElement(node, childName);
@@ -72,4 +102,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             return null; // or some default value like 0
         }
     }
+
+
 }
