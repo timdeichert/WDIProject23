@@ -23,7 +23,7 @@ public class GameNameComparatorJaccard implements Comparator<Game, Attribute> {
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
         String s1 = game1.getName();
-        String s2 = game1.getName();
+        String s2 = game2.getName();
 
         // calculate similarity
         double similarity = sim.calculate(s1, s2);

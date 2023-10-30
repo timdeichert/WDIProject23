@@ -22,7 +22,7 @@ public class GameNameComparatorLowerCaseJaccard implements Comparator<Game, Attr
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
         String s1 = game1.getName();
-        String s2 = game1.getName();
+        String s2 = game2.getName();
 
         if (s1 != null) {
             s1 = s1.toLowerCase();
