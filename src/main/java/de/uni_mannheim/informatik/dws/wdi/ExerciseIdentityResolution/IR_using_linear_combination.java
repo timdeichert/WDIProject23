@@ -2,6 +2,8 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution;
 
 import java.io.File;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import org.slf4j.Logger;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking.MovieBlockingKeyByTitleGenerator;
@@ -45,44 +47,57 @@ public class IR_using_linear_combination
 	
     public static void main( String[] args ) throws Exception
     {
-		// loading data
+		// loading our own data
 		logger.info("*\tLoading datasets\t*");
-		HashedDataSet<Movie, Attribute> dataAcademyAwards = new HashedDataSet<>();
-		new MovieXMLReader().loadFromXML(new File("data/input/academy_awards.xml"), "/movies/movie", dataAcademyAwards);
-		HashedDataSet<Movie, Attribute> dataActors = new HashedDataSet<>();
-		new MovieXMLReader().loadFromXML(new File("data/input/actors.xml"), "/movies/movie", dataActors);
+		HashedDataSet<Game, Attribute> dbpedia = new HashedDataSet<>();
+		new GameXMLReader().loadFromXML(new File("data/input/DBpedia_Video_Game(Final).xml"), "/Games/Game", dbpedia);
+		HashedDataSet<Game, Attribute> kaggle2 = new HashedDataSet<>();
+		new GameXMLReader().loadFromXML(new File("data/input/Finalschema_vgsales.xml"), "/Games/Game", kaggle2);
+		HashedDataSet<Game, Attribute> kaggle1 = new HashedDataSet<>();
+		new GameXMLReader().loadFromXML(new File("data/input/Kaggle1_Video_Game(Final).xml"), "/Games/Game", kaggle1);
+
 
 		// load the gold standard (test set)
 		logger.info("*\tLoading gold standard\t*");
-		MatchingGoldStandard gsTest = new MatchingGoldStandard();
-		gsTest.loadFromCSVFile(new File(
-				"data/goldstandard/gs_academy_awards_2_actors_test.csv"));
+		MatchingGoldStandard dbpediaKaggle1Testing = new MatchingGoldStandard();
+		dbpediaKaggle1Testing.loadFromCSVFile(new File(
+				"data/goldstandard/DBpedia_Kaggle1_Gold_Standard(test).csv"));
+		MatchingGoldStandard kaggle1Kaggle2Testing = new MatchingGoldStandard();
+		kaggle1Kaggle2Testing.loadFromCSVFile(new File(
+				"data/goldstandard/Kaggle1_Kaggle2_Gold(test).csv"));
+
+
 
 		// create a matching rule
-		LinearCombinationMatchingRule<Movie, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
+		LinearCombinationMatchingRule<Game, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
 				0.7);
-		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTest);
-		
+		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, dbpediaKaggle1Testing);
+
+		LinearCombinationMatchingRule<Game, Attribute> matchingRule_2 = new LinearCombinationMatchingRule<>(
+				0.7);
+		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, kaggle1Kaggle2Testing);
+
+
 		// add comparators
 		matchingRule.addComparator(new MovieDateComparator2Years(), 0.5);
-		matchingRule.addComparator(new MovieTitleComparatorJaccard(), 0.5);
+		//matchingRule.addComparator(new MovieTitleComparatorJaccard(), 0.5);
 		
 
 		// create a blocker (blocking strategy)
-		StandardRecordBlocker<Movie, Attribute> blocker = new StandardRecordBlocker<Movie, Attribute>(new MovieBlockingKeyByTitleGenerator());
-//		NoBlocker<Movie, Attribute> blocker = new NoBlocker<>();
-//		SortedNeighbourhoodBlocker<Movie, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new MovieBlockingKeyByTitleGenerator(), 1);
+		StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new MovieBlockingKeyByTitleGenerator());
+//		NoBlocker<Game, Attribute> blocker = new NoBlocker<>();
+//		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new MovieBlockingKeyByTitleGenerator(), 1);
 		blocker.setMeasureBlockSizes(true);
 		//Write debug results to file:
 		blocker.collectBlockSizeData("data/output/debugResultsBlocking.csv", 100);
 		
 		// Initialize Matching Engine
-		MatchingEngine<Movie, Attribute> engine = new MatchingEngine<>();
+		MatchingEngine<Game, Attribute> engine = new MatchingEngine<>();
 
 		// Execute the matching
 		logger.info("*\tRunning identity resolution\t*");
-		Processable<Correspondence<Movie, Attribute>> correspondences = engine.runIdentityResolution(
-				dataAcademyAwards, dataActors, null, matchingRule,
+		Processable<Correspondence<Game, Attribute>> correspondences = engine.runIdentityResolution(
+				dbpedia, kaggle1, null, matchingRule,
 				blocker);
 
 		// Create a top-1 global matching
@@ -98,9 +113,9 @@ public class IR_using_linear_combination
 		
 		logger.info("*\tEvaluating result\t*");
 		// evaluate your result
-		MatchingEvaluator<Movie, Attribute> evaluator = new MatchingEvaluator<Movie, Attribute>();
+		MatchingEvaluator<Game, Attribute> evaluator = new MatchingEvaluator<Game, Attribute>();
 		Performance perfTest = evaluator.evaluateMatching(correspondences,
-				gsTest);
+				dbpediaKaggle1Testing);
 
 		// print the evaluation result
 		logger.info("Academy Awards <-> Actors");

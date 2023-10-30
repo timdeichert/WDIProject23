@@ -2,6 +2,7 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.time.LocalDateTime;
 import java.util.List;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -12,6 +13,7 @@ public class Game implements Matchable {
     protected String provenance;
 
     private String Name;
+
 
     private List<String> Platform;
     private List<String> Genre;
@@ -25,8 +27,10 @@ public class Game implements Matchable {
     private Float Global_Sales;
     private Integer Critic_Score;
     private Integer Critic_Count;
-    private Integer User_Score;
+    private Float User_Score;
     private String Rating;
+    private LocalDateTime Release;
+
 
     public Game(String identifier,String provenance) {
         id = identifier;
@@ -48,6 +52,7 @@ public class Game implements Matchable {
     public void setPlatform(List<String> platform) {
         Platform = platform;
     }
+
 
     public List<String> getGenre() {
         return Genre;
@@ -85,6 +90,14 @@ public class Game implements Matchable {
 
     public void setDeveloper(List<String> developer) {
         Developer = developer;
+    }
+
+    public LocalDateTime getRelease() {
+        return Release;
+    }
+
+    public void setRelease(LocalDateTime Release) {
+        this.Release = Release;
     }
 
     public Float getNA_Sales() {
@@ -143,11 +156,11 @@ public class Game implements Matchable {
         Critic_Count = critic_Count;
     }
 
-    public Integer getUser_Score() {
+    public Float getUser_Score() {
         return User_Score;
     }
 
-    public void setUser_Score(Integer user_Score) {
+    public void setUser_Score(Float user_Score) {
         User_Score = user_Score;
     }
 
@@ -166,6 +179,6 @@ public class Game implements Matchable {
 
     @Override
     public String getProvenance() {
-        return null;
+        return provenance;
     }
 }

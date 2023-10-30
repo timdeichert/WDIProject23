@@ -8,6 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import org.w3c.dom.Node;
 
+import java.util.List;
 import java.util.Map;
 
 public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
@@ -28,31 +29,47 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         game.setName(getValueFromChildElement(node, "Name"));
         
         // You can continue reading other attributes similarly
+        game.setPlatform(getListFromChildElement(node, "Release"));
         game.setPlatform(getListFromChildElement(node, "Platform"));
         game.setGenre(getListFromChildElement(node, "Genre"));
         game.setMode(getListFromChildElement(node, "Mode"));
         game.setPublisher(getListFromChildElement(node, "Publisher"));
         game.setDeveloper(getListFromChildElement(node, "Developer"));
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-            game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
-        }
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setEU_Sales(Float.parseFloat(getValueFromChildElement(node, "EU_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setJP_Sales(Float.parseFloat(getValueFromChildElement(node, "JP_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setOther_Sales(Float.parseFloat(getValueFromChildElement(node, "Other_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setGlobal_Sales(Float.parseFloat(getValueFromChildElement(node, "Global_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setCritic_Score(Integer.parseInt(getValueFromChildElement(node, "Critic_Score")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setCritic_Count(Integer.parseInt(getValueFromChildElement(node, "Critic_Count")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setUser_Score(Integer.parseInt(getValueFromChildElement(node, "User_Score")));}
-        
-        game.setRating(getValueFromChildElement(node, "Rating"));
 
+        game.setNA_Sales(getFloatValueFromChildElement(node, "NA_Sales"));
+        game.setEU_Sales(getFloatValueFromChildElement(node, "EU_Sales"));
+        game.setJP_Sales(getFloatValueFromChildElement(node, "JP_Sales"));
+        game.setOther_Sales(getFloatValueFromChildElement(node, "Other_Sales"));
+        game.setGlobal_Sales(getFloatValueFromChildElement(node, "Global_Sales"));
+        game.setCritic_Score(getIntValueFromChildElement(node, "Critic_Score"));
+        game.setCritic_Count(getIntValueFromChildElement(node, "Critic_Count"));
+
+        String userScoreValue = getValueFromChildElement(node, "User_Score");
+        if (userScoreValue != null && !userScoreValue.equalsIgnoreCase("tbd")) {
+            game.setUser_Score(Float.parseFloat(userScoreValue));
+        } else {
+            game.setUser_Score(null);  // or set a default value if needed
+        }
+
+        game.setRating(getValueFromChildElement(node, "Rating"));
         return game;
+    }
+
+    private Float getFloatValueFromChildElement(Node node, String childName) {
+        String valueStr = getValueFromChildElement(node, childName);
+        if(valueStr != null && !valueStr.isEmpty()) {
+            return Float.parseFloat(valueStr);
+        } else {
+            return null; // or some default value like 0.0f
+        }
+    }
+
+    private Integer getIntValueFromChildElement(Node node, String childName) {
+        String valueStr = getValueFromChildElement(node, childName);
+        if(valueStr != null && !valueStr.isEmpty()) {
+            return Integer.parseInt(valueStr);
+        } else {
+            return null; // or some default value like 0
+        }
     }
 }
