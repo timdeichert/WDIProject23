@@ -14,41 +14,39 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparator
 import de.uni_mannheim.informatik.dws.winter.matching.rules.comparators.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.comparators.ComparatorLogger;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
-import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.date.YearSimilarity;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Movie;
 
 /**
- * {@link Comparator} for {@link Game}s based on the {@link Game#getRelease()}
+ * {@link Comparator} for {@link Movie}s based on the {@link Movie#getDate()}
  * value, with a maximal difference of 2 years.
- * 
+ *
  * @author Oliver Lehmberg (oli@dwslab.de)
- * 
+ *
  */
-public class MovieDateComparator2Years implements Comparator<Game, Attribute> {
+public class MovieDateComparator2Years implements Comparator<Movie, Attribute> {
 
 	private static final long serialVersionUID = 1L;
 	private YearSimilarity sim = new YearSimilarity(2);
-	
+
 	private ComparatorLogger comparisonLog;
 
 	@Override
 	public double compare(
-			Game record1,
-			Game record2,
+			Movie record1,
+			Movie record2,
 			Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
+		double similarity = sim.calculate(record1.getDate(), record2.getDate());
 
-		double similarity = sim.calculate(record1.getRelease(), record2.getRelease());
-    	
 		if(this.comparisonLog != null){
 			this.comparisonLog.setComparatorName(getClass().getName());
-		
-			this.comparisonLog.setRecord1Value(record1.getRelease().toString());
-			this.comparisonLog.setRecord2Value(record2.getRelease().toString());
-    	
+
+			this.comparisonLog.setRecord1Value(record1.getDate().toString());
+			this.comparisonLog.setRecord2Value(record2.getDate().toString());
+
 			this.comparisonLog.setSimilarity(Double.toString(similarity));
 		}
 		return similarity;

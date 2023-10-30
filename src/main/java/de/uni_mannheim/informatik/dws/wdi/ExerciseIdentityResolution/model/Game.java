@@ -2,8 +2,8 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 
@@ -13,9 +13,9 @@ public class Game implements Matchable {
     protected String provenance;
 
     private String Name;
+    private LocalDateTime Release;
 
-
-    private List<Platforms> Platform;
+    private List<String> Platform;
     private List<String> Genre;
     private List<String> Mode;
     private List<String> Publisher;
@@ -29,16 +29,28 @@ public class Game implements Matchable {
     private Integer Critic_Count;
     private Float User_Score;
     private String Rating;
-    private LocalDateTime Release;
-
 
     public Game(String identifier,String provenance) {
         id = identifier;
-        this.provenance = provenance;
-        Platform = new LinkedList<>();
+        this.provenance = provenance;;
     }
 
+    public LocalDateTime getRelease() {
+        if (Release == null)
+        {
+            return LocalDateTime.now();
+        }
+        return Release;
+    }
+
+    public void setRelease(LocalDateTime release) {
+        this.Release = release;
+    }
     public String getName() {
+        if (Name == null)
+        {
+            return "TESTER";
+        }
         return Name;
     }
 
@@ -46,12 +58,12 @@ public class Game implements Matchable {
         Name = name;
     }
 
-    public List<Platforms> getPlatforms() {
+    public List<String> getPlatform() {
         return Platform;
     }
 
-    public void setPlatforms(List<Platforms> Platform) {
-        this.Platform = Platform;
+    public void setPlatform(List<String> platform) {
+        Platform = platform;
     }
 
     public List<String> getGenre() {
@@ -90,14 +102,6 @@ public class Game implements Matchable {
 
     public void setDeveloper(List<String> developer) {
         Developer = developer;
-    }
-
-    public LocalDateTime getRelease() {
-        return Release;
-    }
-
-    public void setRelease(LocalDateTime release) {
-        this.Release = release;
     }
 
     public Float getNA_Sales() {
@@ -179,6 +183,6 @@ public class Game implements Matchable {
 
     @Override
     public String getProvenance() {
-        return provenance;
+        return null;
     }
 }

@@ -26,7 +26,6 @@ public class GameXMLLoader {
         nodeMapping.put("Platform", new Attribute("Platform"));
         nodeMapping.put("Genre", new Attribute("Genre"));
         nodeMapping.put("Mode", new Attribute("Mode"));
-        nodeMapping.put("Release", new Attribute("Release"));
         nodeMapping.put("Publisher", new Attribute("Publisher"));
         nodeMapping.put("Developer", new Attribute("Developer"));
         nodeMapping.put("NA_Sales", new Attribute("NA_Sales"));
@@ -56,7 +55,7 @@ public class GameXMLLoader {
         } catch (XPathExpressionException e) {
             throw new RuntimeException(e);
         }
-       // new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
+        // new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
 
         //'ds' contains the Game objects with data from the XML file
     }

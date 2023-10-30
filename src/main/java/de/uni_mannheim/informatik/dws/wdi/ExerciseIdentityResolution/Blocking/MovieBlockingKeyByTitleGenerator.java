@@ -12,7 +12,6 @@
 
 package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking;
 
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Movie;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.generators.BlockingKeyGenerator;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.generators.RecordBlockingKeyGenerator;
@@ -24,14 +23,14 @@ import de.uni_mannheim.informatik.dws.winter.processing.DataIterator;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 /**
- * {@link BlockingKeyGenerator} for {@link Game}s, which generates a blocking
+ * {@link BlockingKeyGenerator} for {@link Movie}s, which generates a blocking
  * key based on the title
- * 
+ *
  * @author Oliver Lehmberg (oli@dwslab.de)
- * 
+ *
  */
 public class MovieBlockingKeyByTitleGenerator extends
-		RecordBlockingKeyGenerator<Game, Attribute> {
+		RecordBlockingKeyGenerator<Movie, Attribute> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,10 +39,10 @@ public class MovieBlockingKeyByTitleGenerator extends
 	 * @see de.uni_mannheim.informatik.wdi.matching.blocking.generators.BlockingKeyGenerator#generateBlockingKeys(de.uni_mannheim.informatik.wdi.model.Matchable, de.uni_mannheim.informatik.wdi.model.Result, de.uni_mannheim.informatik.wdi.processing.DatasetIterator)
 	 */
 	@Override
-	public void generateBlockingKeys(Game record, Processable<Correspondence<Attribute, Matchable>> correspondences,
-			DataIterator<Pair<String, Game>> resultCollector) {
+	public void generateBlockingKeys(Movie record, Processable<Correspondence<Attribute, Matchable>> correspondences,
+									 DataIterator<Pair<String, Movie>> resultCollector) {
 
-		String[] tokens  = record.getName().split(" ");
+		String[] tokens  = record.getTitle().split(" ");
 
 		String blockingKeyValue = "";
 
