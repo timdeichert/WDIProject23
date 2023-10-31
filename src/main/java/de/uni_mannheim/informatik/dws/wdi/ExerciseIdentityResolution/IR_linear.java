@@ -55,12 +55,12 @@ public class IR_linear {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 10000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.5);
-        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.5);
+        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.3);
+        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.7);
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
-//       NoBlocker<Game, Attribute> blocker = new NoBlocker<>();
+//      NoBlocker<Game, Attribute> blocker = new NoBlocker<>();
 //		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 1);
         blocker.setMeasureBlockSizes(true);
         //Write debug results to file:
