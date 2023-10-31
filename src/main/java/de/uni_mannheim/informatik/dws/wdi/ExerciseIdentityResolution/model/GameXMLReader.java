@@ -32,15 +32,18 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
 
         // You can continue reading other attributes similarly
         game.setName(getValueFromChildElement(node, "Name"));
-        game.setPlatform(getListFromChildElement(node, "Platform"));
 
         // handle the list attribute (genres)
         List<String> genres = getListFromChildElement(node, "Genres");
         game.setGenre(genres);
-
-
-        game.setMode(getListFromChildElement(node, "Mode"));
-        game.setPublisher(getListFromChildElement(node, "Publisher"));
+        List<String> platforms = getListFromChildElement(node, "Platforms");
+        game.setPlatform(platforms);
+        List<String> modes = getListFromChildElement(node, "Modes");
+        game.setMode(modes);
+        List<String> publishers = getListFromChildElement(node, "Publishers");
+        game.setPublisher(publishers);
+        List<String> developers = getListFromChildElement(node, "Developers");
+        game.setDeveloper(developers);
 
         try {
             String date = getValueFromChildElement(node, "Release");
@@ -70,8 +73,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         }
 
 
-//        game.setRelease(getValueFromChildElement(node, "Release"));
-        game.setDeveloper(getListFromChildElement(node, "Developer"));
         if (getValueFromChildElement(node, "NA_Sales") != null) {
             game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
         }
