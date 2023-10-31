@@ -57,9 +57,9 @@ public class IR_linear {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 10000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.3);
-        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.5);
-        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.2);
+        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.2);
+        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.7);
+        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.1);
 
 
         // create a blocker (blocking strategy)
