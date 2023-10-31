@@ -2,10 +2,7 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking.GameBlockingKeyByTitleGenerator;
 
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorJaccard;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLevenshtein;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLowerCaseJaccard;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameReleaseComparatorExactYear;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.*;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
@@ -25,6 +22,7 @@ import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import org.slf4j.Logger;
 
 import java.io.File;
+import java.util.List;
 
 public class IR_linear {
     private static final Logger logger = WinterLogManager.activateLogger("default");
@@ -55,8 +53,11 @@ public class IR_linear {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 10000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.3);
+        matchingRule.addComparator(new GamePlatformComparatorMongeElkan(), 0.1);
+        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.1);
         matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.7);
+        matchingRule.addComparator(new GameGenreComparatorMongeElkan(), 0.1);
+
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
