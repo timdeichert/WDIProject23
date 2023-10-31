@@ -58,8 +58,8 @@ public class IR_linear {
 
         // add comparators
         matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.2);
-        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.7);
-        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.1);
+        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.6);
+        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.2);
 
 
         // create a blocker (blocking strategy)

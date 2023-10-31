@@ -27,7 +27,7 @@ public class GameGenreComparatorTokenContainment implements Comparator<Game, Att
         List<String> genreList2 = record2.getGenre();
 
 
-        double similarity = this.computeMOTCSimilarity(genreList1, genreList2);
+        double similarity = this.computeMongeElkanSimilarity(genreList1, genreList2);
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
@@ -44,22 +44,29 @@ public class GameGenreComparatorTokenContainment implements Comparator<Game, Att
 
     }
 
-    public double computeMOTCSimilarity(List<String> list1, List<String> list2) {
+
+    public double computeMongeElkanSimilarity(List<String> list1, List<String> list2) {
         if (list1 == null || list2 == null) {
             return 0.0;  // Return default similarity value if any of the lists is null
         }
-        Set<String> set1 = new HashSet<>(list1);
-        Set<String> set2 = new HashSet<>(list2);
 
-        // Count the number of shared tokens
-        Set<String> intersection = new HashSet<>(set1);
-        intersection.retainAll(set2);
-        int sharedTokens = intersection.size();
+        double sumMaxSim = 0;
+        for (String s1 : list1) {
+            double maxSim = list2.stream()
+                    .mapToDouble(s2 -> smithWatermanGotoh(s1, s2))
+                    .max()
+                    .orElse(0);
+            sumMaxSim += maxSim;
+        }
 
-        // Return the ratio of shared tokens to the smallest token set size
-        return (double) sharedTokens / Math.min(set1.size(), set2.size());
+        return sumMaxSim / list1.size();
     }
 
+    public double smithWatermanGotoh(String str1, String str2) {
+        // Implement the Smith-Waterman-Gotoh algorithm here
+        // This is a placeholder and should be replaced with the actual implementation
+        return 0.0;
+    }
 
     public List<String> filterNullValues(List<String> list) {
         if (list == null) {
