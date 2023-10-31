@@ -6,6 +6,8 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLevenshtein;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLowerCaseJaccard;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameReleaseComparatorExactYear;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameGenreComparatorTokenContainment;
+
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.matching.MatchingEngine;
@@ -55,8 +57,10 @@ public class IR_linear {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 10000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.5);
+        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.3);
         matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.5);
+        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.2);
+
 
         // create a blocker (blocking strategy)
         StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
