@@ -36,7 +36,7 @@ public class Game implements Matchable {
     }
 
     public LocalDateTime getRelease() {
-        if (Release == null || "N/A".equals(Release.toString()))
+        if (Release == null)
         {
             return LocalDateTime.of(2023, 1, 1, 0, 0);
         }

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -32,7 +33,12 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         // You can continue reading other attributes similarly
         game.setName(getValueFromChildElement(node, "Name"));
         game.setPlatform(getListFromChildElement(node, "Platform"));
-        game.setGenre(getListFromChildElement(node, "Genre"));
+
+        // handle the list attribute (genres)
+        List<String> genres = getListFromChildElement(node, "Genres");
+        game.setGenre(genres);
+
+
         game.setMode(getListFromChildElement(node, "Mode"));
         game.setPublisher(getListFromChildElement(node, "Publisher"));
 

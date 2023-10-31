@@ -51,7 +51,6 @@ public class GameReleaseComparatorExactYear implements Comparator<Game, Attribut
             this.comparisonLog.setSimilarity(Double.toString(similarity));
         }
         return similarity;
-
     }
 
     @Override
