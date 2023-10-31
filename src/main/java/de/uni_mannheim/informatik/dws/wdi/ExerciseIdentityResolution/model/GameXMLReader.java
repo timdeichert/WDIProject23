@@ -8,6 +8,11 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
 import org.w3c.dom.Node;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
+import java.util.Locale;
 import java.util.Map;
 
 public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
@@ -30,6 +35,36 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         game.setGenre(getListFromChildElement(node, "Genre"));
         game.setMode(getListFromChildElement(node, "Mode"));
         game.setPublisher(getListFromChildElement(node, "Publisher"));
+
+        try {
+            String date = getValueFromChildElement(node, "Release");
+            if ("N/A".equals(date)){
+                LocalDateTime dt;
+                dt = LocalDateTime.of(2023, 1, 1, 0, 0);
+            }
+            else if (date != null && !date.isEmpty()) {
+                LocalDateTime dt;
+                if (date.contains("-")) {
+                    // If the date is in the format "YYYY-MM-DD"
+                    DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                            .appendPattern("yyyy-MM-dd")
+                            .parseDefaulting(ChronoField.CLOCK_HOUR_OF_DAY, 0)
+                            .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                            .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+                            .toFormatter(Locale.ENGLISH);
+                    dt = LocalDateTime.parse(date, formatter);
+                } else {
+                    // If the date is just the year (YYYY)
+                    dt = LocalDateTime.of(Integer.parseInt(date), 1, 1, 0, 0);
+                }
+                game.setRelease(dt);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+//        game.setRelease(getValueFromChildElement(node, "Release"));
         game.setDeveloper(getListFromChildElement(node, "Developer"));
         if (getValueFromChildElement(node, "NA_Sales") != null) {
             game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
