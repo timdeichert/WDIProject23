@@ -2,11 +2,7 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking.GameBlockingKeyByTitleGenerator;
 
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorJaccard;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLevenshtein;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameNameComparatorLowerCaseJaccard;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameReleaseComparatorExactYear;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.GameGenreComparatorTokenContainment;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators.*;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
@@ -59,7 +55,7 @@ public class IR_linear {
         // add comparators
         matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.2);
         matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.6);
-        matchingRule.addComparator(new GameGenreComparatorTokenContainment(), 0.2);
+        matchingRule.addComparator(new GameGenreComparatorMongeElkan(), 0.2);
 
 
         // create a blocker (blocking strategy)

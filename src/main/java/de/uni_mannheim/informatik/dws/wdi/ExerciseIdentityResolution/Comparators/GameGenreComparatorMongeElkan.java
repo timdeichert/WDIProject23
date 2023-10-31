@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.ArrayList;
 
 
-public class GameGenreComparatorTokenContainment implements Comparator<Game, Attribute>{
+public class GameGenreComparatorMongeElkan implements Comparator<Game, Attribute>{
 
     private ComparatorLogger comparisonLog;
 
