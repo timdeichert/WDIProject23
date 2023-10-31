@@ -23,11 +23,9 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         String id =  getValueFromChildElement(node,"ID");
         Game game = new Game(id ,provenanceInfo);
 
-        // Read data from XML and set attributes
-        game.setId(getValueFromChildElement(node, "id"));
-        game.setName(getValueFromChildElement(node, "Name"));
         
         // You can continue reading other attributes similarly
+        game.setName(getValueFromChildElement(node, "Name"));
         game.setPlatform(getListFromChildElement(node, "Platform"));
         game.setGenre(getListFromChildElement(node, "Genre"));
         game.setMode(getListFromChildElement(node, "Mode"));
@@ -36,20 +34,41 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
         if (getValueFromChildElement(node, "NA_Sales") != null) {
             game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
         }
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        if (getValueFromChildElement(node, "EU_Sales") != null) {
         game.setEU_Sales(Float.parseFloat(getValueFromChildElement(node, "EU_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        else{
+            game.setEU_Sales(1.0F);
+        }
+        if (getValueFromChildElement(node, "JP_Sales") != null) {
         game.setJP_Sales(Float.parseFloat(getValueFromChildElement(node, "JP_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        else{
+            game.setJP_Sales(1.0F);
+        }
+        if (getValueFromChildElement(node, "Other_Sales") != null) {
         game.setOther_Sales(Float.parseFloat(getValueFromChildElement(node, "Other_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        else{
+            game.setOther_Sales(1.0F);
+        }
+        if (getValueFromChildElement(node, "Global_Sales") != null) {
         game.setGlobal_Sales(Float.parseFloat(getValueFromChildElement(node, "Global_Sales")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        else{
+            game.setGlobal_Sales(1.0F);
+        }
+        if (getValueFromChildElement(node, "Critic_Score") != null) {
         game.setCritic_Score(Integer.parseInt(getValueFromChildElement(node, "Critic_Score")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
+        else{
+            game.setCritic_Score(1);
+        }
+        if (getValueFromChildElement(node, "Critic_Count") != null) {
         game.setCritic_Count(Integer.parseInt(getValueFromChildElement(node, "Critic_Count")));}
-        if (getValueFromChildElement(node, "NA_Sales") != null) {
-        game.setUser_Score(Integer.parseInt(getValueFromChildElement(node, "User_Score")));}
+        else{
+            game.setCritic_Count(1);
+        }
+        if (getValueFromChildElement(node, "User_Score") != null && !getValueFromChildElement(node, "User_Score").equalsIgnoreCase("tbd")) {
+        game.setUser_Score(Float.parseFloat(getValueFromChildElement(node, "User_Score")));}
+        else{
+            game.setUser_Score(1.0F);
+        }
         
         game.setRating(getValueFromChildElement(node, "Rating"));
 

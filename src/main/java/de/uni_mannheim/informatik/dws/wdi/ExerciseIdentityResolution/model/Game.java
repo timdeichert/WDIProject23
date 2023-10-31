@@ -3,6 +3,7 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 
@@ -12,6 +13,7 @@ public class Game implements Matchable {
     protected String provenance;
 
     private String Name;
+    private LocalDateTime Release;
 
     private List<String> Platform;
     private List<String> Genre;
@@ -25,7 +27,7 @@ public class Game implements Matchable {
     private Float Global_Sales;
     private Integer Critic_Score;
     private Integer Critic_Count;
-    private Integer User_Score;
+    private Float User_Score;
     private String Rating;
 
     public Game(String identifier,String provenance) {
@@ -33,7 +35,22 @@ public class Game implements Matchable {
         this.provenance = provenance;;
     }
 
+    public LocalDateTime getRelease() {
+        if (Release == null)
+        {
+            return LocalDateTime.now();
+        }
+        return Release;
+    }
+
+    public void setRelease(LocalDateTime release) {
+        this.Release = release;
+    }
     public String getName() {
+        if (Name == null)
+        {
+            return "TESTER";
+        }
         return Name;
     }
 
@@ -143,11 +160,11 @@ public class Game implements Matchable {
         Critic_Count = critic_Count;
     }
 
-    public Integer getUser_Score() {
+    public Float getUser_Score() {
         return User_Score;
     }
 
-    public void setUser_Score(Integer user_Score) {
+    public void setUser_Score(Float user_Score) {
         User_Score = user_Score;
     }
 

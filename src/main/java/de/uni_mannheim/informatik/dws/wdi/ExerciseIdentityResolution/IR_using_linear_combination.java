@@ -48,9 +48,10 @@ public class IR_using_linear_combination
 		// loading data
 		logger.info("*\tLoading datasets\t*");
 		HashedDataSet<Movie, Attribute> dataAcademyAwards = new HashedDataSet<>();
-		new MovieXMLReader().loadFromXML(new File("data/input/academy_awards.xml"), "/movies/movie", dataAcademyAwards);
+		new MovieXMLReader().loadFromXML(new File("data/inputExercise/academy_awards.xml"), "/movies/movie", dataAcademyAwards);
 		HashedDataSet<Movie, Attribute> dataActors = new HashedDataSet<>();
-		new MovieXMLReader().loadFromXML(new File("data/input/actors.xml"), "/movies/movie", dataActors);
+		new MovieXMLReader().loadFromXML(new File("data/inputExercise/actors.xml"), "/movies/movie", dataActors);
+		System.out.println(dataActors.size());
 
 		// load the gold standard (test set)
 		logger.info("*\tLoading gold standard\t*");
