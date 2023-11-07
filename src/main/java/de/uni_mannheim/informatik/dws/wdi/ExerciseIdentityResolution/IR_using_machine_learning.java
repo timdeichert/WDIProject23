@@ -76,7 +76,17 @@ public class IR_using_machine_learning {
 		String modelType = "SimpleLogistic"; // use a logistic regression
 		WekaMatchingRule<Movie, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
 		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTraining);
-		
+
+/*
+		// create a matching rule using a decision tree
+		String options[] = new String[] {}; // add any options for the decision tree here
+		String modelType = "J48"; // use a decision tree
+		WekaMatchingRule<Movie, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTraining);
+
+*/
+
+
 		// add comparators
 		matchingRule.addComparator(new MovieTitleComparatorEqual());
 		matchingRule.addComparator(new MovieDateComparator2Years());
@@ -93,7 +103,15 @@ public class IR_using_machine_learning {
 		RuleLearner<Movie, Attribute> learner = new RuleLearner<>();
 		learner.learnMatchingRule(dataAcademyAwards, dataActors, null, matchingRule, gsTraining);
 		logger.info(String.format("Matching rule is:\n%s", matchingRule.getModelDescription()));
-		
+
+/*
+		// train the matching rule's model using the decision tree
+		logger.info("*\tLearning matching rule with decision tree\t*");
+		RuleLearner<Movie, Attribute> learner = new RuleLearner<>();
+		learner.learnMatchingRule(dataAcademyAwards, dataActors, null, matchingRule, gsTraining);
+		logger.info(String.format("Matching rule with decision tree is:\n%s", matchingRule.getModelDescription()));
+*/
+
 		// create a blocker (blocking strategy)
 		StandardRecordBlocker<Movie, Attribute> blocker = new StandardRecordBlocker<Movie, Attribute>(new MovieBlockingKeyByTitleGenerator());
 //		SortedNeighbourhoodBlocker<Movie, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new MovieBlockingKeyByDecadeGenerator(), 1);
