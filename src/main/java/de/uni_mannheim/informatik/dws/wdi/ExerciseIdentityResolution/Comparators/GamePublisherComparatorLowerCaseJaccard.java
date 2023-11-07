@@ -8,6 +8,10 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
+public class GamePublisherComparatorLowerCaseJaccard{
+
+}
+/*
 public class GamePublisherComparatorLowerCaseJaccard implements Comparator<Game, Attribute> {
 
     private static final long serialVersionUID = 1L;
@@ -68,4 +72,4 @@ public class GamePublisherComparatorLowerCaseJaccard implements Comparator<Game,
     public void setComparisonLog(ComparatorLogger comparatorLog) {
         this.comparisonLog = comparatorLog;
     }
-}
+} */
