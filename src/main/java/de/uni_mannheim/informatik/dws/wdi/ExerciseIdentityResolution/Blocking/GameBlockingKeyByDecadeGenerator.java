@@ -12,6 +12,7 @@
 
 package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Blocking;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Movie;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.generators.BlockingKeyGenerator;
 import de.uni_mannheim.informatik.dws.winter.matching.blockers.generators.RecordBlockingKeyGenerator;
@@ -24,13 +25,13 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
 /**
  * {@link BlockingKeyGenerator} for {@link Movie}s, which generates a blocking
- * key based on the title
+ * key based on the decade. E.g. 1999--&gt;199, 2014 --&gt; 201
  * 
  * @author Oliver Lehmberg (oli@dwslab.de)
  * 
  */
-public class MovieBlockingKeyByTitleGenerator extends
-		RecordBlockingKeyGenerator<Movie, Attribute> {
+public class GameBlockingKeyByDecadeGenerator extends
+		RecordBlockingKeyGenerator<Game, Attribute> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,18 +40,9 @@ public class MovieBlockingKeyByTitleGenerator extends
 	 * @see de.uni_mannheim.informatik.wdi.matching.blocking.generators.BlockingKeyGenerator#generateBlockingKeys(de.uni_mannheim.informatik.wdi.model.Matchable, de.uni_mannheim.informatik.wdi.model.Result, de.uni_mannheim.informatik.wdi.processing.DatasetIterator)
 	 */
 	@Override
-	public void generateBlockingKeys(Movie record, Processable<Correspondence<Attribute, Matchable>> correspondences,
-			DataIterator<Pair<String, Movie>> resultCollector) {
-
-		String[] tokens  = record.getTitle().split(" ");
-
-		String blockingKeyValue = "";
-
-		for(int i = 0; i <= 2 && i < tokens.length; i++) {
-			blockingKeyValue += tokens[i].substring(0, Math.min(2,tokens[i].length())).toUpperCase();
-		}
-
-		resultCollector.next(new Pair<>(blockingKeyValue, record));
+	public void generateBlockingKeys(Game record, Processable<Correspondence<Attribute, Matchable>> correspondences,
+			DataIterator<Pair<String, Game>> resultCollector) {
+		resultCollector.next(new Pair<>(Integer.toString(record.getRelease().getYear() / 10), record));
 	}
 
 }
