@@ -42,7 +42,7 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             game.setPlatform(platforms);
             List<String> modes = getListFromChildElement(node, "Modes");
             game.setMode(modes);
-            List<String> publishers = getListFromChildElement(node, "Publishers");
+            List<String> publishers = getListFromChildElement(node, "publishers");
             game.setPublisher(publishers);
             List<String> developers = getListFromChildElement(node, "Developers");
             game.setDeveloper(developers);
