@@ -34,24 +34,24 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 
 public class IR_using_machine_learning {
-	
+
 	/*
 	 * Logging Options:
 	 * 		default: 	level INFO	- console
 	 * 		trace:		level TRACE     - console
 	 * 		infoFile:	level INFO	- console/file
 	 * 		traceFile:	level TRACE	- console/file
-	 *  
-	 * To set the log level to trace and write the log to winter.log and console, 
+	 *
+	 * To set the log level to trace and write the log to winter.log and console,
 	 * activate the "traceFile" logger as follows:
 	 *     private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 	 *
 	 */
 
 	private static final Logger logger = WinterLogManager.activateLogger("default");
-	
-    public static void main( String[] args ) throws Exception
-    {
+
+	public static void main( String[] args ) throws Exception
+	{
 
 
 		// Exercise loading data
@@ -81,7 +81,7 @@ public class IR_using_machine_learning {
 		// create a matching rule using a decision tree
 		String options[] = new String[] {}; // add any options for the decision tree here
 		String modelType = "J48"; // use a decision tree
-		WekaMatchingRule<Movie, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
+		WekaMatchingRule<Game, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
 		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTraining);
 
 */
@@ -96,8 +96,8 @@ public class IR_using_machine_learning {
 		matchingRule.addComparator(new MovieDirectorComparatorLowerCaseJaccard());
 		matchingRule.addComparator(new MovieTitleComparatorLevenshtein());
 		matchingRule.addComparator(new MovieTitleComparatorJaccard());
-		
-		
+
+
 		// train the matching rule's model
 		logger.info("*\tLearning matching rule\t*");
 		RuleLearner<Movie, Attribute> learner = new RuleLearner<>();
@@ -107,7 +107,7 @@ public class IR_using_machine_learning {
 /*
 		// train the matching rule's model using the decision tree
 		logger.info("*\tLearning matching rule with decision tree\t*");
-		RuleLearner<Movie, Attribute> learner = new RuleLearner<>();
+		RuleLearner<Game, Attribute> learner = new RuleLearner<>();
 		learner.learnMatchingRule(dataAcademyAwards, dataActors, null, matchingRule, gsTraining);
 		logger.info(String.format("Matching rule with decision tree is:\n%s", matchingRule.getModelDescription()));
 */
@@ -116,7 +116,7 @@ public class IR_using_machine_learning {
 		StandardRecordBlocker<Movie, Attribute> blocker = new StandardRecordBlocker<Movie, Attribute>(new MovieBlockingKeyByTitleGenerator());
 //		SortedNeighbourhoodBlocker<Movie, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new MovieBlockingKeyByDecadeGenerator(), 1);
 		blocker.collectBlockSizeData("data/output/debugResultsBlocking.csv", 100);
-		
+
 		// Initialize Matching Engine
 		MatchingEngine<Movie, Attribute> engine = new MatchingEngine<>();
 
@@ -134,13 +134,13 @@ public class IR_using_machine_learning {
 		MatchingGoldStandard gsTest = new MatchingGoldStandard();
 		gsTest.loadFromCSVFile(new File(
 				"data/goldstandard/gs_academy_awards_2_actors_test.csv"));
-		
+
 		// evaluate your result
 		logger.info("*\tEvaluating result\t*");
 		MatchingEvaluator<Movie, Attribute> evaluator = new MatchingEvaluator<Movie, Attribute>();
 		Performance perfTest = evaluator.evaluateMatching(correspondences,
 				gsTest);
-		
+
 		// print the evaluation result
 		logger.info("Academy Awards <-> Actors");
 		logger.info(String.format(
@@ -149,5 +149,5 @@ public class IR_using_machine_learning {
 				"Recall: %.4f",	perfTest.getRecall()));
 		logger.info(String.format(
 				"F1: %.4f",perfTest.getF1()));
-    }
+	}
 }
