@@ -55,8 +55,12 @@ public class IR_linear {
         // add comparators
         matchingRule.addComparator(new GamePlatformComparatorMongeElkan(), 0.1);
         matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.1);
-        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.7);
+        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.4);
         matchingRule.addComparator(new GameGenreComparatorMongeElkan(), 0.1);
+        matchingRule.addComparator(new GamePublisherLJaccard(), 0.1);
+        matchingRule.addComparator(new GameDevComparatorJaccard(), 0.1);
+        matchingRule.addComparator(new EmbeddedComparator("src/main/java/de/uni_mannheim/informatik/dws/wdi/ExerciseIdentityResolution/cc.en.300.vec"), 0.1);
+
 
 
         // create a blocker (blocking strategy)
