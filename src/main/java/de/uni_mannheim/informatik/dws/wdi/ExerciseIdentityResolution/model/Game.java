@@ -183,6 +183,6 @@ public class Game implements Matchable {
 
     @Override
     public String getProvenance() {
-        return null;
+        return provenance;
     }
 }
