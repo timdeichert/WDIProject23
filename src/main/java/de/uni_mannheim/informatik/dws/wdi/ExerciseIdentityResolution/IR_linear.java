@@ -59,7 +59,7 @@ public class IR_linear {
         matchingRule.addComparator(new GameGenreComparatorMongeElkan(), 0.1);
         matchingRule.addComparator(new GamePublisherLJaccard(), 0.1);
         matchingRule.addComparator(new GameDevComparatorJaccard(), 0.1);
- //       matchingRule.addComparator(new EmbeddedComparator("src/main/java/de/uni_mannheim/informatik/dws/wdi/ExerciseIdentityResolution/cc.en.300.vec"), 0.1);
+//       matchingRule.addComparator(new EmbeddedComparator("src/main/java/de/uni_mannheim/informatik/dws/wdi/ExerciseIdentityResolution/cc.en.300.vec"), 0.1);
 
 
 
