@@ -23,21 +23,15 @@ public class GamePlatformComparatorMongeElkan implements Comparator<Game, Attrib
             Game record2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        List<String> platformList1 = record1.getPlatform();
-        List<String> platformList2 = record2.getPlatform();
+        String platform1 = record1.getPlatform();
+        String platform2 = record2.getPlatform();
 
-
-        double similarity = this.computeMongeElkanSimilarity(platformList1, platformList2);
+        double similarity = this.computeMongeElkanSimilarity(platform1, platform2);
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-
-            List<String> filteredGenreList1 = filterNullValues(record1.getPlatform());
-            List<String> filteredGenreList2 = filterNullValues(record2.getPlatform());
-
-            this.comparisonLog.setRecord1Value(String.join(", ", filteredGenreList1));
-            this.comparisonLog.setRecord2Value(String.join(", ", filteredGenreList2));
-
+            this.comparisonLog.setRecord1Value(platform1);
+            this.comparisonLog.setRecord2Value(platform2);
             this.comparisonLog.setSimilarity(Double.toString(similarity));
         }
         return similarity;
@@ -45,21 +39,14 @@ public class GamePlatformComparatorMongeElkan implements Comparator<Game, Attrib
     }
 
 
-    public double computeMongeElkanSimilarity(List<String> list1, List<String> list2) {
+    public double computeMongeElkanSimilarity(String list1, String list2) {
         if (list1 == null || list2 == null) {
             return 0.0;  // Return default similarity value if any of the lists is null
         }
 
-        double sumMaxSim = 0;
-        for (String s1 : list1) {
-            double maxSim = list2.stream()
-                    .mapToDouble(s2 -> computeWinklerJaroSimilarity(s1, s2))
-                    .max()
-                    .orElse(0);
-            sumMaxSim += maxSim;
-        }
+        double similarity = computeWinklerJaroSimilarity(list1, list2);
 
-        return sumMaxSim / list1.size();
+        return similarity;
     }
 
 
