@@ -1,0 +1,385 @@
+[INFO ] 2023-11-15 11:29:08.086 [de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader] - Loading 9192 elements from DBpedia_Video_Game(Final).XML
+[INFO ] 2023-11-15 11:29:08.722 [de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader] - Loading 16719 elements from Kaggle1_Video_Game(Final).xml
+[INFO ] 2023-11-15 11:29:08.858 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - The gold standard has 217 examples
+[INFO ] 2023-11-15 11:29:08.859 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - 	83 positive examples (38,25%)
+[INFO ] 2023-11-15 11:29:08.859 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - 	134 negative examples (61,75%)
+[INFO ] 2023-11-15 11:29:09.015 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - *	Learning matching rule	*
+[WARN ] 2023-11-15 11:29:09.020 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - The gold standard is imbalanced!
+[INFO ] 2023-11-15 11:29:09.020 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner] - Starting GenerateFeatures
+[INFO ] 2023-11-15 11:29:09.107 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleLearner] - GenerateFeatures finished after 00:00:00.087; created 215 examples.
+[INFO ] 2023-11-15 11:29:09.541 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - 
+[INFO ] 2023-11-15 11:29:09.541 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Results
+[INFO ] 2023-11-15 11:29:09.541 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - 
+[INFO ] 2023-11-15 11:29:09.541 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - 
+[INFO ] 2023-11-15 11:29:09.541 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Correctly Classified Instances         205               95.3488 %
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Incorrectly Classified Instances        10                4.6512 %
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Kappa statistic                          0.9005
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Mean absolute error                      0.0975
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Root mean squared error                  0.2072
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Relative absolute error                 20.7492 %
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Root relative squared error             42.76   %
+[INFO ] 2023-11-15 11:29:09.542 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Total Number of Instances              215     
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - === Detailed Accuracy By Class ===
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - 
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -                  0,926    0,030    0,949      0,926    0,938      0,901    0,987     0,981     1
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -                  0,970    0,074    0,956      0,970    0,963      0,901    0,987     0,992     0
+[INFO ] 2023-11-15 11:29:09.548 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - Weighted Avg.    0,953    0,057    0,953      0,953    0,953      0,901    0,987     0,988     
+[INFO ] 2023-11-15 11:29:09.549 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - === Confusion Matrix ===
+[INFO ] 2023-11-15 11:29:09.549 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] - 
+[INFO ] 2023-11-15 11:29:09.549 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -    a   b   <-- classified as
+[INFO ] 2023-11-15 11:29:09.549 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -   75   6 |   a = 1
+[INFO ] 2023-11-15 11:29:09.549 [de.uni_mannheim.informatik.dws.winter.matching.rules.WekaMatchingRule] -    4 130 |   b = 0
+[INFO ] 2023-11-15 11:29:09.559 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - Matching rule is:
+SimpleLogistic:
+
+Class 0 :
+-2.01 + 
+[[4] GameNameComparatorJaccard] * 2.2  +
+[[6] GamePublisherComparatorLevenshtein] * 0.89 +
+[[8] GameReleaseComparatorExactYear] * 1.7 
+
+Class 1 :
+2.01 + 
+[[4] GameNameComparatorJaccard] * -2.2 +
+[[6] GamePublisherComparatorLevenshtein] * -0.89 +
+[[8] GameReleaseComparatorExactYear] * -1.7
+
+[INFO ] 2023-11-15 11:29:09.563 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - *	Running identity resolution	*
+[INFO ] 2023-11-15 11:29:09.563 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleBasedMatchingAlgorithm] - Starting Identity Resolution
+[INFO ] 2023-11-15 11:29:09.564 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleBasedMatchingAlgorithm] - Blocking 9.192 x 16.719 elements
+[INFO ] 2023-11-15 11:29:09.716 [de.uni_mannheim.informatik.dws.winter.matching.blockers.AbstractBlocker] - Debug results written to file: data/output/debugResultsBlocking.csv
+[INFO ] 2023-11-15 11:29:09.717 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleBasedMatchingAlgorithm] - Matching 9.192 x 16.719 elements after 00:00:00.154; 82.694 blocked pairs (reduction ratio: 0.9994619115299109)
+[INFO ] 2023-11-15 11:29:13.812 [de.uni_mannheim.informatik.dws.winter.matching.algorithms.RuleBasedMatchingAlgorithm] - Identity Resolution finished after 00:00:04.248; found 5.644 correspondences.
+[INFO ] 2023-11-15 11:29:13.939 [de.uni_mannheim.informatik.dws.winter.matching.rules.MatchingRule] - Debug results written to file: data/output/debugResultsMatchingRule.csv
+[INFO ] 2023-11-15 11:29:13.978 [de.uni_mannheim.informatik.dws.winter.matching.rules.MatchingRule] - Debug results written to file: data/output/debugResultsMatchingRule.csv_short
+[INFO ] 2023-11-15 11:29:13.988 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - *	Loading gold standard	*
+[INFO ] 2023-11-15 11:29:13.991 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - The gold standard has 798 examples
+[INFO ] 2023-11-15 11:29:13.991 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - 	318 positive examples (39,85%)
+[INFO ] 2023-11-15 11:29:13.991 [de.uni_mannheim.informatik.dws.winter.model.MatchingGoldStandard] - 	480 negative examples (60,15%)
+[INFO ] 2023-11-15 11:29:13.992 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - *	Evaluating result	*
+[TRACE] 2023-11-15 11:29:13.993 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5568,Kaggle1_Video_Game_9526,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.993 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5568,Kaggle1_Video_Game_13230,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.993 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8735,Kaggle1_Video_Game_7793,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.993 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4200,Kaggle1_Video_Game_74,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.993 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_939,Kaggle1_Video_Game_10049,0.9869252179769414
+[TRACE] 2023-11-15 11:29:13.994 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4196,Kaggle1_Video_Game_14756,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.994 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1725,Kaggle1_Video_Game_15684,0.9568450320337966
+[TRACE] 2023-11-15 11:29:13.994 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5652,Kaggle1_Video_Game_916,0.764955122041935
+[TRACE] 2023-11-15 11:29:13.994 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_972,Kaggle1_Video_Game_8185,0.708131075098039
+[TRACE] 2023-11-15 11:29:13.994 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5513,Kaggle1_Video_Game_2253,0.9797028861775552
+[TRACE] 2023-11-15 11:29:13.995 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4438,Kaggle1_Video_Game_7188,0.9891778758042467
+[TRACE] 2023-11-15 11:29:13.995 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1992,Kaggle1_Video_Game_13611,0.796233911555724
+[TRACE] 2023-11-15 11:29:13.995 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1992,Kaggle1_Video_Game_14768,0.9916058652322041
+[TRACE] 2023-11-15 11:29:13.995 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_29,Kaggle1_Video_Game_3502,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.995 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4209,Kaggle1_Video_Game_11490,0.994639699098272
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1244,Kaggle1_Video_Game_10493,0.9839724701293293
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_787,Kaggle1_Video_Game_4414,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_30,Kaggle1_Video_Game_12003,0.9797028861775552
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7555,Kaggle1_Video_Game_9739,0.9958038371259647
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4213,Kaggle1_Video_Game_27,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.996 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1090,Kaggle1_Video_Game_13919,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1154,Kaggle1_Video_Game_4380,0.7042640931100934
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4376,Kaggle1_Video_Game_6817,0.9797028861775552
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4376,Kaggle1_Video_Game_8719,0.9797028861775552
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8745,Kaggle1_Video_Game_3214,0.764955122041935
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8763,Kaggle1_Video_Game_9845,0.9832832411324378
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_781,Kaggle1_Video_Game_14009,0.9894130352348223
+[TRACE] 2023-11-15 11:29:13.997 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4083,Kaggle1_Video_Game_8880,0.9872716078441979
+[TRACE] 2023-11-15 11:29:13.998 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7968,Kaggle1_Video_Game_12501,0.9861988167325009
+[TRACE] 2023-11-15 11:29:13.998 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4246,Kaggle1_Video_Game_15703,0.9908661393863065
+[TRACE] 2023-11-15 11:29:13.998 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5693,Kaggle1_Video_Game_3760,0.9844775165237453
+[TRACE] 2023-11-15 11:29:13.998 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5693,Kaggle1_Video_Game_7143,0.9844775165237453
+[TRACE] 2023-11-15 11:29:13.998 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3730,Kaggle1_Video_Game_170,0.992094237039149
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1208,Kaggle1_Video_Game_3959,0.9916172960476151
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1208,Kaggle1_Video_Game_4170,0.9916172960476151
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5700,Kaggle1_Video_Game_13381,0.9797028861775552
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_788,Kaggle1_Video_Game_13867,0.9962461289269839
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4093,Kaggle1_Video_Game_11113,0.9956451646216826
+[TRACE] 2023-11-15 11:29:13.999 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_36,Kaggle1_Video_Game_727,0.933805697128402
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_896,Kaggle1_Video_Game_2148,0.9848054783899466
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_33,Kaggle1_Video_Game_1177,0.9947125818444272
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4235,Kaggle1_Video_Game_1219,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4412,Kaggle1_Video_Game_14403,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4412,Kaggle1_Video_Game_9670,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.000 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4412,Kaggle1_Video_Game_5132,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_797,Kaggle1_Video_Game_7292,0.9915735678978016
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4655,Kaggle1_Video_Game_4166,0.9845565704868838
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3999,Kaggle1_Video_Game_8504,0.9872716078441979
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_839,Kaggle1_Video_Game_16277,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8788,Kaggle1_Video_Game_5720,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3395,Kaggle1_Video_Game_1024,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.001 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3395,Kaggle1_Video_Game_2600,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4250,Kaggle1_Video_Game_11612,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4250,Kaggle1_Video_Game_14307,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5562,Kaggle1_Video_Game_12994,0.9956451646216826
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1947,Kaggle1_Video_Game_9607,0.9893449135916085
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1947,Kaggle1_Video_Game_14956,0.9137111021235151
+[TRACE] 2023-11-15 11:29:14.002 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1947,Kaggle1_Video_Game_14670,0.9440948188738161
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_773,Kaggle1_Video_Game_2723,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4230,Kaggle1_Video_Game_13153,0.9887951582321255
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4579,Kaggle1_Video_Game_12876,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6783,Kaggle1_Video_Game_9825,0.9905613335105271
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5625,Kaggle1_Video_Game_311,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5633,Kaggle1_Video_Game_2211,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.003 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5633,Kaggle1_Video_Game_4669,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7937,Kaggle1_Video_Game_12900,0.9890960662514638
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_2380,Kaggle1_Video_Game_15696,0.933805697128402
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1955,Kaggle1_Video_Game_6529,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6789,Kaggle1_Video_Game_8370,0.9922498333621382
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4103,Kaggle1_Video_Game_293,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.004 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5622,Kaggle1_Video_Game_11239,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5622,Kaggle1_Video_Game_4192,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4575,Kaggle1_Video_Game_3828,0.9849459337166223
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_798,Kaggle1_Video_Game_3473,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4516,Kaggle1_Video_Game_12870,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4516,Kaggle1_Video_Game_15831,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.005 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3952,Kaggle1_Video_Game_1288,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1908,Kaggle1_Video_Game_2789,0.9893449135916085
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8784,Kaggle1_Video_Game_6424,0.7222514457579456
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7944,Kaggle1_Video_Game_976,0.9947125818444272
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4234,Kaggle1_Video_Game_6810,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4260,Kaggle1_Video_Game_9025,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.006 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4260,Kaggle1_Video_Game_9794,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5689,Kaggle1_Video_Game_11057,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7978,Kaggle1_Video_Game_5159,0.988469542245513
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_967,Kaggle1_Video_Game_4698,0.9914683782751909
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1939,Kaggle1_Video_Game_5012,0.989747233129572
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5569,Kaggle1_Video_Game_1839,0.9866550736067552
+[TRACE] 2023-11-15 11:29:14.007 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7976,Kaggle1_Video_Game_243,0.9935080162083709
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1122,Kaggle1_Video_Game_9036,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3392,Kaggle1_Video_Game_949,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1950,Kaggle1_Video_Game_5094,0.988469542245513
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_888,Kaggle1_Video_Game_9268,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_917,Kaggle1_Video_Game_6298,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_2689,Kaggle1_Video_Game_9507,0.9875918539114932
+[TRACE] 2023-11-15 11:29:14.008 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5570,Kaggle1_Video_Game_4257,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5570,Kaggle1_Video_Game_3291,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5515,Kaggle1_Video_Game_1118,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1124,Kaggle1_Video_Game_5461,0.9851675628151818
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5671,Kaggle1_Video_Game_1867,0.9826858566636535
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5671,Kaggle1_Video_Game_1291,0.9826858566636535
+[TRACE] 2023-11-15 11:29:14.009 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1209,Kaggle1_Video_Game_13716,0.9887502200079472
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3737,Kaggle1_Video_Game_1708,0.986851602664206
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5669,Kaggle1_Video_Game_3085,0.9932053118311759
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5669,Kaggle1_Video_Game_3231,0.9932053118311759
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5522,Kaggle1_Video_Game_210,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4249,Kaggle1_Video_Game_1461,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5534,Kaggle1_Video_Game_10246,0.9888795578530067
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_22,Kaggle1_Video_Game_4370,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.010 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [wrong] DBpedia_Video_Game_7585,Kaggle1_Video_Game_64,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4214,Kaggle1_Video_Game_12,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8003,Kaggle1_Video_Game_14892,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5505,Kaggle1_Video_Game_5888,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4434,Kaggle1_Video_Game_4477,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1956,Kaggle1_Video_Game_440,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4244,Kaggle1_Video_Game_684,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.011 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_23,Kaggle1_Video_Game_3815,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4479,Kaggle1_Video_Game_6360,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5,Kaggle1_Video_Game_2625,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4664,Kaggle1_Video_Game_566,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5503,Kaggle1_Video_Game_5190,0.8977374884324435
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4243,Kaggle1_Video_Game_2694,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.012 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_20,Kaggle1_Video_Game_1521,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7615,Kaggle1_Video_Game_9032,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6,Kaggle1_Video_Game_6775,0.7678819772808955
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6,Kaggle1_Video_Game_9632,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_860,Kaggle1_Video_Game_3426,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8737,Kaggle1_Video_Game_8197,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8737,Kaggle1_Video_Game_10843,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.013 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_25,Kaggle1_Video_Game_8094,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1952,Kaggle1_Video_Game_3610,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1952,Kaggle1_Video_Game_5258,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1952,Kaggle1_Video_Game_4050,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4188,Kaggle1_Video_Game_11181,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7949,Kaggle1_Video_Game_2019,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_16,Kaggle1_Video_Game_164,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_13,Kaggle1_Video_Game_533,0.7270116809836173
+[TRACE] 2023-11-15 11:29:14.014 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_13,Kaggle1_Video_Game_730,0.9877316192947114
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_13,Kaggle1_Video_Game_2941,0.7270116809836173
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7945,Kaggle1_Video_Game_12361,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7635,Kaggle1_Video_Game_6618,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7998,Kaggle1_Video_Game_5649,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5629,Kaggle1_Video_Game_2741,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5629,Kaggle1_Video_Game_5400,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.015 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3732,Kaggle1_Video_Game_9459,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3732,Kaggle1_Video_Game_3615,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_40,Kaggle1_Video_Game_4821,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4289,Kaggle1_Video_Game_5552,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4202,Kaggle1_Video_Game_5204,0.9872716078441979
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_827,Kaggle1_Video_Game_4492,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4362,Kaggle1_Video_Game_3583,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8761,Kaggle1_Video_Game_8828,0.9661220589796246
+[TRACE] 2023-11-15 11:29:14.016 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8761,Kaggle1_Video_Game_6386,0.9936628082178887
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5627,Kaggle1_Video_Game_534,0.988469542245513
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5507,Kaggle1_Video_Game_11272,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8001,Kaggle1_Video_Game_4487,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7935,Kaggle1_Video_Game_5517,0.9936628082178887
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4270,Kaggle1_Video_Game_9725,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6349,Kaggle1_Video_Game_1926,0.9495530855113329
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [wrong] DBpedia_Video_Game_6349,Kaggle1_Video_Game_4866,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.017 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4220,Kaggle1_Video_Game_1254,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6061,Kaggle1_Video_Game_10189,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_916,Kaggle1_Video_Game_6534,0.98860293670958
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4231,Kaggle1_Video_Game_555,0.9852058498824126
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1155,Kaggle1_Video_Game_4506,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4370,Kaggle1_Video_Game_14586,0.994639699098272
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_801,Kaggle1_Video_Game_6905,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6776,Kaggle1_Video_Game_3784,0.8977374884324435
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_776,Kaggle1_Video_Game_14156,0.9915735678978016
+[TRACE] 2023-11-15 11:29:14.018 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4205,Kaggle1_Video_Game_8291,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7715,Kaggle1_Video_Game_2704,0.9919531346542733
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7715,Kaggle1_Video_Game_809,0.9919531346542733
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5559,Kaggle1_Video_Game_9007,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5560,Kaggle1_Video_Game_10575,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4259,Kaggle1_Video_Game_11259,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4259,Kaggle1_Video_Game_10647,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5716,Kaggle1_Video_Game_15315,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5716,Kaggle1_Video_Game_6223,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.019 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8000,Kaggle1_Video_Game_6305,0.9935080162083709
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6164,Kaggle1_Video_Game_8220,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6164,Kaggle1_Video_Game_13429,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_2691,Kaggle1_Video_Game_14519,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4354,Kaggle1_Video_Game_2438,0.9913303159883897
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [wrong] DBpedia_Video_Game_871,Kaggle1_Video_Game_11628,0.8977374884324435
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_924,Kaggle1_Video_Game_13814,0.9930783708655229
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1965,Kaggle1_Video_Game_7905,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_497,Kaggle1_Video_Game_4142,0.9902218083015181
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4371,Kaggle1_Video_Game_10284,0.9926832466846267
+[TRACE] 2023-11-15 11:29:14.020 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_26,Kaggle1_Video_Game_12836,0.9332719920875667
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_26,Kaggle1_Video_Game_6893,0.9332719920875667
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_26,Kaggle1_Video_Game_5121,0.9332719920875667
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5673,Kaggle1_Video_Game_9380,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5673,Kaggle1_Video_Game_7116,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5713,Kaggle1_Video_Game_1728,0.9932053118311759
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5714,Kaggle1_Video_Game_1513,0.9932053118311759
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4218,Kaggle1_Video_Game_6513,0.9872716078441979
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4218,Kaggle1_Video_Game_7788,0.933805697128402
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7926,Kaggle1_Video_Game_3281,0.994423488438622
+[TRACE] 2023-11-15 11:29:14.021 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4480,Kaggle1_Video_Game_13249,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4267,Kaggle1_Video_Game_3341,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1091,Kaggle1_Video_Game_7015,0.9932053118311759
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_2673,Kaggle1_Video_Game_11000,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_904,Kaggle1_Video_Game_3680,0.9947882358126543
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_904,Kaggle1_Video_Game_6765,0.9947882358126543
+[TRACE] 2023-11-15 11:29:14.022 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7917,Kaggle1_Video_Game_11497,0.9890960662514638
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4265,Kaggle1_Video_Game_6039,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4576,Kaggle1_Video_Game_8982,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4576,Kaggle1_Video_Game_7667,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6772,Kaggle1_Video_Game_3133,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5697,Kaggle1_Video_Game_5832,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_889,Kaggle1_Video_Game_1152,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_929,Kaggle1_Video_Game_7833,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.023 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4657,Kaggle1_Video_Game_8495,0.9861131072845867
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_865,Kaggle1_Video_Game_3060,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4229,Kaggle1_Video_Game_2189,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8783,Kaggle1_Video_Game_9047,0.9890960662514638
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5543,Kaggle1_Video_Game_5281,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7557,Kaggle1_Video_Game_6476,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4232,Kaggle1_Video_Game_7169,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3987,Kaggle1_Video_Game_15342,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6361,Kaggle1_Video_Game_19,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_49,Kaggle1_Video_Game_4227,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.024 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1989,Kaggle1_Video_Game_14715,0.98860293670958
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1980,Kaggle1_Video_Game_3408,0.9900483486434087
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1980,Kaggle1_Video_Game_12038,0.7669454393664978
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8751,Kaggle1_Video_Game_1972,0.9900999127453352
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1036,Kaggle1_Video_Game_6450,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_921,Kaggle1_Video_Game_802,0.9797028861775552
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4197,Kaggle1_Video_Game_14117,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6779,Kaggle1_Video_Game_10316,0.9877316192947114
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5572,Kaggle1_Video_Game_10455,0.9906318797945751
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5572,Kaggle1_Video_Game_11566,0.9906318797945751
+[TRACE] 2023-11-15 11:29:14.025 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4111,Kaggle1_Video_Game_3741,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7561,Kaggle1_Video_Game_11854,0.988469542245513
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_784,Kaggle1_Video_Game_6685,0.764955122041935
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1990,Kaggle1_Video_Game_6978,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_902,Kaggle1_Video_Game_3293,0.9403916601282164
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_2674,Kaggle1_Video_Game_2289,0.9904299996949257
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4110,Kaggle1_Video_Game_1743,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4107,Kaggle1_Video_Game_2509,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1093,Kaggle1_Video_Game_2275,0.9870870042539892
+[TRACE] 2023-11-15 11:29:14.026 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5550,Kaggle1_Video_Game_5747,0.9542646000290335
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8760,Kaggle1_Video_Game_1030,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5520,Kaggle1_Video_Game_7052,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1097,Kaggle1_Video_Game_2773,0.9882372668643683
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5690,Kaggle1_Video_Game_4361,0.9872716078441979
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4583,Kaggle1_Video_Game_10440,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4583,Kaggle1_Video_Game_6796,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4277,Kaggle1_Video_Game_9419,0.9887951582321255
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_8749,Kaggle1_Video_Game_6542,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_6794,Kaggle1_Video_Game_14,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_4291,Kaggle1_Video_Game_7640,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.027 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_1954,Kaggle1_Video_Game_80,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_3941,Kaggle1_Video_Game_12568,0.9877316192947114
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5616,Kaggle1_Video_Game_11862,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_5616,Kaggle1_Video_Game_13445,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [correct] DBpedia_Video_Game_7896,Kaggle1_Video_Game_8201,0.9962461289269839
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_8, Kaggle1_Video_Game_1010
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4658,Kaggle1_Video_Gae_13395
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_6058,Kaggle1_Video_Game_12797
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_6059,Kaggle1_Video_Game_6721
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_8,Kaggle1_Video_Game_1010
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_14,Kaggle1_Video_Game_4910
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_39,Kaggle1_Video_Game_12473
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_40,Kaggle1_Video_Game_2003
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_43,Kaggle1_Video_Game_8257
+[TRACE] 2023-11-15 11:29:14.028 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_50,Kaggle1_Video_Game_627
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_50,Kaggle1_Video_Game_2339
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_51,Kaggle1_Video_Game_12503
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_51,Kaggle1_Video_Game_2857
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_51,Kaggle1_Video_Game_3411
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1909,Kaggle1_Video_Game_5814
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1919,Kaggle1_Video_Game_3559
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1919,Kaggle1_Video_Game_8940
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1937,Kaggle1_Video_Game_4579
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1937,Kaggle1_Video_Game_5012
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1975,Kaggle1_Video_Game_12114
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1979,Kaggle1_Video_Game_15539
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_3713,Kaggle1_Video_Game_2171
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_3736,Kaggle1_Video_Game_12963
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_3737,Kaggle1_Video_Game_13298
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_3989,Kaggle1_Video_Game_14026
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4079,Kaggle1_Video_Game_7855
+[TRACE] 2023-11-15 11:29:14.029 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4449,Kaggle1_Video_Game_5454
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4495,Kaggle1_Video_Game_16656
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4495,Kaggle1_Video_Game_7781
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_2881,Kaggle1_Video_Game_7943
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4359,Kaggle1_Video_Game_7567
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4366,Kaggle1_Video_Game_285
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4369,Kaggle1_Video_Game_924
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1092,Kaggle1_Video_Game_11465
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1116,Kaggle1_Video_Game_7790
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_6356,Kaggle1_Video_Game_5520
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_6356,Kaggle1_Video_Game_1365
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_6375,Kaggle1_Video_Game_7832
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_7566,Kaggle1_Video_Game_8887
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_7640,Kaggle1_Video_Game_4881
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_911,Kaggle1_Video_Game_1091
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_7887,Kaggle1_Video_Game_1654
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1045,Kaggle1_Video_Game_12537
+[TRACE] 2023-11-15 11:29:14.030 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_1045,Kaggle1_Video_Game_16212
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4566,Kaggle1_Video_Game_3458
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5509,Kaggle1_Video_Game_13362
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5516,Kaggle1_Video_Game_6755
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5556,Kaggle1_Video_Game_260
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5558,Kaggle1_Video_Game_13803
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5651,Kaggle1_Video_Game_16350
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5653,Kaggle1_Video_Game_2751
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5675,Kaggle1_Video_Game_9939
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_7930,Kaggle1_Video_Game_14425
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_8759,Kaggle1_Video_Game_7371
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4255,Kaggle1_Video_Game_5824
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4217,Kaggle1_Video_Game_9991
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_4115,Kaggle1_Video_Game_1272
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_851,Kaggle1_Video_Game_9057
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_840,Kaggle1_Video_Game_5450
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_835,Kaggle1_Video_Game_6461
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_813,Kaggle1_Video_Game_6123
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_778,Kaggle1_Video_Game_952
+[TRACE] 2023-11-15 11:29:14.031 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_5506,Kaggle1_Video_Game_8673
+[TRACE] 2023-11-15 11:29:14.032 [de.uni_mannheim.informatik.dws.winter.matching.MatchingEvaluator] - [missing] DBpedia_Video_Game_2678,Kaggle1_Video_Game_1988
+[INFO ] 2023-11-15 11:29:14.032 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - Academy Awards <-> Actors
+[INFO ] 2023-11-15 11:29:14.032 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - Precision: 0,9883
+[INFO ] 2023-11-15 11:29:14.032 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - Recall: 0,7987
+[INFO ] 2023-11-15 11:29:14.032 [de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.IR_ML_Game] - F1: 0,8835

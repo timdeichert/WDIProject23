@@ -42,22 +42,12 @@ public class IR_ML_Game {
      *
      */
 
-    private static final Logger logger = WinterLogManager.activateLogger("default");
+    private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
     public static void main( String[] args ) throws Exception
     {
 
-
-        // Exercise loading data
-        /*
-        logger.info("*\tLoading datasets\t*");
-        HashedDataSet<Game, Attribute> ds1 = new HashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("data/input/academy_awards.xml"), "/Games/Game", ds1);
-        HashedDataSet<Game, Attribute> ds2 = new HashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("data/input/actors.xml"), "/Games/Game", ds2);
-*/
-
-        // Own Game data loading
+        //  Game data loading
         File sourceFile = new File("data/input/DBpedia_Video_Game(Final).XML");
         String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
         HashedDataSet<Game, Attribute> ds1 = new HashedDataSet<>();
@@ -97,18 +87,12 @@ public class IR_ML_Game {
         matchingRule.addComparator(new GamePublisherLJaccard());
         matchingRule.addComparator(new GameReleaseComparatorExactYear());
 
-/*        // train the matching rule's model
-        logger.info("*\tLearning matching rule\t*");
-        RuleLearner<Game, Attribute> learner = new RuleLearner<>();
-        learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTraining);
-        logger.info(String.format("Matching rule is:\n%s", matchingRule.getModelDescription()));
-*/
 
-		// train the matching rule's model using the decision tree
-		logger.info("*\tLearning matching rule with decision tree\t*");
+		// train the matching rule's model
+		logger.info("*\tLearning matching rule\t*");
 		RuleLearner<Game, Attribute> learner = new RuleLearner<>();
 		learner.learnMatchingRule(ds1, ds2, null, matchingRule, gsTraining);
-		logger.info(String.format("Matching rule with decision tree is:\n%s", matchingRule.getModelDescription()));
+		logger.info(String.format("Matching rule is:\n%s", matchingRule.getModelDescription()));
 
 
         // create a blocker (blocking strategy)
@@ -123,8 +107,7 @@ public class IR_ML_Game {
         // Execute the matching
         logger.info("*\tRunning identity resolution\t*");
         Processable<Correspondence<Game, Attribute>> correspondences = engine.runIdentityResolution(
-                ds1, ds2, null, matchingRule,
-                blocker);
+                ds1, ds2, null, matchingRule, blocker);
 
         // write the correspondences to the output file
         new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpedia_Kaggle1_correspondences.csv"), correspondences);

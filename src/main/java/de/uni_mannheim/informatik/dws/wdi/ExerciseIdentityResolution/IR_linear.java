@@ -64,9 +64,9 @@ public class IR_linear {
 
 
         // create a blocker (blocking strategy)
-        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
+//        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
 //      NoBlocker<Game, Attribute> blocker = new NoBlocker<>();
-//		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 1);
+		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 50);
         blocker.setMeasureBlockSizes(true);
         //Write debug results to file:
         blocker.collectBlockSizeData("data/output/debugResultsBlocking.csv", 10000);
@@ -80,7 +80,7 @@ public class IR_linear {
                 ds, ds2, null, matchingRule,blocker);
 
         // write the correspondences to the output file
-        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/academy_awards_2_actors_correspondences.csv"), correspondences);
+        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpedia_Kaggle1.csv"), correspondences);
 
         logger.info("*\tEvaluating result\t*");
 
