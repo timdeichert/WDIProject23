@@ -15,7 +15,7 @@ public class Game implements Matchable {
     private String Name;
     private LocalDateTime Release;
 
-    private List<String> Platform;
+    private String Platform;
     private List<String> Genre;
     private List<String> Mode;
     private List<String> Publisher;
@@ -58,11 +58,11 @@ public class Game implements Matchable {
         Name = name;
     }
 
-    public List<String> getPlatform() {
+    public String getPlatform() {
         return Platform;
     }
 
-    public void setPlatform(List<String> platform) {
+    public void setPlatform(String platform) {
         Platform = platform;
     }
 
