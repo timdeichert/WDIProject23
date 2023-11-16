@@ -73,8 +73,30 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             }
 
 
-            String platform = getValueFromChildElement(node, "Platform");
-            game.setPlatform(platform);
+            if (getValueFromChildElement(node, "Platform") != null) {
+                String platform = getValueFromChildElement(node, "Platform");
+                if(platform.equals("PS1")) {
+                    game.setPlatform("PlayStation1");
+                }
+                else if(platform.equals("PS2")) {
+                    game.setPlatform("PlayStation2");
+                }
+                else if(platform.equals("PS3")) {
+                    game.setPlatform("PlayStation3");
+                }
+                else if(platform.equals("PS4")) {
+                    game.setPlatform("PlayStation4");
+                }
+                else if(platform.equals("XONE")) {
+                    game.setPlatform("Xbox One");
+                }
+                else if(platform.equals("X360")) {
+                    game.setPlatform("Xbox 360");
+                }
+                else {
+                    game.setPlatform(platform);
+                }
+            }
 
             if (getValueFromChildElement(node, "NA_Sales") != null) {
                 game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
