@@ -58,22 +58,22 @@ public class IR_ML_Game {
 
         // load the training set
         MatchingGoldStandard gsTraining = new MatchingGoldStandard();
-        gsTraining.loadFromCSVFile(new File("data/goldstandard/DBpedia_Kaggle1_Gold_Standard_Training.csv"));
+        gsTraining.loadFromCSVFile(new File("data/goldstandard/DBpedia_Kaggle1_Gold_Standard(Training).csv"));
 
-
+/*
         // create a matching rule using logistic regression
         String options[] = new String[] { "-S" };
         String modelType = "SimpleLogistic"; // use a logistic regression
         WekaMatchingRule<Game, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTraining);
+*/
 
-/*
 		// create a matching rule using a decision tree
 		String options[] = new String[] {}; // add any options for the decision tree here
 		String modelType = "J48"; // use a decision tree
 		WekaMatchingRule<Game, Attribute> matchingRule = new WekaMatchingRule<>(0.7, modelType, options);
 		matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 1000, gsTraining);
-*/
+
 
 
         // add comparators
@@ -86,6 +86,7 @@ public class IR_ML_Game {
         matchingRule.addComparator(new GamePublisherComparatorLevenshtein());
         matchingRule.addComparator(new GamePublisherLJaccard());
         matchingRule.addComparator(new GameReleaseComparatorExactYear());
+        matchingRule.addComparator(new GamePlatformComparatorJaccard());
 
 
 		// train the matching rule's model
@@ -96,9 +97,9 @@ public class IR_ML_Game {
 
 
         // create a blocker (blocking strategy)
-//        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
+        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
         NoBlocker<Game, Attribute> NoBlocker = new NoBlocker<>();
-		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 10);
+//		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 10);
         blocker.collectBlockSizeData("data/output/debugResultsBlocking.csv", 100);
 
         // Initialize Matching Engine
@@ -116,7 +117,7 @@ public class IR_ML_Game {
         logger.info("*\tLoading gold standard\t*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
         gsTest.loadFromCSVFile(new File(
-                "data/goldstandard/DBpedia_Kaggle1_Gold_Standard.csv"));
+                "data/goldstandard/DBpedia_Kaggle1_Gold_Standard(Testing).csv"));
 
         // evaluate your result
         logger.info("*\tEvaluating result\t*");
