@@ -12,9 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 import java.util.Map;
 
@@ -42,8 +40,16 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             game.setMode(modes);
             List<String> publishers = getListFromChildElement(node, "publishers");
             game.setPublisher(publishers);
-            List<String> developers = getListFromChildElement(node, "Developers");
-            game.setDeveloper(developers);
+
+            if (getListFromChildElement(node, "Developers") != null) {
+                List<String> developers = getListFromChildElement(node, "Developers");
+                game.setDeveloper(developers);}
+            else{
+                List<String> developers = new ArrayList<>();
+                developers.add("");
+
+                game.setDeveloper(developers);
+            }
 
             try {
                 String date = getValueFromChildElement(node, "Release");
@@ -75,8 +81,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
 
             if (getValueFromChildElement(node, "Platform") != null) {
                 String platform = getValueFromChildElement(node, "Platform");
-                 game.setPlatform(platform);
- /*              if(platform.equals("PS1")) {
+  //               game.setPlatform(platform);
+              if(platform.equals("PS1")) {
                     game.setPlatform("PlayStation1");
                 }
                 else if(platform.equals("PS2")) {
@@ -96,7 +102,7 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
                 }
                 else {
                     game.setPlatform(platform);
-                }*/
+                }
             }
 
             if (getValueFromChildElement(node, "NA_Sales") != null) {
