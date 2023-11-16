@@ -75,7 +75,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
 
             if (getValueFromChildElement(node, "Platform") != null) {
                 String platform = getValueFromChildElement(node, "Platform");
-                if(platform.equals("PS1")) {
+                 game.setPlatform(platform);
+ /*              if(platform.equals("PS1")) {
                     game.setPlatform("PlayStation1");
                 }
                 else if(platform.equals("PS2")) {
@@ -95,7 +96,7 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
                 }
                 else {
                     game.setPlatform(platform);
-                }
+                }*/
             }
 
             if (getValueFromChildElement(node, "NA_Sales") != null) {

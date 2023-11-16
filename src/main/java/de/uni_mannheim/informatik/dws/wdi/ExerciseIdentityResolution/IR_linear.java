@@ -25,7 +25,21 @@ import java.io.File;
 import java.util.List;
 
 public class IR_linear {
-    private static final Logger logger = WinterLogManager.activateLogger("default");
+
+    /*
+     * Logging Options:
+     * 		default: 	level INFO	- console
+     * 		trace:		level TRACE     - console
+     * 		infoFile:	level INFO	- console/file
+     * 		traceFile:	level TRACE	- console/file
+     *
+     * To set the log level to trace and write the log to winter.log and console,
+     * activate the "traceFile" logger as follows:
+     *     private static final Logger logger = WinterLogManager.activateLogger("traceFile");
+     *
+     */
+
+    private static final Logger logger = WinterLogManager.activateLogger("traceFile");
 
     public static void main( String[] args ) throws Exception
     {
@@ -45,7 +59,7 @@ public class IR_linear {
         logger.info("*\tLoading gold standard\t*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
         gsTest.loadFromCSVFile(new File(
-                "data/goldstandard/DBpedia_Kaggle1_Gold_Standard.csv"));
+                "data/goldstandard/DBpedia_Kaggle1_Gold_Standard(Testing).csv"));
 
         // create a matching rule
         LinearCombinationMatchingRule<Game, Attribute> matchingRule = new LinearCombinationMatchingRule<>(
@@ -53,20 +67,21 @@ public class IR_linear {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule.csv", 10000, gsTest);
 
         // add comparators
-        matchingRule.addComparator(new GamePlatformComparatorMongeElkan(), 0.3);
-        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.1);
-        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.4);
+//        matchingRule.addComparator(new GamePlatformComparatorMongeElkan(), 0.2);
+        matchingRule.addComparator(new GamePlatformComparatorJaccard(), 0.2);
+        matchingRule.addComparator(new GameReleaseComparatorExactYear(), 0.2);
+        matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard(), 0.3);
         matchingRule.addComparator(new GameGenreComparatorMongeElkan(), 0.1);
-        matchingRule.addComparator(new GamePublisherLJaccard(), 0.05);
-        matchingRule.addComparator(new GameDevComparatorJaccard(), 0.05);
+        matchingRule.addComparator(new GamePublisherLJaccard(), 0.1);
+        matchingRule.addComparator(new GameDevComparatorJaccard(), 0.1);
 //       matchingRule.addComparator(new EmbeddedComparator("src/main/java/de/uni_mannheim/informatik/dws/wdi/ExerciseIdentityResolution/cc.en.300.vec"), 0.1);
 
 
 
         // create a blocker (blocking strategy)
-//        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
+        StandardRecordBlocker<Game, Attribute> blocker = new StandardRecordBlocker<Game, Attribute>(new GameBlockingKeyByTitleGenerator());
 //      NoBlocker<Game, Attribute> blocker = new NoBlocker<>();
-		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 50);
+//		SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 50);
         blocker.setMeasureBlockSizes(true);
         //Write debug results to file:
         blocker.collectBlockSizeData("data/output/debugResultsBlocking.csv", 10000);
