@@ -41,16 +41,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             List<String> publishers = getListFromChildElement(node, "publishers");
             game.setPublisher(publishers);
 
-            if (getListFromChildElement(node, "Developers") != null) {
-                List<String> developers = getListFromChildElement(node, "Developers");
-                game.setDeveloper(developers);}
-            else{
-                List<String> developers = new ArrayList<>();
-                developers.add("");
-
-                game.setDeveloper(developers);
-            }
-
             try {
                 String date = getValueFromChildElement(node, "Release");
                 if ("N/A".equals(date)){
@@ -82,24 +72,66 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             if (getValueFromChildElement(node, "Platform") != null) {
                 String platform = getValueFromChildElement(node, "Platform");
   //               game.setPlatform(platform);
-              if(platform.equals("PS1")) {
-                    game.setPlatform("PlayStation1");
+              if(platform.equals("PS")) {
+                    game.setPlatform("PlayStation (console)");
                 }
                 else if(platform.equals("PS2")) {
-                    game.setPlatform("PlayStation2");
+                    game.setPlatform("PlayStation 2");
                 }
                 else if(platform.equals("PS3")) {
-                    game.setPlatform("PlayStation3");
+                    game.setPlatform("PlayStation 3");
                 }
                 else if(platform.equals("PS4")) {
-                    game.setPlatform("PlayStation4");
+                    game.setPlatform("PlayStation 4");
                 }
+              else if(platform.equals("PS5")) {
+                  game.setPlatform("PlayStation 5");
+              }
+                else if(platform.equals("PSP")){
+                    game.setPlatform("PlayStation Portable");
+              }
+                else if(platform.equals("PSV")){
+                    game.setPlatform("PlayStation Vita");
+              }
+                else if(platform.equals("GBA")){
+                    game.setPlatform("Game Boy Advance");
+              }
+                else if (platform.equals("GB")){
+                    game.setPlatform("Game Boy");
+              }
                 else if(platform.equals("XONE")) {
                     game.setPlatform("Xbox One");
                 }
                 else if(platform.equals("X360")) {
                     game.setPlatform("Xbox 360");
                 }
+                else if (platform.equals("XB")){
+                    game.setPlatform("Xbox (console)");
+              }
+                else if(platform.equals("SNES")){
+                    game.setPlatform("Super Nintendo Entertainment System");
+              }
+              else if(platform.equals("NES")){
+                  game.setPlatform("Nintendo Entertainment System");
+              }
+                else if(platform.equals("DS")){
+                    game.setPlatform("Nintendo DS");
+              }
+                else if(platform.equals("3DS")){
+                    game.setPlatform("Nintendo 3DS");
+              }
+                else if (platform.equals("N64")){
+                    game.setPlatform("Nintendo 64");
+              }
+                else if (platform.equals("GC")){
+                    game.setPlatform("GameCube");
+              }
+                else if (platform.equals("WiiU")){
+                    game.setPlatform("Wii U");
+              }
+                else if(platform.equals("SAT")){
+                    game.setPlatform("Sega Saturn");
+              }
                 else {
                     game.setPlatform(platform);
                 }

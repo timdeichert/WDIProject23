@@ -6,8 +6,9 @@ import java.util.List;
 import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
-public class Game implements Matchable {
+public class Game extends AbstractRecord<Attribute> implements Serializable {
 
     protected String id;
     protected String provenance;
@@ -29,6 +30,8 @@ public class Game implements Matchable {
     private Integer Critic_Count;
     private Float User_Score;
     private String Rating;
+
+
 
     public Game(String identifier,String provenance) {
         id = identifier;
@@ -184,5 +187,10 @@ public class Game implements Matchable {
     @Override
     public String getProvenance() {
         return provenance;
+    }
+
+    @Override
+    public boolean hasValue(Attribute attribute) {
+        return false;
     }
 }
