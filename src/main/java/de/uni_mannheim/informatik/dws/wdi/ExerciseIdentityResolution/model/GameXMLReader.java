@@ -3,9 +3,12 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.DataSet;
+import de.uni_mannheim.informatik.dws.winter.model.FusibleFactory;
+import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
+import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Node;
 
 import java.time.LocalDateTime;
@@ -16,11 +19,16 @@ import java.util.*;
 
 import java.util.Map;
 
-public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
+public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
+        FusibleFactory<Game, Attribute> {
 
     @Override
     protected void initialiseDataset(DataSet<Game, Attribute> dataset) {
         super.initialiseDataset(dataset);
+        dataset.addAttribute(Game.NAME);
+        dataset.addAttribute(Game.DEVELOPERS);
+        dataset.addAttribute(Game.RELEASE);
+        dataset.addAttribute(Game.GENRES);
     }
 
         @Override
@@ -180,4 +188,19 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
 
             return game;
         }
+
+    @Override
+    public Game createInstanceForFusion(RecordGroup<Game, Attribute> cluster) {
+        List<String> ids = new LinkedList<>();
+
+        for (Game m : cluster.getRecords()) {
+            ids.add(m.getIdentifier());
+        }
+
+        Collections.sort(ids);
+
+        String mergedId = StringUtils.join(ids, '+');
+
+        return new Game(mergedId, "fused");
+    }
 }

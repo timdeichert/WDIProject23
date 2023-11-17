@@ -1,17 +1,20 @@
 package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
-public class Game extends AbstractRecord<Attribute> implements Serializable {
 
-    protected String id;
-    protected String provenance;
+public class Game extends AbstractRecord<Attribute> implements Serializable {
 
     private String Name;
     private LocalDateTime Release;
@@ -31,12 +34,12 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     private Float User_Score;
     private String Rating;
 
-
+    private static final long serialVersionUID = 1L;
 
     public Game(String identifier,String provenance) {
-        id = identifier;
-        this.provenance = provenance;;
+        super(identifier, provenance);
     }
+
 
     public LocalDateTime getRelease() {
         if (Release == null)
@@ -54,11 +57,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         {
             return "TESTER";
         }
-        return Name;
+        return this.Name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.Name = name;
     }
 
     public String getPlatform() {
@@ -66,7 +69,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setPlatform(String platform) {
-        Platform = platform;
+        this.Platform = platform;
     }
 
     public List<String> getGenre() {
@@ -74,10 +77,8 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setGenre(List<String> genre) {
-        Genre = genre;
+        this.Genre = genre;
     }
-
-
 
     public void setId(String id) {
         this.id = id;
@@ -88,7 +89,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setMode(List<String> mode) {
-        Mode = mode;
+        this.Mode = mode;
     }
 
     public List<String> getPublisher() {
@@ -96,7 +97,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setPublisher(List<String> publisher) {
-        Publisher = publisher;
+        this.Publisher = publisher;
     }
 
     public List<String> getDeveloper() {
@@ -104,7 +105,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setDeveloper(List<String> developer) {
-        Developer = developer;
+        this.Developer = developer;
     }
 
     public Float getNA_Sales() {
@@ -136,7 +137,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setOther_Sales(Float other_Sales) {
-        Other_Sales = other_Sales;
+        this.Other_Sales = other_Sales;
     }
 
     public Float getGlobal_Sales() {
@@ -144,7 +145,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setGlobal_Sales(Float global_Sales) {
-        Global_Sales = global_Sales;
+        this.Global_Sales = global_Sales;
     }
 
     public Integer getCritic_Score() {
@@ -152,7 +153,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setCritic_Score(Integer critic_Score) {
-        Critic_Score = critic_Score;
+        this.Critic_Score = critic_Score;
     }
 
     public Integer getCritic_Count() {
@@ -160,7 +161,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setCritic_Count(Integer critic_Count) {
-        Critic_Count = critic_Count;
+        this.Critic_Count = critic_Count;
     }
 
     public Float getUser_Score() {
@@ -168,7 +169,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setUser_Score(Float user_Score) {
-        User_Score = user_Score;
+        this.User_Score = user_Score;
     }
 
     public String getRating() {
@@ -176,21 +177,86 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setRating(String rating) {
-        Rating = rating;
+        this.Rating = rating;
     }
 
-    @Override
-    public String getIdentifier() {
-        return id;
+
+
+    private Map<Attribute, Collection<String>> provenance = new HashMap<>();
+    private Collection<String> recordProvenance;
+
+    public void setRecordProvenance(Collection<String> provenance) {
+        recordProvenance = provenance;
     }
 
-    @Override
-    public String getProvenance() {
-        return provenance;
+    public Collection<String> getRecordProvenance() {
+        return recordProvenance;
     }
+
+    public void setAttributeProvenance(Attribute attribute,
+                                       Collection<String> provenance) {
+        this.provenance.put(attribute, provenance);
+    }
+
+    public Collection<String> getAttributeProvenance(String attribute) {
+        return provenance.get(attribute);
+    }
+
+    public String getMergedAttributeProvenance(Attribute attribute) {
+        Collection<String> prov = provenance.get(attribute);
+
+        if (prov != null) {
+            return StringUtils.join(prov, "+");
+        } else {
+            return "";
+        }
+    }
+
+
+
+
+
+    @Override
+    public String toString() {
+        return String.format("[Game %s: %s / %s / %s]", getIdentifier(), getName(),
+                getDeveloper(), getRelease().toString());
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Game){
+            return this.getIdentifier().equals(((Game) obj).getIdentifier());
+        }else
+            return false;
+    }
+
+
+    public static final Attribute NAME = new Attribute("Name");
+    public static final Attribute DEVELOPERS = new Attribute("Developers");
+    public static final Attribute RELEASE = new Attribute("Release");
+    public static final Attribute GENRES = new Attribute("Genres");
 
     @Override
     public boolean hasValue(Attribute attribute) {
-        return false;
+        if(attribute==NAME)
+            return getName() != null && !getName().isEmpty();
+        else if(attribute==DEVELOPERS)
+            return getDeveloper() != null && !getDeveloper().isEmpty();
+        else if(attribute==RELEASE)
+            return getRelease() != null;
+        else if(attribute==GENRES)
+            return getGenre() != null && getGenre().size() > 0;
+        else
+            return false;
     }
+
+    @Override
+    public int hashCode() {
+        return getIdentifier().hashCode();
+    }
+
+
+
+
 }
