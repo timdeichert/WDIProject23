@@ -106,10 +106,10 @@ public class DataFusion_Main
         strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
 
         // add attribute fusers
-        strategy.addAttributeFuser(Game.TITLE, new TitleFuserShortestString(),new TitleEvaluationRule());
-        strategy.addAttributeFuser(Game.DIRECTOR,new DirectorFuserLongestString(), new DirectorEvaluationRule());
-        strategy.addAttributeFuser(Game.DATE, new DateFuserFavourSource(),new DateEvaluationRule());
-        strategy.addAttributeFuser(Game.ACTORS,new ActorsFuserUnion(),new ActorsEvaluationRule());
+        strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new TitleEvaluationRule());
+        strategy.addAttributeFuser(Game.DEVELOPERS,new DirectorFuserLongestString(), new DirectorEvaluationRule());
+        strategy.addAttributeFuser(Game.RELEASE, new DateFuserFavourSource(),new DateEvaluationRule());
+        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);
@@ -125,10 +125,10 @@ public class DataFusion_Main
         FusibleDataSet<Game, Attribute> fusedDataSet = engine.run(correspondences, null);
 
         // write the result
-        new MovieXMLFormatter().writeXML(new File("data/output/fused.xml"), fusedDataSet);
+        new GameXMLFormatter().writeXML(new File("data/output/fused.xml"), fusedDataSet);
 
         // evaluate
-        DataFusionEvaluator<Game, Attribute> evaluator = new DataFusionEvaluator<>(strategy, new RecordGroupFactory<Movie, Attribute>());
+        DataFusionEvaluator<Game, Attribute> evaluator = new DataFusionEvaluator<>(strategy, new RecordGroupFactory<Game, Attribute>());
 
         double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
 
