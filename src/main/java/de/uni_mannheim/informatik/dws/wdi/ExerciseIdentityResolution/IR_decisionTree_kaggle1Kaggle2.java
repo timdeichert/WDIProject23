@@ -83,7 +83,7 @@ public class IR_decisionTree_kaggle1Kaggle2 {
         logger.info(String.format("Matching rule is:\n%s", matchingRule.getModelDescription()));
 
         // create a blocker (blocking strategy)
-        SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 10);
+        SortedNeighbourhoodBlocker<Game, Attribute, Attribute> blocker = new SortedNeighbourhoodBlocker<>(new GameBlockingKeyByTitleGenerator(), 50);
         blocker.collectBlockSizeData("data/output/debugResultsBlocking(Kaggle1Kaggle2_decisionTree).csv", 100);
 
         // Initialize Matching Engine
