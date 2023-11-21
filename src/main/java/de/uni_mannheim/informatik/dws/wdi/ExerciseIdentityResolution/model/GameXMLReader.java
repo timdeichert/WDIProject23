@@ -3,9 +3,12 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
 import de.uni_mannheim.informatik.dws.winter.model.DataSet;
+import de.uni_mannheim.informatik.dws.winter.model.FusibleFactory;
+import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.*;
 
 import de.uni_mannheim.informatik.dws.winter.model.io.XMLMatchableReader;
+import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Node;
 
 import java.time.LocalDateTime;
@@ -16,11 +19,16 @@ import java.util.*;
 
 import java.util.Map;
 
-public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
+public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
+        FusibleFactory<Game, Attribute> {
 
     @Override
     protected void initialiseDataset(DataSet<Game, Attribute> dataset) {
         super.initialiseDataset(dataset);
+        dataset.addAttribute(Game.NAME);
+        dataset.addAttribute(Game.DEVELOPERS);
+        dataset.addAttribute(Game.RELEASE);
+        dataset.addAttribute(Game.GENRES);
     }
 
         @Override
@@ -40,16 +48,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             game.setMode(modes);
             List<String> publishers = getListFromChildElement(node, "publishers");
             game.setPublisher(publishers);
-
-            if (getListFromChildElement(node, "Developers") != null) {
-                List<String> developers = getListFromChildElement(node, "Developers");
-                game.setDeveloper(developers);}
-            else{
-                List<String> developers = new ArrayList<>();
-                developers.add("");
-
-                game.setDeveloper(developers);
-            }
 
             try {
                 String date = getValueFromChildElement(node, "Release");
@@ -82,24 +80,66 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
             if (getValueFromChildElement(node, "Platform") != null) {
                 String platform = getValueFromChildElement(node, "Platform");
   //               game.setPlatform(platform);
-              if(platform.equals("PS1")) {
-                    game.setPlatform("PlayStation1");
+              if(platform.equals("PS")) {
+                    game.setPlatform("PlayStation (console)");
                 }
                 else if(platform.equals("PS2")) {
-                    game.setPlatform("PlayStation2");
+                    game.setPlatform("PlayStation 2");
                 }
                 else if(platform.equals("PS3")) {
-                    game.setPlatform("PlayStation3");
+                    game.setPlatform("PlayStation 3");
                 }
                 else if(platform.equals("PS4")) {
-                    game.setPlatform("PlayStation4");
+                    game.setPlatform("PlayStation 4");
                 }
+              else if(platform.equals("PS5")) {
+                  game.setPlatform("PlayStation 5");
+              }
+                else if(platform.equals("PSP")){
+                    game.setPlatform("PlayStation Portable");
+              }
+                else if(platform.equals("PSV")){
+                    game.setPlatform("PlayStation Vita");
+              }
+                else if(platform.equals("GBA")){
+                    game.setPlatform("Game Boy Advance");
+              }
+                else if (platform.equals("GB")){
+                    game.setPlatform("Game Boy");
+              }
                 else if(platform.equals("XONE")) {
                     game.setPlatform("Xbox One");
                 }
                 else if(platform.equals("X360")) {
                     game.setPlatform("Xbox 360");
                 }
+                else if (platform.equals("XB")){
+                    game.setPlatform("Xbox (console)");
+              }
+                else if(platform.equals("SNES")){
+                    game.setPlatform("Super Nintendo Entertainment System");
+              }
+              else if(platform.equals("NES")){
+                  game.setPlatform("Nintendo Entertainment System");
+              }
+                else if(platform.equals("DS")){
+                    game.setPlatform("Nintendo DS");
+              }
+                else if(platform.equals("3DS")){
+                    game.setPlatform("Nintendo 3DS");
+              }
+                else if (platform.equals("N64")){
+                    game.setPlatform("Nintendo 64");
+              }
+                else if (platform.equals("GC")){
+                    game.setPlatform("GameCube");
+              }
+                else if (platform.equals("WiiU")){
+                    game.setPlatform("Wii U");
+              }
+                else if(platform.equals("SAT")){
+                    game.setPlatform("Sega Saturn");
+              }
                 else {
                     game.setPlatform(platform);
                 }
@@ -148,4 +188,19 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>  {
 
             return game;
         }
+
+    @Override
+    public Game createInstanceForFusion(RecordGroup<Game, Attribute> cluster) {
+        List<String> ids = new LinkedList<>();
+
+        for (Game m : cluster.getRecords()) {
+            ids.add(m.getIdentifier());
+        }
+
+        Collections.sort(ids);
+
+        String mergedId = StringUtils.join(ids, '+');
+
+        return new Game(mergedId, "fused");
+    }
 }

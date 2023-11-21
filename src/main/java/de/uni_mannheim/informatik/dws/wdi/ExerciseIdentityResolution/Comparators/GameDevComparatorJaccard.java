@@ -8,6 +8,7 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
 
+import java.util.List;
 
 
 public class GameDevComparatorJaccard implements Comparator<Game, Attribute> {
@@ -23,38 +24,23 @@ public class GameDevComparatorJaccard implements Comparator<Game, Attribute> {
             Game game2,
             Correspondence<Attribute, Matchable> schemaCorrespondences) {
 
-        String s1 = String.join(", ", game1.getDeveloper());
-        String s2 = String.join(", ", game2.getDeveloper());
+        List<String> s1 = game1.getDeveloper();
+        List<String> s2 = game2.getDeveloper();
 
-        if (s1 != null) {
-            s1 = s1.toLowerCase();
-        } else {
-            s1 = "";
-        }
-
-        if (s2 != null) {
-            s2 = s2.toLowerCase();
-        } else {
-            s2 = "";
-        }
+        // Check if s1 or s2 is null and handle it
+        String te1 = (s1 != null) ? String.join(" ", s1).toLowerCase() : "";
+        String te2 = (s2 != null) ? String.join(" ", s2).toLowerCase() : "";
 
         // calculate similarity
-        double similarity = sim.calculate(s1, s2);
+        double similarity = sim.calculate(te1, te2);
 
         // postprocessing
-        int postSimilarity = 1;
-        if (similarity <= 0.3) {
-            postSimilarity = 0;
-        }
-
-        postSimilarity *= similarity;
+        double postSimilarity = similarity > 0.3 ? similarity : 0;
 
         if(this.comparisonLog != null){
             this.comparisonLog.setComparatorName(getClass().getName());
-
-            this.comparisonLog.setRecord1Value(s1);
-            this.comparisonLog.setRecord2Value(s2);
-
+            this.comparisonLog.setRecord1Value(te1);
+            this.comparisonLog.setRecord2Value(te2);
             this.comparisonLog.setSimilarity(Double.toString(similarity));
             this.comparisonLog.setPostprocessedSimilarity(Double.toString(postSimilarity));
         }
