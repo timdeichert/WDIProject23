@@ -56,16 +56,19 @@ public class DataFusion_Main
     {
         // Load the Data into FusibleDataSet
         logger.info("*\tLoading datasets\t*");
+
+        String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
+
         FusibleDataSet<Game, Attribute> ds1 = new FusibleHashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("DF_exercise/data/input/academy_awards.xml"), "/movies/movie", ds1);
+        new GameXMLReader().loadFromXML(new File("data/input/DBpedia_Video_Game(Final).XML"), elementPath, ds1);
         ds1.printDataSetDensityReport();
 
         FusibleDataSet<Game, Attribute> ds2 = new FusibleHashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("DF_exercise/data/input/actors.xml"), "/movies/movie", ds2);
+        new GameXMLReader().loadFromXML(new File("data/input/Finalschema_vgsales.XML"), elementPath, ds2);
         ds2.printDataSetDensityReport();
 
         FusibleDataSet<Game, Attribute> ds3 = new FusibleHashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("DF_exercise/data/input/golden_globes.xml"), "/movies/movie", ds3);
+        new GameXMLReader().loadFromXML(new File("data/input/Kaggle1_Video_Game(Final).XML"), elementPath, ds3);
         ds3.printDataSetDensityReport();
 
         // Maintain Provenance
