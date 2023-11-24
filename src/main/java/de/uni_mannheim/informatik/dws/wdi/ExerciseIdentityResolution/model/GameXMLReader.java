@@ -164,9 +164,9 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
                 game.setOther_Sales(1.0F);
             }
             if (getValueFromChildElement(node, "Global_Sales") != null) {
-                game.setGlobal_Sales(Float.parseFloat(getValueFromChildElement(node, "Global_Sales")));}
+                game.setGlobal_Sales(Double.parseDouble(getValueFromChildElement(node, "Global_Sales")));}
             else{
-                game.setGlobal_Sales(1.0F);
+                game.setGlobal_Sales((double) 1.0);
             }
             if (getValueFromChildElement(node, "Critic_Score") != null) {
                 game.setCritic_Score(Integer.parseInt(getValueFromChildElement(node, "Critic_Score")));}

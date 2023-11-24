@@ -95,7 +95,7 @@ public class IR_decisionTree_dbpediaKaggle2 {
                 ds1, ds2, null, matchingRule, blocker);
 
         // write the correspondences to the output file
-        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpedia_Kaggle1_correspondences(DBpediaKaggle2_decisionTree).csv"), correspondences);
+        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpedia_Kaggle2_correspondences(DBpediaKaggle2_decisionTree).csv"), correspondences);
 
         // load the gold standard (test set)
         logger.info("*\tLoading gold standard\t*");

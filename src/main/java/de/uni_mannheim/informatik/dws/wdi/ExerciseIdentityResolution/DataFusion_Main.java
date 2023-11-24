@@ -92,8 +92,8 @@ public class DataFusion_Main
         // load correspondences
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("DF_exercise/data/correspondences/academy_awards_2_actors_correspondences.csv"),ds1, ds2);
-        correspondences.loadCorrespondences(new File("data/correspondences/actors_2_golden_globes_correspondences.csv"),ds2, ds3);
+        correspondences.loadCorrespondences(new File("/data/output/academy_awards_2_actors_correspondences.csv"),ds1, ds2);
+        correspondences.loadCorrespondences(new File("data/output/actors_2_golden_globes_correspondences.csv"),ds2, ds3);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();

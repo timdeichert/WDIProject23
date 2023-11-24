@@ -28,7 +28,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     private Float EU_Sales;
     private Float JP_Sales;
     private Float Other_Sales;
-    private Float Global_Sales;
+    private Double Global_Sales;
     private Integer Critic_Score;
     private Integer Critic_Count;
     private Float User_Score;
@@ -140,11 +140,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         this.Other_Sales = other_Sales;
     }
 
-    public Float getGlobal_Sales() {
+    public Double getGlobal_Sales() {
         return Global_Sales;
     }
 
-    public void setGlobal_Sales(Float global_Sales) {
+    public void setGlobal_Sales(Double global_Sales) {
         this.Global_Sales = global_Sales;
     }
 
@@ -236,6 +236,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public static final Attribute DEVELOPERS = new Attribute("Developers");
     public static final Attribute RELEASE = new Attribute("Release");
     public static final Attribute GENRES = new Attribute("Genres");
+    public static final Attribute GLOBALSALES = new Attribute("Global_Sales");
 
     @Override
     public boolean hasValue(Attribute attribute) {
@@ -247,6 +248,8 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
             return getRelease() != null;
         else if(attribute==GENRES)
             return getGenre() != null && getGenre().size() > 0;
+        else if(attribute==GLOBALSALES)
+            return getGlobal_Sales() != null && !getGlobal_Sales().isNaN();
         else
             return false;
     }
