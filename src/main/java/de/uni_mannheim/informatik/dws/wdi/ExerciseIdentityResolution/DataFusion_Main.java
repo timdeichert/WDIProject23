@@ -7,10 +7,14 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.EuSalesFuserAverage;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.PublishersFuserLongestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.EuSalesEvaluation;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.GameNameEvaluationRule;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.PublisherEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.ReleaseEvaluation;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.ReleaseFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.TitleFuserShortestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ReleaseFuserVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.TitleFuserShortestString;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
@@ -105,8 +109,10 @@ public class DataFusion_Main
         // add attribute fusers
         strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new GameNameEvaluationRule());
         strategy.addAttributeFuser(Game.RELEASE,new ReleaseFuserVoting(), new ReleaseEvaluation());
-//        strategy.addAttributeFuser(Game.DEVELOPERS, new DateFuserFavourSource(),new DateEvaluationRule());
-//        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+        // strategy.addAttributeFuser(Game.DEVELOPERS, new DateFuserFavourSource(),new DateEvaluationRule());
+        // strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+        strategy.addAttributeFuser(Game.EUSALES, new EuSalesFuserAverage(), new EuSalesEvaluation());
+        strategy.addAttributeFuser(Game.PUBLISHERS, new PublishersFuserLongestString(), new PublisherEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);
