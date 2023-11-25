@@ -7,21 +7,10 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
 
-/*
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.ActorsEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.DateEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.DirectorEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.TitleEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.ActorsFuserUnion;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.DateFuserFavourSource;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.DateFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.DirectorFuserLongestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.GameNameEvaluationRule;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.ReleaseEvaluation;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.ReleaseFuserVoting;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.TitleFuserShortestString;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.FusibleMovieFactory;
-*/
-
-
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ModeFuserUnion;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
@@ -93,8 +82,8 @@ public class DataFusion_Main
         // load correspondences
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("/data/output/academy_awards_2_actors_correspondences.csv"),ds1, ds2);
-        correspondences.loadCorrespondences(new File("data/output/actors_2_golden_globes_correspondences.csv"),ds2, ds3);
+        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(DBpediaKaggle1_decisionTree).csv"),ds1, ds3);
+        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(Kaggle1Kaggle2_decisionTree).csv"),ds3, ds2);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
@@ -102,7 +91,7 @@ public class DataFusion_Main
         // load the gold standard
         logger.info("*\tEvaluating results\t*");
         DataSet<Game, Attribute> gs = new FusibleHashedDataSet<>();
-        new GameXMLReader().loadFromXML(new File("data/goldstandard/gold.xml"), "/movies/movie", gs);
+        new GameXMLReader().loadFromXML(new File("data/goldstandard/Fuser_GoldStandard.xml"), "/Games/Game", gs);
 
         for(Game m : gs.get()) {
             logger.info(String.format("gs: %s", m.getIdentifier()));
@@ -114,12 +103,10 @@ public class DataFusion_Main
         strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
 
         // add attribute fusers
-//        strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new TitleEvaluationRule());
-//       strategy.addAttributeFuser(Game.DEVELOPERS,new DirectorFuserLongestString(), new DirectorEvaluationRule());
-//        strategy.addAttributeFuser(Game.RELEASE, new DateFuserFavourSource(),new DateEvaluationRule());
+        strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new GameNameEvaluationRule());
+        strategy.addAttributeFuser(Game.RELEASE,new ReleaseFuserVoting(), new ReleaseEvaluation());
+//        strategy.addAttributeFuser(Game.DEVELOPERS, new DateFuserFavourSource(),new DateEvaluationRule());
 //        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
-//        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
-//       strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);

@@ -1,0 +1,304 @@
+<Games>
+	<Game>
+		<ID>DBpedia_Video_Game_32</ID>
+		<Name>Monster Hunter Freedom Unite</Name>
+		<Platform>PlayStation Portable</Platform>
+		<Release>2008</Release>
+		<Genres>
+			<Genre>Action role-playing game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player</mode>
+		</modes>
+		<publishers>
+			<publisher>Capcom</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Capcom</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_15248</ID>
+		<Name>Alter Echo</Name>
+		<Platform>PlayStation 2</Platform>
+		<Release>2003-08-19</Release>
+		<Genres>
+			<Genre>Action-adventure game</Genre>
+		</Genres>
+		<modes>
+			<mode>Single-player</mode>
+		</modes>
+		<publishers>
+			<publisher>THQ</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Outrage Games</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_5639</ID>
+		<Name>The Unholy War</Name>
+		<Platform>PlayStation (console)</Platform>
+		<Release>1998-09-30</Release>
+		<Genres>
+			<Genre>Fighting game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer</mode>
+			<mode>Single-player</mode>
+		</modes>
+		<publishers>
+			<publisher>Eidos Interactive</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Toys for Bob</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_9596</ID>
+		<Name>Cloudy with a Chance of Meatballs (video game)</Name>
+		<Platform>PlayStation Portable</Platform>
+		<Release>2009-09-11</Release>
+		<Genres>
+			<Genre>Platform game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Ubisoft</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Ubisoft Shanghai</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_9618</ID>
+		<Name>Skylanders: Spyro's Adventure</Name>
+		<Platform>Nintendo 3DS</Platform>
+		<Release>2011-10-13</Release>
+		<Genres>
+			<Genre>Platform game</Genre>
+			<Genre>Role-playing video game</Genre>
+			<Genre>Toys-to-life</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Activision</publisher>
+		</publishers>
+		<Developers>
+			<Developer>OS X</Developer>
+			<Developer>Toys for Bob</Developer>
+			<Developer>Vicarious Visions</Developer>
+			<Developer>XPEC Entertainment</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_9632</ID>
+		<Name>Transformers: The Game</Name>
+		<Platform>PlayStation 2</Platform>
+		<Release>2007-06-19</Release>
+		<Genres>
+			<Genre>Action-adventure</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Activision</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Savage Entertainment</Developer>
+			<Developer>Traveller's Tales</Developer>
+			<Developer>Vicarious Visions</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_11238</ID>
+		<Name>Attack on Titan (video game)</Name>
+		<Platform>PlayStation 4</Platform>
+		<Release>2016-02-18</Release>
+		<Genres>
+			<Genre>Action game</Genre>
+			<Genre>Hack and slash</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Koei Tecmo</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Omega Force</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_11264</ID>
+		<Name>Banjo-Tooie</Name>
+		<Platform>Nintendo 64</Platform>
+		<Release>2000-11-20</Release>
+		<Genres>
+			<Genre>Action-adventure game</Genre>
+			<Genre>Platform game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Nintendo</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Rare (company)</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_11270</ID>
+		<Name>Sniper Elite III</Name>
+		<Platform>PlayStation 3</Platform>
+		<Release>2014-06-26</Release>
+		<Genres>
+			<Genre>Stealth game</Genre>
+			<Genre>Tactical shooter</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Rebellion Developments</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Rebellion Developments</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_11276</ID>
+		<Name>Zombie Army Trilogy</Name>
+		<Platform>PlayStation 4</Platform>
+		<Release>2015-03-06</Release>
+		<Genres>
+			<Genre>Survival horror</Genre>
+			<Genre>Third-person shooter</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Rebellion Developments</publisher>
+			<publisher>Sold Out Sales &amp; Marketing</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Rebellion Developments</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_13989</ID>
+		<Name>Baja: Edge of Control</Name>
+		<Platform>PlayStation 3</Platform>
+		<Release>2008-09-22</Release>
+		<Genres>
+			<Genre>Racing video game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>THQ</publisher>
+			<publisher>THQ Nordic</publisher>
+		</publishers>
+		<Developers>
+			<Developer>2XL Games</Developer>
+			<Developer>BlitWorks</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_4451</ID>
+		<Name>18 Wheeler: American Pro Trucker</Name>
+		<Platform>GameCube</Platform>
+		<Release>2000-11-22</Release>
+		<Genres>
+			<Genre>Action game</Genre>
+			<Genre>Vehicle simulation game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Sega</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Sega AM2</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_6013</ID>
+		<Name>Mega Man ZX Advent</Name>
+		<Platform>Nintendo DS</Platform>
+		<Release>2007-07-12</Release>
+		<Genres>
+			<Genre>Action game</Genre>
+			<Genre>Metroidvania</Genre>
+			<Genre>Platform game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer</mode>
+			<mode>Single-player</mode>
+		</modes>
+		<publishers>
+			<publisher>Capcom</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Inti Creates</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_11584</ID>
+		<Name>MLB 14: The Show</Name>
+		<Platform>PlayStation 3</Platform>
+		<Release>2014-04-01</Release>
+		<Genres>
+			<Genre>Sports game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Online video game</mode>
+			<mode>Single-player video game</mode>
+		</modes>
+		<publishers>
+			<publisher>Sony Computer Entertainment</publisher>
+		</publishers>
+		<Developers>
+			<Developer>San Diego Studio</Developer>
+		</Developers>
+	</Game>
+	<Game>
+		<ID>DBpedia_Video_Game_24835</ID>
+		<Name>Mortal Kombat: Deception</Name>
+		<Platform>GameCube</Platform>
+		<Release>2004-10-04</Release>
+		<Genres>
+			<Genre>Fighting game</Genre>
+		</Genres>
+		<modes>
+			<mode>Multiplayer video game</mode>
+			<mode>Single-player</mode>
+		</modes>
+		<publishers>
+			<publisher>Midway Games</publisher>
+		</publishers>
+		<Developers>
+			<Developer>Midway Games</Developer>
+		</Developers>
+	</Game>
+</Games>
