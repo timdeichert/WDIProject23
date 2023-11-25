@@ -15,23 +15,23 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
 
     @Override
     public Element createElementFromRecord(Game record, Document doc) {
-        Element movie = doc.createElement("game");
+        Element game = doc.createElement("game");
 
-        movie.appendChild(createTextElement("id", record.getIdentifier(), doc));
+        game.appendChild(createTextElement("id", record.getIdentifier(), doc));
 
-        movie.appendChild(createTextElementWithProvenance("name",
+        game.appendChild(createTextElementWithProvenance("name",
                 record.getName(),
                 record.getMergedAttributeProvenance(Game.NAME), doc));
-        movie.appendChild(createTextElementWithProvenance("developers",
-                record.getDeveloper().toString(),
+        game.appendChild(createTextElementWithProvenance("developers",
+                record.getDeveloper() != null ? record.getDeveloper().toString() : "",
                 record.getMergedAttributeProvenance(Game.DEVELOPERS), doc));
-        movie.appendChild(createTextElementWithProvenance("date", record
+        game.appendChild(createTextElementWithProvenance("date", record
                 .getRelease().toString(), record
                 .getMergedAttributeProvenance(Game.RELEASE), doc));
-        movie.appendChild(createTextElementWithProvenance("genres", record
-                .getGenre().toString(), record
-                .getMergedAttributeProvenance(Game.GENRES), doc));
-        return movie;
+        game.appendChild(createTextElementWithProvenance("genres",
+                record.getGenre() != null ? record.getGenre().toString() : "",
+                record.getMergedAttributeProvenance(Game.GENRES), doc));
+        return game;
     }
 
     protected Element createTextElementWithProvenance(String name,
