@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.AttributeFuser;
+package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
@@ -17,24 +17,6 @@ public class GlobalSalesFuser extends AttributeValueFuser<Double, Game, Attribut
         super(new Average<Game, Attribute>());
     }
 
-    /*    @Override
-        public boolean hasValue(Game record) {
-            return record.hasValue(Game.GLOBALSALES);
-        }
-        @Override
-        public Float getValue(Game record) {
-            return record.getGlobal_Sales();
-        }
-    */
-    @Override
-    public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-        FusedValue<Double, Game, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-        fusedRecord.setGlobal_Sales(fused.getValue());
-        fusedRecord.setAttributeProvenance(Game.GLOBALSALES,
-                fused.getOriginalIds());
-
-    }
-
     @Override
     public boolean hasValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
         return game.hasValue(Game.GLOBALSALES);
@@ -43,5 +25,14 @@ public class GlobalSalesFuser extends AttributeValueFuser<Double, Game, Attribut
     @Override
     public Double getValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
         return game.getGlobal_Sales();
+    }
+
+    @Override
+    public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+        FusedValue<Double, Game, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
+        fusedRecord.setGlobal_Sales(fused.getValue());
+        fusedRecord.setAttributeProvenance(Game.GLOBALSALES,
+                fused.getOriginalIds());
+
     }
 }

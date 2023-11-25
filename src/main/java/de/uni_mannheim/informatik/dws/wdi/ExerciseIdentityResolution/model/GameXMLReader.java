@@ -146,22 +146,22 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
             }
 
             if (getValueFromChildElement(node, "NA_Sales") != null) {
-                game.setNA_Sales(Float.parseFloat(getValueFromChildElement(node, "NA_Sales")));
+                game.setNA_Sales(Double.parseDouble(getValueFromChildElement(node, "NA_Sales")));
             }
             if (getValueFromChildElement(node, "EU_Sales") != null) {
-                game.setEU_Sales(Float.parseFloat(getValueFromChildElement(node, "EU_Sales")));}
+                game.setEU_Sales(Double.parseDouble(getValueFromChildElement(node, "EU_Sales")));}
             else{
-                game.setEU_Sales(1.0F);
+                game.setEU_Sales((double) 1);
             }
             if (getValueFromChildElement(node, "JP_Sales") != null) {
-                game.setJP_Sales(Float.parseFloat(getValueFromChildElement(node, "JP_Sales")));}
+                game.setJP_Sales(Double.parseDouble(getValueFromChildElement(node, "JP_Sales")));}
             else{
-                game.setJP_Sales(1.0F);
+                game.setJP_Sales((double) 1);
             }
             if (getValueFromChildElement(node, "Other_Sales") != null) {
-                game.setOther_Sales(Float.parseFloat(getValueFromChildElement(node, "Other_Sales")));}
+                game.setOther_Sales(Double.parseDouble(getValueFromChildElement(node, "Other_Sales")));}
             else{
-                game.setOther_Sales(1.0F);
+                game.setOther_Sales((double) 1);
             }
             if (getValueFromChildElement(node, "Global_Sales") != null) {
                 game.setGlobal_Sales(Double.parseDouble(getValueFromChildElement(node, "Global_Sales")));}
@@ -179,9 +179,9 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
                 game.setCritic_Count(1);
             }
             if (getValueFromChildElement(node, "User_Score") != null && !getValueFromChildElement(node, "User_Score").equalsIgnoreCase("tbd")) {
-                game.setUser_Score(Float.parseFloat(getValueFromChildElement(node, "User_Score")));}
+                game.setUser_Score(Double.parseDouble(getValueFromChildElement(node, "User_Score")));}
             else{
-                game.setUser_Score(1.0F);
+                game.setUser_Score((double) 1);
             }
 
             game.setRating(getValueFromChildElement(node, "Rating"));

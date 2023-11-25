@@ -21,6 +21,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Fusib
 */
 
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ModeFuserUnion;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
@@ -117,6 +118,8 @@ public class DataFusion_Main
 //       strategy.addAttributeFuser(Game.DEVELOPERS,new DirectorFuserLongestString(), new DirectorEvaluationRule());
 //        strategy.addAttributeFuser(Game.RELEASE, new DateFuserFavourSource(),new DateEvaluationRule());
 //        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+//        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+//       strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);

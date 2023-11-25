@@ -24,14 +24,14 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     private List<String> Mode;
     private List<String> Publisher;
     private List<String> Developer;
-    private Float NA_Sales;
-    private Float EU_Sales;
-    private Float JP_Sales;
-    private Float Other_Sales;
+    private Double NA_Sales;
+    private Double EU_Sales;
+    private Double JP_Sales;
+    private Double Other_Sales;
     private Double Global_Sales;
     private Integer Critic_Score;
     private Integer Critic_Count;
-    private Float User_Score;
+    private Double User_Score;
     private String Rating;
 
     private static final long serialVersionUID = 1L;
@@ -108,35 +108,35 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         this.Developer = developer;
     }
 
-    public Float getNA_Sales() {
+    public Double getNA_Sales() {
         return NA_Sales;
     }
 
-    public void setNA_Sales(Float NA_Sales) {
+    public void setNA_Sales(Double NA_Sales) {
         this.NA_Sales = NA_Sales;
     }
 
-    public Float getEU_Sales() {
+    public Double getEU_Sales() {
         return EU_Sales;
     }
 
-    public void setEU_Sales(Float EU_Sales) {
+    public void setEU_Sales(Double EU_Sales) {
         this.EU_Sales = EU_Sales;
     }
 
-    public Float getJP_Sales() {
+    public Double getJP_Sales() {
         return JP_Sales;
     }
 
-    public void setJP_Sales(Float JP_Sales) {
+    public void setJP_Sales(Double JP_Sales) {
         this.JP_Sales = JP_Sales;
     }
 
-    public Float getOther_Sales() {
+    public Double getOther_Sales() {
         return Other_Sales;
     }
 
-    public void setOther_Sales(Float other_Sales) {
+    public void setOther_Sales(Double other_Sales) {
         this.Other_Sales = other_Sales;
     }
 
@@ -164,11 +164,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         this.Critic_Count = critic_Count;
     }
 
-    public Float getUser_Score() {
+    public Double getUser_Score() {
         return User_Score;
     }
 
-    public void setUser_Score(Float user_Score) {
+    public void setUser_Score(Double user_Score) {
         this.User_Score = user_Score;
     }
 
@@ -237,6 +237,8 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public static final Attribute RELEASE = new Attribute("Release");
     public static final Attribute GENRES = new Attribute("Genres");
     public static final Attribute GLOBALSALES = new Attribute("Global_Sales");
+    public static final Attribute OTHERSALES = new Attribute("Other_Sales");
+    public static final Attribute MODE = new Attribute("Mode");
 
     @Override
     public boolean hasValue(Attribute attribute) {
@@ -244,6 +246,10 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
             return getName() != null && !getName().isEmpty();
         else if(attribute==DEVELOPERS)
             return getDeveloper() != null && !getDeveloper().isEmpty();
+        else if(attribute==OTHERSALES)
+            return getOther_Sales() != null && !getOther_Sales().isNaN();
+        else if(attribute==MODE)
+            return getMode() != null && !getMode().isEmpty();
         else if(attribute==RELEASE)
             return getRelease() != null;
         else if(attribute==GENRES)
