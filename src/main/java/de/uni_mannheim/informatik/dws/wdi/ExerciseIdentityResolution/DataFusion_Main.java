@@ -21,6 +21,7 @@ import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Fusib
 */
 
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ModeFuserUnion;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
@@ -92,8 +93,8 @@ public class DataFusion_Main
         // load correspondences
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("DF_exercise/data/correspondences/academy_awards_2_actors_correspondences.csv"),ds1, ds2);
-        correspondences.loadCorrespondences(new File("data/correspondences/actors_2_golden_globes_correspondences.csv"),ds2, ds3);
+        correspondences.loadCorrespondences(new File("/data/output/academy_awards_2_actors_correspondences.csv"),ds1, ds2);
+        correspondences.loadCorrespondences(new File("data/output/actors_2_golden_globes_correspondences.csv"),ds2, ds3);
 
         // write group size distribution
         correspondences.printGroupSizeDistribution();
@@ -117,6 +118,8 @@ public class DataFusion_Main
 //       strategy.addAttributeFuser(Game.DEVELOPERS,new DirectorFuserLongestString(), new DirectorEvaluationRule());
 //        strategy.addAttributeFuser(Game.RELEASE, new DateFuserFavourSource(),new DateEvaluationRule());
 //        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+//        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+//       strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);

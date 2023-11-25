@@ -66,6 +66,7 @@ public class IR_decisionTree_dbpediaKaggle1 {
 
         // add comparators
         matchingRule.addComparator(new GameDevComparatorJaccard());
+        matchingRule.addComparator(new GameNameComparatorMongeElkan());
         matchingRule.addComparator(new GameGenreComparatorMongeElkan());
         matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard());
         matchingRule.addComparator(new GameNameComparatorLevenshtein());

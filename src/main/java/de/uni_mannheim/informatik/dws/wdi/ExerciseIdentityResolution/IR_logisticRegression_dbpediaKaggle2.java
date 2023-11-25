@@ -64,6 +64,7 @@ public class IR_logisticRegression_dbpediaKaggle2 {
         matchingRule.addComparator(new GameReleaseComparatorExactYear());
         matchingRule.addComparator(new GamePlatformComparatorJaccard());
 
+
         // train the matching rule's model
         logger.info("*\tLearning matching rule\t*");
         RuleLearner<Game, Attribute> learner = new RuleLearner<>();
