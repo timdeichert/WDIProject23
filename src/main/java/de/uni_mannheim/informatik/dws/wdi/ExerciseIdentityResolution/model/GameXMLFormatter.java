@@ -43,37 +43,6 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
         return elem;
     }
 
-/*
-    protected Element createActorsElement(Movie record, Document doc) {
-        Element actorRoot = actorFormatter.createRootElement(doc);
-        actorRoot.setAttribute("provenance",
-                record.getMergedAttributeProvenance(Movie.ACTORS));
-        for (Actor a : record.getActors()) {
-            actorRoot.appendChild(actorFormatter
-                    .createElementFromRecord(a, doc));
-        }
-        return actorRoot;
-    }
-    public class ActorXMLFormatter extends XMLFormatter<Actor> {
-        @Override
-        public Element createRootElement(Document doc) {
-            return doc.createElement("actors");
-        }
-        @Override
-        public Element createElementFromRecord(Actor record, Document doc) {
-            Element actor = doc.createElement("actor");
-
-            actor.appendChild(createTextElement("name", record.getName(), doc));
-            if(record.getBirthplace()!=null) {
-                actor.appendChild(createTextElement("birthplace", record.getBirthplace(), doc));
-            }
-            if(record.getBirthday()!=null) {
-                actor.appendChild(createTextElement("birthday", record.getBirthday().toString(), doc));
-            }
-            return actor;
-        }
- */
-
     protected Element createDeveloperElement(Game record, Document doc) {
         Element developerRoot = doc.createElement("developers");
         developerRoot.setAttribute("provenance",
