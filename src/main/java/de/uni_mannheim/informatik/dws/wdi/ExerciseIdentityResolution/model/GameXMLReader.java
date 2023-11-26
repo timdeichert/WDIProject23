@@ -29,6 +29,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
         dataset.addAttribute(Game.DEVELOPERS);
         dataset.addAttribute(Game.RELEASE);
         dataset.addAttribute(Game.GENRES);
+        dataset.addAttribute(Game.MODE);
+
     }
 
         @Override
@@ -44,6 +46,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
             // handle the list attribute (genres)
             List<String> genres = getListFromChildElement(node, "Genres");
             game.setGenre(genres);
+            List<String> developers = getListFromChildElement(node, "Developers");
+            game.setDeveloper(developers);
             List<String> modes = getListFromChildElement(node, "modes");
             game.setMode(modes);
             List<String> publishers = getListFromChildElement(node, "publishers");

@@ -7,20 +7,20 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
 
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.DeveloperFuser;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.DeveloperEvaluation;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.GameNameEvaluationRule;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.ReleaseEvaluation;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.ReleaseFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers.TitleFuserShortestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ReleaseFuserVoting;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.TitleFuserShortestString;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLFormatter;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
 import de.uni_mannheim.informatik.dws.winter.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionEvaluator;
 import de.uni_mannheim.informatik.dws.winter.datafusion.DataFusionStrategy;
-import de.uni_mannheim.informatik.dws.winter.model.DataSet;
-import de.uni_mannheim.informatik.dws.winter.model.FusibleDataSet;
-import de.uni_mannheim.informatik.dws.winter.model.FusibleHashedDataSet;
-import de.uni_mannheim.informatik.dws.winter.model.RecordGroupFactory;
+import de.uni_mannheim.informatik.dws.winter.model.*;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
 import org.slf4j.Logger;
@@ -63,9 +63,9 @@ public class DataFusion_Main
 
         // Maintain Provenance
         // Scores (e.g. from rating)
-        ds1.setScore(1.0);
+        ds1.setScore(3.0);
         ds2.setScore(2.0);
-        ds3.setScore(3.0);
+        ds3.setScore(1.0);
 
         // Date (e.g. last update)
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
@@ -105,7 +105,7 @@ public class DataFusion_Main
         // add attribute fusers
         strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new GameNameEvaluationRule());
         strategy.addAttributeFuser(Game.RELEASE,new ReleaseFuserVoting(), new ReleaseEvaluation());
-//        strategy.addAttributeFuser(Game.DEVELOPERS, new DateFuserFavourSource(),new DateEvaluationRule());
+        strategy.addAttributeFuser(Game.DEVELOPERS, new DeveloperFuser(),new DeveloperEvaluation());
 //        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
@@ -116,6 +116,7 @@ public class DataFusion_Main
 
         // print record groups sorted by consistency
         engine.writeRecordGroupsByConsistency(new File("data/output/recordGroupConsistencies.csv"), correspondences, null);
+
 
         // run the fusion
         logger.info("*\tRunning data fusion\t*");

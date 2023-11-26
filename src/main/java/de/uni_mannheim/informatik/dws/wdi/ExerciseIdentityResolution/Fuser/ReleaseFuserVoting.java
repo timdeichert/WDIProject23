@@ -1,11 +1,10 @@
-package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers;
+package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser;
 
 import java.time.LocalDateTime;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.Voting;
-import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;

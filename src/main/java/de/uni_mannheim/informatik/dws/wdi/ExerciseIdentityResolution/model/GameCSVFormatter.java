@@ -13,7 +13,7 @@ public class GameCSVFormatter extends CSVDataSetFormatter<Game, Attribute> {
      */
     @Override
     public String[] getHeader(List<Attribute> orderedHeader) {
-        return new String[] { "ID", "Name", "Developers", "Release", "Genres"};
+        return new String[] { "ID", "Name", "Developers", "Release", "Genres", "Modes"};
     }
 
     /* (non-Javadoc)
@@ -25,6 +25,7 @@ public class GameCSVFormatter extends CSVDataSetFormatter<Game, Attribute> {
                 record.getIdentifier(),
                 record.getName(),
                 String.valueOf(record.getDeveloper()),
+                String.valueOf(record.getMode()),
                 String.valueOf(record.getGenre()),
                 record.getRelease()==null ? "" : record.getRelease().toString()
         };
