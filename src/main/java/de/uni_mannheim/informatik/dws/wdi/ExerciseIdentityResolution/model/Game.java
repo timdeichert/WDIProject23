@@ -46,10 +46,6 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         this.Release = release;
     }
     public String getName() {
-        if (Name == null)
-        {
-            return "TESTER";
-        }
         return this.Name;
     }
 
@@ -98,11 +94,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setDeveloper(List<String> developer) {
-        if (developer == null){
-            this.Developer = Collections.singletonList(null);
-        } else {
-            this.Developer = developer;
-        }
+        this.Developer = developer;
     }
 
     public Double getNA_Sales() {
