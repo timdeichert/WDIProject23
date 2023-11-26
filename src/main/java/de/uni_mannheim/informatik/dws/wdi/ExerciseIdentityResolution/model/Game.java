@@ -2,17 +2,11 @@ package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
-
 import de.uni_mannheim.informatik.dws.winter.model.AbstractRecord;
-import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
-
 
 public class Game extends AbstractRecord<Attribute> implements Serializable {
 
@@ -39,7 +33,6 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public Game(String identifier,String provenance) {
         super(identifier, provenance);
     }
-
 
     public LocalDateTime getRelease() {
         if (Release == null)
@@ -105,7 +98,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setDeveloper(List<String> developer) {
-        this.Developer = developer;
+        if (developer == null){
+            this.Developer = Collections.singletonList(null);
+        } else {
+            this.Developer = developer;
+        }
     }
 
     public Double getNA_Sales() {
@@ -180,8 +177,6 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         this.Rating = rating;
     }
 
-
-
     private Map<Attribute, Collection<String>> provenance = new HashMap<>();
     private Collection<String> recordProvenance;
 
@@ -212,16 +207,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         }
     }
 
-
-
-
-
     @Override
     public String toString() {
         return String.format("[Game %s: %s / %s / %s]", getIdentifier(), getName(),
-                getDeveloper(), getRelease().toString());
+                getRelease().toString(), getDeveloper());
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -230,7 +220,6 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         }else
             return false;
     }
-
 
     public static final Attribute NAME = new Attribute("Name");
     public static final Attribute DEVELOPERS = new Attribute("Developers");
@@ -245,7 +234,7 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
         if(attribute==NAME)
             return getName() != null && !getName().isEmpty();
         else if(attribute==DEVELOPERS)
-            return getDeveloper() != null && !getDeveloper().isEmpty();
+            return getDeveloper() != null && getDeveloper().size() > 0;
         else if(attribute==OTHERSALES)
             return getOther_Sales() != null && !getOther_Sales().isNaN();
         else if(attribute==MODE)
@@ -264,8 +253,4 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public int hashCode() {
         return getIdentifier().hashCode();
     }
-
-
-
-
 }

@@ -1,4 +1,4 @@
-package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.fusers;
+package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Movie;
