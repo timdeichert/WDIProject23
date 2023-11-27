@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.Voting;
+import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
@@ -15,7 +16,7 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 public class ReleaseFuserVoting  extends AttributeValueFuser<LocalDateTime, Game, Attribute> {
 
     public ReleaseFuserVoting() {
-        super(new Voting<LocalDateTime, Game, Attribute>());
+        super(new FavourSources<LocalDateTime, Game, Attribute>());
     }
 
     @Override
