@@ -36,6 +36,7 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
                 .getMergedAttributeProvenance(Game.GLOBALSALES), doc));
 
         game.appendChild(createDeveloperElement(record, doc));
+        game.appendChild(createModesElement(record, doc));
 
         return game;
     }
@@ -57,6 +58,23 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
             for (String developer : record.getDeveloper()) {
                 if (developer != null && !developer.isEmpty()) {
                     Element developerElement = createTextElement("developer", developer, doc);
+                    developerRoot.appendChild(developerElement);
+                }
+            }
+        }
+        return developerRoot;
+    }
+
+    protected Element createModesElement(Game record, Document doc) {
+        Element developerRoot = doc.createElement("Modes");
+        developerRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Game.MODE));
+
+        // Check if the developer list is not null before iterating
+        if (record.getMode() != null) {
+            for (String mode : record.getMode()) {
+                if (mode != null && !mode.isEmpty()) {
+                    Element developerElement = createTextElement("Mode", mode, doc);
                     developerRoot.appendChild(developerElement);
                 }
             }

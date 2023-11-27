@@ -7,14 +7,8 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
 
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.DeveloperFuser;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.GlobalSalesFuser;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.DeveloperEvaluation;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.GameNameEvaluationRule;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.GlobalSalesEvaluation;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.ReleaseEvaluation;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.ReleaseFuserVoting;
-import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.TitleFuserShortestString;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser.*;
+import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation.*;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLFormatter;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.GameXMLReader;
@@ -109,6 +103,8 @@ public class DataFusion_Main
         strategy.addAttributeFuser(Game.RELEASE,new ReleaseFuserVoting(), new ReleaseEvaluation());
         strategy.addAttributeFuser(Game.DEVELOPERS, new DeveloperFuser(),new DeveloperEvaluation());
         strategy.addAttributeFuser(Game.GLOBALSALES, new GlobalSalesFuser(),new GlobalSalesEvaluation());
+        strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ModeEvaluation());
+
 //        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
 
         // create the fusion engine
