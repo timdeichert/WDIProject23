@@ -224,7 +224,6 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public static final Attribute GLOBALSALES = new Attribute("Global_Sales");
     public static final Attribute OTHERSALES = new Attribute("Other_Sales");
     public static final Attribute MODE = new Attribute("Mode");
-    public static final Attribute MODE = new Attribute("Mode");
     public static final Attribute EUSALES = new Attribute("EU_Sales");
     public static final Attribute PUBLISHERS = new Attribute("Publishers");
 
