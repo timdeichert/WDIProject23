@@ -41,15 +41,10 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
 
         @Override
         public Game createModelFromElement(Node node, String provenanceInfo) {
-            // Create a new Game object with provenance information
             String id =  getValueFromChildElement(node,"ID");
             Game game = new Game(id ,provenanceInfo);
 
-
-            // You can continue reading other attributes similarly
             game.setName(getValueFromChildElement(node, "Name"));
-
-            // handle the list attribute (genres)
             List<String> genres = getListFromChildElement(node, "Genres");
             game.setGenre(genres);
             List<String> developers = getListFromChildElement(node, "Developers");
@@ -68,7 +63,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
                 else if (date != null && !date.isEmpty()) {
                     LocalDateTime dt;
                     if (date.contains("-")) {
-                        // If the date is in the format "YYYY-MM-DD"
                         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                                 .appendPattern("yyyy-MM-dd")
                                 .parseDefaulting(ChronoField.CLOCK_HOUR_OF_DAY, 0)
@@ -77,7 +71,6 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
                                 .toFormatter(Locale.ENGLISH);
                         dt = LocalDateTime.parse(date, formatter);
                     } else {
-                        // If the date is just the year (YYYY)
                         dt = LocalDateTime.of(Integer.parseInt(date), 1, 1, 0, 0);
                     }
                     game.setRelease(dt);
@@ -209,11 +202,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
         for (Game m : cluster.getRecords()) {
             ids.add(m.getIdentifier());
         }
-
         Collections.sort(ids);
-
         String mergedId = StringUtils.join(ids, '+');
-
         return new Game(mergedId, "fused");
     }
 }

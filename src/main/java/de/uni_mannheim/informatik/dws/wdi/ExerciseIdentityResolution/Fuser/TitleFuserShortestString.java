@@ -20,14 +20,8 @@ public class TitleFuserShortestString extends
 
     @Override
     public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-
-        // get the fused value
         FusedValue<String, Game, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-
-        // set the value for the fused record
         fusedRecord.setName(fused.getValue());
-
-        // add provenance info
         fusedRecord.setAttributeProvenance(Game .NAME, fused.getOriginalIds());
     }
 

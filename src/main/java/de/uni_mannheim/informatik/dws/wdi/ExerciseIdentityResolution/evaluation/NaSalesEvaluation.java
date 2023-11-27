@@ -7,7 +7,6 @@ import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
 public class NaSalesEvaluation extends EvaluationRule<Game, Attribute> {
-
     @Override
     public boolean isEqual(Game record1, Game record2, Attribute schemaElement) {
         if(record1.getNA_Sales()==null && record2.getNA_Sales()==null)
@@ -18,9 +17,6 @@ public class NaSalesEvaluation extends EvaluationRule<Game, Attribute> {
             return record1.getNA_Sales() == record2.getNA_Sales();
     }
 
-    /* (non-Javadoc)
-     * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-     */
     @Override
     public boolean isEqual(Game record1, Game record2,
                            Correspondence<Attribute, Matchable> schemaCorrespondence) {

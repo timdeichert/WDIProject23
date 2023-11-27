@@ -38,7 +38,7 @@ public class PublishersFuserLongestString extends AttributeValueFuser<String, Ga
         if (publishers != null && !publishers.isEmpty()) {
             return Collections.max(publishers, Comparator.comparing(String::length));
         } else {
-            return null;  // or an appropriate default value
+            return null;
         }
     }
 

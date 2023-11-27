@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public class EuSalesFuserMax extends AttributeValueFuser<Double, Game, Attribute> {
     public EuSalesFuserMax(){
-        super(null); // No predefined strategy
+        super(null);
     }
 
     @Override
@@ -29,23 +29,21 @@ public class EuSalesFuserMax extends AttributeValueFuser<Double, Game, Attribute
     @Override
     public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
         double maxSales = 0.0;
-        Collection<String> recordIdsWithMaxValue = new ArrayList<>(); // To keep track of provenance
+        Collection<String> recordIdsWithMaxValue = new ArrayList<>();
 
         for(Game game : group.getRecords()) {
             if(game.hasValue(Game.EUSALES)) {
                 double sales = game.getEU_Sales();
                 if (sales > maxSales) {
                     maxSales = sales;
-                    recordIdsWithMaxValue.clear(); // Clear previous records as a new max is found
-                    recordIdsWithMaxValue.add(game.getIdentifier()); // Track provenance
+                    recordIdsWithMaxValue.clear();
+                    recordIdsWithMaxValue.add(game.getIdentifier());
                 } else if (sales == maxSales) {
-                    // If another record has the same max value, add its identifier too
                     recordIdsWithMaxValue.add(game.getIdentifier());
                 }
             }
         }
         fusedRecord.setEU_Sales(maxSales);
-        // Set the provenance information
         fusedRecord.setAttributeProvenance(Game.EUSALES, recordIdsWithMaxValue);
     }
 }

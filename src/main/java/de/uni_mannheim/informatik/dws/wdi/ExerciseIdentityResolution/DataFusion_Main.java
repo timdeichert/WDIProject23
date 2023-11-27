@@ -23,19 +23,6 @@ import org.slf4j.Logger;
 
 public class DataFusion_Main
 {
-    /*
-     * Logging Options:
-     * 		default: 	level INFO	- console
-     * 		trace:		level TRACE     - console
-     * 		infoFile:	level INFO	- console/file
-     * 		traceFile:	level TRACE	- console/file
-     *
-     * To set the log level to trace and write the log to winter.log and console,
-     * activate the "traceFile" logger as follows:
-     *     private static final Logger logger = WinterLogManager.activateLogger("traceFile");
-     *
-     */
-
     private static final Logger logger = WinterLogManager.activateLogger("trace");
 
     public static void main( String[] args ) throws Exception
@@ -98,10 +85,9 @@ public class DataFusion_Main
         strategy.addAttributeFuser(Game.PUBLISHERS, new PublisherFuserFavourSource(),new PublisherEvaluationRule());
         strategy.addAttributeFuser(Game.PLATFORM, new PlatformShortestString(),new PlatformEvaluation());
         strategy.addAttributeFuser(Game.JPSALES, new JpSalesFuserMax(),new JpSalesEvaluation());
-       strategy.addAttributeFuser(Game.NASALES, new NaSalesFuserMax(),new NaSalesEvaluation());
+        strategy.addAttributeFuser(Game.NASALES, new NaSalesFuserMax(),new NaSalesEvaluation());
         strategy.addAttributeFuser(Game.OTHERSALES, new OtherSalesFuser(),new OtherSalesEvaluation());
-
-//        strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ModeEvaluation());
+        strategy.addAttributeFuser(Game.MODE,new ModeFuserFavourSource(),new ModeEvaluation());
 
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);
 

@@ -28,9 +28,6 @@ public class GenresEvaluation extends EvaluationRule<Game, Attribute> {
         return genres;
     }
 
-    /* (non-Javadoc)
-     * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-     */
     @Override
     public boolean isEqual(Game record1, Game record2,
                            Correspondence<Attribute, Matchable> schemaCorrespondence) {

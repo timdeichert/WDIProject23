@@ -13,24 +13,21 @@ public class ModeEvaluation extends EvaluationRule<Game, Attribute> {
 
     @Override
     public boolean isEqual(Game record1, Game record2, Attribute schemaElement) {
-        Set<String> developers1 = extractDevelopers(record1);
-        Set<String> developers2 = extractDevelopers(record2);
+        Set<String> mode1 = extractModes(record1);
+        Set<String> mode2 = extractModes(record2);
 
-        return developers1.containsAll(developers2) && developers2.containsAll(developers1);
+        return mode1.containsAll(mode2) && mode2.containsAll(mode1);
     }
 
-    private Set<String> extractDevelopers(Game game) {
-        Set<String> developers = new HashSet<>();
+    private Set<String> extractModes(Game game) {
+        Set<String> modes = new HashSet<>();
 
         if (game.getMode() != null && !game.getMode().isEmpty()) {
-            developers.addAll(game.getMode());
+            modes.addAll(game.getMode());
         }
-        return developers;
+        return modes;
     }
 
-    /* (non-Javadoc)
-     * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-     */
     @Override
     public boolean isEqual(Game record1, Game record2,
                            Correspondence<Attribute, Matchable> schemaCorrespondence) {

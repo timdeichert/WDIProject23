@@ -14,14 +14,9 @@ public class GameTitleEvaluationRule extends EvaluationRule<Game, Attribute> {
 
     @Override
     public boolean isEqual(Game record1, Game record2, Attribute schemaElement) {
-        // the title is correct if all tokens are there, but the order does not
-        // matter
         return sim.calculate(record1.getName(), record2.getName()) == 1.0;
     }
 
-    /* (non-Javadoc)
-     * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
-     */
     @Override
     public boolean isEqual(Game record1, Game record2,
                            Correspondence<Attribute, Matchable> schemaCorrespondence) {
