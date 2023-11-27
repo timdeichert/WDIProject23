@@ -14,7 +14,7 @@ import java.util.Collection;
 
 public class GlobalSalesFuser extends AttributeValueFuser<Double, Game, Attribute> {
     public GlobalSalesFuser(){
-        super(null); // No predefined strategy
+        super(null);
     }
 
     @Override
@@ -30,23 +30,20 @@ public class GlobalSalesFuser extends AttributeValueFuser<Double, Game, Attribut
     @Override
     public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
         double maxSales = 0.0;
-        Collection<String> recordIdsWithMaxValue = new ArrayList<>(); // To keep track of provenance
-
+        Collection<String> recordIdsWithMaxValue = new ArrayList<>();
         for(Game game : group.getRecords()) {
             if(game.hasValue(Game.GLOBALSALES)) {
                 double sales = game.getGlobal_Sales();
                 if (sales > maxSales) {
                     maxSales = sales;
-                    recordIdsWithMaxValue.clear(); // Clear previous records as a new max is found
-                    recordIdsWithMaxValue.add(game.getIdentifier()); // Track provenance
+                    recordIdsWithMaxValue.clear();
+                    recordIdsWithMaxValue.add(game.getIdentifier());
                 } else if (sales == maxSales) {
-                    // If another record has the same max value, add its identifier too
                     recordIdsWithMaxValue.add(game.getIdentifier());
                 }
             }
         }
         fusedRecord.setGlobal_Sales(maxSales);
-        // Set the provenance information
         fusedRecord.setAttributeProvenance(Game.GLOBALSALES, recordIdsWithMaxValue);
     }
 }

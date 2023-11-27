@@ -226,11 +226,16 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     public static final Attribute MODE = new Attribute("Mode");
     public static final Attribute EUSALES = new Attribute("EU_Sales");
     public static final Attribute PUBLISHERS = new Attribute("Publishers");
+    public static final Attribute PLATFORM = new Attribute("Platform");
+    public static final Attribute JPSALES = new Attribute("JP_Sales");
+    public static final Attribute NASALES = new Attribute("NA_Sales");
 
     @Override
     public boolean hasValue(Attribute attribute) {
         if(attribute==NAME)
             return getName() != null && !getName().isEmpty();
+        else if(attribute==PLATFORM)
+            return getPlatform() != null && !getPlatform().isEmpty();
         else if(attribute==DEVELOPERS)
             return getDeveloper() != null && getDeveloper().size() > 0;
         else if(attribute==OTHERSALES)
@@ -243,6 +248,10 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
             return getGenre() != null && getGenre().size() > 0;
         else if(attribute==GLOBALSALES)
             return getGlobal_Sales() != null && !getGlobal_Sales().isNaN();
+        else if(attribute==JPSALES)
+            return getJP_Sales() != null && !getJP_Sales().isNaN();
+        else if(attribute==NASALES)
+            return getNA_Sales() != null && !getNA_Sales().isNaN();
         else if(attribute==EUSALES)
             return getEU_Sales() != null && !getEU_Sales().isNaN();
         else if(attribute==PUBLISHERS)

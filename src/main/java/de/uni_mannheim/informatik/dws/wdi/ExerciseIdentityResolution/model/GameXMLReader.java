@@ -29,8 +29,14 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
         dataset.addAttribute(Game.DEVELOPERS);
         dataset.addAttribute(Game.RELEASE);
         dataset.addAttribute(Game.GENRES);
+        dataset.addAttribute(Game.OTHERSALES);
+        dataset.addAttribute(Game.EUSALES);
+        dataset.addAttribute(Game.GLOBALSALES);
+        dataset.addAttribute(Game.PUBLISHERS);
         dataset.addAttribute(Game.MODE);
-
+        dataset.addAttribute(Game.PLATFORM);
+        dataset.addAttribute(Game.JPSALES);
+        dataset.addAttribute(Game.NASALES);
     }
 
         @Override
@@ -83,7 +89,8 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
 
             if (getValueFromChildElement(node, "Platform") != null) {
                 String platform = getValueFromChildElement(node, "Platform");
-  //               game.setPlatform(platform);
+//                game.setPlatform(platform);
+
               if(platform.equals("PS")) {
                     game.setPlatform("PlayStation (console)");
                 }
@@ -151,26 +158,28 @@ public class GameXMLReader extends XMLMatchableReader<Game, Attribute>implements
 
             if (getValueFromChildElement(node, "NA_Sales") != null) {
                 game.setNA_Sales(Double.parseDouble(getValueFromChildElement(node, "NA_Sales")));
+            }else{
+                game.setNA_Sales((double) 0);
             }
             if (getValueFromChildElement(node, "EU_Sales") != null) {
                 game.setEU_Sales(Double.parseDouble(getValueFromChildElement(node, "EU_Sales")));}
             else{
-                game.setEU_Sales((double) 1);
+                game.setEU_Sales((double) 0);
             }
             if (getValueFromChildElement(node, "JP_Sales") != null) {
                 game.setJP_Sales(Double.parseDouble(getValueFromChildElement(node, "JP_Sales")));}
             else{
-                game.setJP_Sales((double) 1);
+                game.setJP_Sales((double) 0);
             }
             if (getValueFromChildElement(node, "Other_Sales") != null) {
                 game.setOther_Sales(Double.parseDouble(getValueFromChildElement(node, "Other_Sales")));}
             else{
-                game.setOther_Sales((double) 1);
+                game.setOther_Sales((double) 0);
             }
             if (getValueFromChildElement(node, "Global_Sales") != null) {
                 game.setGlobal_Sales(Double.parseDouble(getValueFromChildElement(node, "Global_Sales")));}
             else{
-                game.setGlobal_Sales((double) 1.0);
+                game.setGlobal_Sales((double) 0);
             }
             if (getValueFromChildElement(node, "Critic_Score") != null) {
                 game.setCritic_Score(Integer.parseInt(getValueFromChildElement(node, "Critic_Score")));}

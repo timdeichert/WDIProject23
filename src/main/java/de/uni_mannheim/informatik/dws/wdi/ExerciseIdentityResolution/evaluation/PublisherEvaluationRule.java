@@ -17,6 +17,9 @@ import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * {@link EvaluationRule} for the actors of {@link Game}s. The rule simply
  * compares the full set of actors of two {@link Game}s and returns true, in
@@ -29,27 +32,27 @@ public class PublisherEvaluationRule extends EvaluationRule<Game, Attribute> {
 
     @Override
     public boolean isEqual(Game record1, Game record2, Attribute schemaElement) {
-        String publisher1 = getLongestPublisherName(record1);
-        String publisher2 = getLongestPublisherName(record2);
+        Set<String> publisher1 = extractPublishers(record1);
+        Set<String> publisher2 = extractPublishers(record2);
 
-        return publisher1.equals(publisher2);
+        return publisher1.containsAll(publisher2) && publisher2.containsAll(publisher1);
     }
 
-    @Override
-    public boolean isEqual(Game record1, Game record2, Correspondence<Attribute, Matchable> schemaCorrespondence) {
-        return isEqual(record1, record2, (Attribute) null);
-    }
+    private Set<String> extractPublishers(Game game) {
+        Set<String> publishers = new HashSet<>();
 
-    private String getLongestPublisherName(Game record) {
-        String longestName = "";
-
-        for (String publisher : record.getPublisher()) {
-            String name = publisher;
-            if (name.length() > longestName.length()) {
-                longestName = name;
-            }
+        if (game.getPublisher() != null && !game.getPublisher().isEmpty()) {
+            publishers.addAll(game.getPublisher());
         }
+        return publishers;
+    }
 
-        return longestName;
+    /* (non-Javadoc)
+     * @see de.uni_mannheim.informatik.wdi.datafusion.EvaluationRule#isEqual(java.lang.Object, java.lang.Object, de.uni_mannheim.informatik.wdi.model.Correspondence)
+     */
+    @Override
+    public boolean isEqual(Game record1, Game record2,
+                           Correspondence<Attribute, Matchable> schemaCorrespondence) {
+        return isEqual(record1, record2, (Attribute) null);
     }
 }

@@ -40,7 +40,6 @@ public class DataFusion_Main
 
     public static void main( String[] args ) throws Exception
     {
-        // Load the Data into FusibleDataSet
         logger.info("*\tLoading datasets\t*");
 
         String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
@@ -57,13 +56,10 @@ public class DataFusion_Main
         new GameXMLReader().loadFromXML(new File("data/input/Kaggle1_Video_Game(Final).XML"), elementPath, ds3);
         ds3.printDataSetDensityReport();
 
-        // Maintain Provenance
-        // Scores (e.g. from rating)
         ds1.setScore(3.0);
         ds2.setScore(2.0);
         ds3.setScore(1.0);
 
-        // Date (e.g. last update)
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .appendPattern("yyyy-MM-dd")
                 .parseDefaulting(ChronoField.CLOCK_HOUR_OF_DAY, 0)
@@ -75,16 +71,13 @@ public class DataFusion_Main
         ds2.setDate(LocalDateTime.parse("2010-01-01", formatter));
         ds3.setDate(LocalDateTime.parse("2008-01-01", formatter));
 
-        // load correspondences
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
         correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(DBpediaKaggle1_decisionTree).csv"),ds1, ds3);
         correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(Kaggle1Kaggle2_decisionTree).csv"),ds3, ds2);
 
-        // write group size distribution
         correspondences.printGroupSizeDistribution();
 
-        // load the gold standard
         logger.info("*\tEvaluating results\t*");
         DataSet<Game, Attribute> gs = new FusibleHashedDataSet<>();
         new GameXMLReader().loadFromXML(new File("data/goldstandard/Fuser_GoldStandard.xml"), "/Games/Game", gs);
@@ -93,38 +86,33 @@ public class DataFusion_Main
             logger.info(String.format("gs: %s", m.getIdentifier()));
         }
 
-        // define the fusion strategy
         DataFusionStrategy<Game, Attribute> strategy = new DataFusionStrategy<>(new GameXMLReader());
-        // write debug results to file
         strategy.activateDebugReport("data/output/debugResultsDatafusion.csv", -1, gs);
 
-        // add attribute fusers
-        strategy.addAttributeFuser(Game.NAME, new TitleFuserShortestString(),new GameNameEvaluationRule());
-        strategy.addAttributeFuser(Game.RELEASE,new ReleaseFuserVoting(), new ReleaseEvaluation());
+        strategy.addAttributeFuser(Game.NAME, new TitleFuserFavourSource(),new GameTitleEvaluationRule());
+        strategy.addAttributeFuser(Game.RELEASE,new ReleaseDateFuserFavourSource(), new ReleaseEvaluation());
         strategy.addAttributeFuser(Game.DEVELOPERS, new DeveloperFuser(),new DeveloperEvaluation());
         strategy.addAttributeFuser(Game.GLOBALSALES, new GlobalSalesFuser(),new GlobalSalesEvaluation());
-        strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ModeEvaluation());
+        strategy.addAttributeFuser(Game.EUSALES, new EuSalesFuserMax(),new EuSalesEvaluation());
+        strategy.addAttributeFuser(Game.GENRES, new GenresFuserFavourSource(),new GenresEvaluation());
+        strategy.addAttributeFuser(Game.PUBLISHERS, new PublisherFuserFavourSource(),new PublisherEvaluationRule());
+        strategy.addAttributeFuser(Game.PLATFORM, new PlatformShortestString(),new PlatformEvaluation());
+        strategy.addAttributeFuser(Game.JPSALES, new JpSalesFuserMax(),new JpSalesEvaluation());
+        strategy.addAttributeFuser(Game.NASALES, new NaSalesFuserMax(),new NaSalesEvaluation());
 
-//        strategy.addAttributeFuser(Game.GENRES,new ActorsFuserUnion(),new ActorsEvaluationRule());
+//        strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ModeEvaluation());
 
-        // create the fusion engine
         DataFusionEngine<Game, Attribute> engine = new DataFusionEngine<>(strategy);
 
-        // print consistency report
         engine.printClusterConsistencyReport(correspondences, null);
 
-        // print record groups sorted by consistency
         engine.writeRecordGroupsByConsistency(new File("data/output/recordGroupConsistencies.csv"), correspondences, null);
 
-
-        // run the fusion
         logger.info("*\tRunning data fusion\t*");
         FusibleDataSet<Game, Attribute> fusedDataSet = engine.run(correspondences, null);
 
-        // write the result
         new GameXMLFormatter().writeXML(new File("data/output/fused.xml"), fusedDataSet);
 
-        // evaluate
         DataFusionEvaluator<Game, Attribute> evaluator = new DataFusionEvaluator<>(strategy, new RecordGroupFactory<Game, Attribute>());
 
         double accuracy = evaluator.evaluate(fusedDataSet, gs, null);

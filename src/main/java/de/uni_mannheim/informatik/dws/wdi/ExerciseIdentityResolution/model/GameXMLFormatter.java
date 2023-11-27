@@ -18,25 +18,38 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
     @Override
     public Element createElementFromRecord(Game record, Document doc) {
         Element game = doc.createElement("game");
-
         game.appendChild(createTextElement("id", record.getIdentifier(), doc));
-
         game.appendChild(createTextElementWithProvenance("name",
                 record.getName(),
                 record.getMergedAttributeProvenance(Game.NAME), doc));
+        game.appendChild(createTextElementWithProvenance("platform",
+                record.getPlatform(),
+                record.getMergedAttributeProvenance(Game.PLATFORM), doc));
         game.appendChild(createTextElementWithProvenance("date", record
                 .getRelease().toString(), record
                 .getMergedAttributeProvenance(Game.RELEASE), doc));
         game.appendChild(createTextElementWithProvenance("genres",
                 record.getGenre() != null ? record.getGenre().toString() : "",
                 record.getMergedAttributeProvenance(Game.GENRES), doc));
-
         game.appendChild(createTextElementWithProvenance("global_sales", record
                 .getGlobal_Sales().toString(), record
                 .getMergedAttributeProvenance(Game.GLOBALSALES), doc));
-
-        game.appendChild(createDeveloperElement(record, doc));
+        game.appendChild(createTextElementWithProvenance("eu_sales", record
+                .getEU_Sales().toString(), record
+                .getMergedAttributeProvenance(Game.EUSALES), doc));
+        game.appendChild(createTextElementWithProvenance("other_sales", record
+                .getOther_Sales().toString(), record
+                .getMergedAttributeProvenance(Game.OTHERSALES), doc));
+        game.appendChild(createTextElementWithProvenance("jp_sales", record
+                .getJP_Sales().toString(), record
+                .getMergedAttributeProvenance(Game.JPSALES), doc));
+        game.appendChild(createTextElementWithProvenance("na_sales", record
+                .getNA_Sales().toString(), record
+                .getMergedAttributeProvenance(Game.NASALES), doc));
+        game.appendChild(createDevelopersElement(record, doc));
         game.appendChild(createModesElement(record, doc));
+        game.appendChild(createGenresElement(record, doc));
+        game.appendChild(createPublishersElement(record, doc));
 
         return game;
     }
@@ -48,12 +61,10 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
         return elem;
     }
 
-    protected Element createDeveloperElement(Game record, Document doc) {
+    protected Element createDevelopersElement(Game record, Document doc) {
         Element developerRoot = doc.createElement("developers");
         developerRoot.setAttribute("provenance",
                 record.getMergedAttributeProvenance(Game.DEVELOPERS));
-
-        // Check if the developer list is not null before iterating
         if (record.getDeveloper() != null) {
             for (String developer : record.getDeveloper()) {
                 if (developer != null && !developer.isEmpty()) {
@@ -65,20 +76,49 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
         return developerRoot;
     }
 
-    protected Element createModesElement(Game record, Document doc) {
-        Element developerRoot = doc.createElement("Modes");
-        developerRoot.setAttribute("provenance",
-                record.getMergedAttributeProvenance(Game.MODE));
 
-        // Check if the developer list is not null before iterating
-        if (record.getMode() != null) {
-            for (String mode : record.getMode()) {
-                if (mode != null && !mode.isEmpty()) {
-                    Element developerElement = createTextElement("Mode", mode, doc);
-                    developerRoot.appendChild(developerElement);
+    protected Element createPublishersElement(Game record, Document doc) {
+        Element publisherRoot = doc.createElement("publishers");
+        publisherRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Game.PUBLISHERS));
+        if (record.getPublisher() != null) {
+            for (String publisher : record.getPublisher()) {
+                if (publisher != null && !publisher.isEmpty()) {
+                    Element publisherElement = createTextElement("publisher", publisher, doc);
+                    publisherRoot.appendChild(publisherElement);
                 }
             }
         }
-        return developerRoot;
+        return publisherRoot;
+    }
+
+    protected Element createGenresElement(Game record, Document doc) {
+        Element genreRoot = doc.createElement("genres");
+        genreRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Game.GENRES));
+        if (record.getGenre() != null) {
+            for (String genre : record.getGenre()) {
+                if (genre != null && !genre.isEmpty()) {
+                    Element genreElement = createTextElement("genre", genre, doc);
+                    genreRoot.appendChild(genreElement);
+                }
+            }
+        }
+        return genreRoot;
+    }
+
+    protected Element createModesElement(Game record, Document doc) {
+        Element modeRoot = doc.createElement("modes");
+        modeRoot.setAttribute("provenance",
+                record.getMergedAttributeProvenance(Game.MODE));
+        if (record.getMode() != null) {
+            for (String mode : record.getMode()) {
+                if (mode != null && !mode.isEmpty()) {
+                    Element modeElement = createTextElement("mode", mode, doc);
+                    modeRoot.appendChild(modeElement);
+                }
+            }
+        }
+        return modeRoot;
     }
 }
