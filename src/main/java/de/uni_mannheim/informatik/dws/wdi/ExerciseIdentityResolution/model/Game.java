@@ -50,7 +50,11 @@ public class Game extends AbstractRecord<Attribute> implements Serializable {
     }
 
     public void setName(String name) {
+        if (name == null){
+            this.Name = "";
+        }else{
         this.Name = name;
+        }
     }
 
     public String getPlatform() {

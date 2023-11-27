@@ -23,6 +23,8 @@ import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.model.io.CSVCorrespondenceFormatter;
 import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.utils.WinterLogManager;
+import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -65,6 +67,8 @@ public class IR_decisionTree_kaggle1Kaggle2 {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule(Kaggle1Kaggle2_decisionTree).csv", 1000, gsTraining);
 
         // add comparators
+        matchingRule.addComparator(new GamePlatformComparatorAbsoluteValue());
+
         matchingRule.addComparator(new GameDevComparatorJaccard());
         matchingRule.addComparator(new GameGenreComparatorMongeElkan());
         matchingRule.addComparator(new GameNameComparatorLowerCaseJaccard());
@@ -75,6 +79,8 @@ public class IR_decisionTree_kaggle1Kaggle2 {
         matchingRule.addComparator(new GamePublisherLJaccard());
         matchingRule.addComparator(new GameReleaseComparatorExactYear());
         matchingRule.addComparator(new GamePlatformComparatorJaccard());
+
+
 
         // train the matching rule's model
         logger.info("*\tLearning matching rule\t*");

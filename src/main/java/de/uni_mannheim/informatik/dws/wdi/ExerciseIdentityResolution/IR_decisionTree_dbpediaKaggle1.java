@@ -65,6 +65,8 @@ public class IR_decisionTree_dbpediaKaggle1 {
         matchingRule.activateDebugReport("data/output/debugResultsMatchingRule(DBpediaKaggle1_decisionTree).csv", 1000, gsTraining);
 
         // add comparators
+        matchingRule.addComparator(new GamePlatformComparatorAbsoluteValue());
+
         matchingRule.addComparator(new GameDevComparatorJaccard());
         matchingRule.addComparator(new GameNameComparatorMongeElkan());
         matchingRule.addComparator(new GameGenreComparatorMongeElkan());
@@ -76,6 +78,8 @@ public class IR_decisionTree_dbpediaKaggle1 {
         matchingRule.addComparator(new GamePublisherLJaccard());
         matchingRule.addComparator(new GameReleaseComparatorExactYear());
         matchingRule.addComparator(new GamePlatformComparatorJaccard());
+
+
 
         // train the matching rule's model
         logger.info("*\tLearning matching rule\t*");
