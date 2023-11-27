@@ -12,27 +12,41 @@ import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 import de.uni_mannheim.informatik.dws.winter.processing.aggregators.MaxAggregator;
 import org.apache.jena.sparql.function.library.max;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class OtherSalesFuser extends AttributeValueFuser<Double, Game, Attribute> {
     public OtherSalesFuser(){
-        super(new Average<Game, Attribute>());
+        super(null);
     }
 
     @Override
     public boolean hasValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
-        return game.hasValue(Game.GLOBALSALES);
+        return game.hasValue(Game.OTHERSALES);
     }
 
     @Override
     public Double getValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
-        return game.getGlobal_Sales();
+        return game.getOther_Sales();
     }
 
     @Override
     public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
-        FusedValue<Double, Game, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
-        fusedRecord.setGlobal_Sales(fused.getValue());
-        fusedRecord.setAttributeProvenance(Game.GLOBALSALES,
-                fused.getOriginalIds());
-
+        double maxSales = 0.0;
+        Collection<String> recordIdsWithMaxValue = new ArrayList<>();
+        for(Game game : group.getRecords()) {
+            if(game.hasValue(Game.OTHERSALES)) {
+                double sales = game.getOther_Sales();
+                if (sales > maxSales) {
+                    maxSales = sales;
+                    recordIdsWithMaxValue.clear();
+                    recordIdsWithMaxValue.add(game.getIdentifier());
+                } else if (sales == maxSales) {
+                    recordIdsWithMaxValue.add(game.getIdentifier());
+                }
+            }
+        }
+        fusedRecord.setOther_Sales(maxSales);
+        fusedRecord.setAttributeProvenance(Game.OTHERSALES, recordIdsWithMaxValue);
     }
 }

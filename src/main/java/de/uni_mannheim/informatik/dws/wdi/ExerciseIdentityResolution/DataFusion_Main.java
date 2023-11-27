@@ -98,7 +98,8 @@ public class DataFusion_Main
         strategy.addAttributeFuser(Game.PUBLISHERS, new PublisherFuserFavourSource(),new PublisherEvaluationRule());
         strategy.addAttributeFuser(Game.PLATFORM, new PlatformShortestString(),new PlatformEvaluation());
         strategy.addAttributeFuser(Game.JPSALES, new JpSalesFuserMax(),new JpSalesEvaluation());
-        strategy.addAttributeFuser(Game.NASALES, new NaSalesFuserMax(),new NaSalesEvaluation());
+       strategy.addAttributeFuser(Game.NASALES, new NaSalesFuserMax(),new NaSalesEvaluation());
+        strategy.addAttributeFuser(Game.OTHERSALES, new OtherSalesFuser(),new OtherSalesEvaluation());
 
 //        strategy.addAttributeFuser(Game.MODE,new ModeFuserUnion(),new ModeEvaluation());
 

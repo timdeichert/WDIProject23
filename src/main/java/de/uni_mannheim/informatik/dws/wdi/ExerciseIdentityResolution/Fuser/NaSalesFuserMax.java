@@ -23,7 +23,7 @@ public class NaSalesFuserMax extends AttributeValueFuser<Double, Game, Attribute
 
     @Override
     public Double getValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
-        return game.setNA_Sales();
+        return game.getGlobal_Sales();
     }
 
     @Override
