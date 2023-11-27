@@ -1,26 +1,36 @@
-package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.evaluation;
+package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Fuser;
 
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
-import de.uni_mannheim.informatik.dws.winter.datafusion.EvaluationRule;
+import de.uni_mannheim.informatik.dws.winter.datafusion.AttributeValueFuser;
+import de.uni_mannheim.informatik.dws.winter.datafusion.conflictresolution.numeric.Average;
 import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
+import de.uni_mannheim.informatik.dws.winter.model.FusedValue;
 import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+import de.uni_mannheim.informatik.dws.winter.model.RecordGroup;
 import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
+import de.uni_mannheim.informatik.dws.winter.processing.Processable;
 
-public class EuSalesEvaluation extends EvaluationRule <Game, Attribute> {
-   
-    @Override
-    public boolean isEqual(Game record1, Game record2, Attribute schemaElement) {
-        if (record1.getEU_Sales() == null && record2.getEU_Sales() == null) {
-            return true;
-        } else if (record1.getEU_Sales() == null ^ record2.getEU_Sales() == null) {
-            return false;
-        } else {
-            return record1.getEU_Sales().equals(record2.getEU_Sales());
-        }
+public class EuSalesFuserAverage extends AttributeValueFuser<Double, Game, Attribute> {
+    public EuSalesFuserAverage(){
+        super(new Average<Game, Attribute>());
     }
 
     @Override
-    public boolean isEqual(Game record1, Game record2, Correspondence<Attribute, Matchable> schemaCorrespondence) {
-        return isEqual(record1, record2, (Attribute) null);
+    public boolean hasValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
+        return game.hasValue(Game.EUSALES);
+    }
+
+    @Override
+    public Double getValue(Game game, Correspondence<Attribute, Matchable> correspondence) {
+        return game.getEU_Sales();
+    }
+
+    @Override
+    public void fuse(RecordGroup<Game, Attribute> group, Game fusedRecord, Processable<Correspondence<Attribute, Matchable>> schemaCorrespondences, Attribute schemaElement) {
+        FusedValue<Double, Game, Attribute> fused = getFusedValue(group, schemaCorrespondences, schemaElement);
+        fusedRecord.setEU_Sales(fused.getValue());
+        fusedRecord.setAttributeProvenance(Game.GLOBALSALES,
+                fused.getOriginalIds());
+
     }
 }
