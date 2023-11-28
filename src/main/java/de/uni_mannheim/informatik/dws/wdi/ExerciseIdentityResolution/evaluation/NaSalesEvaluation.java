@@ -14,7 +14,7 @@ public class NaSalesEvaluation extends EvaluationRule<Game, Attribute> {
         else if(record1.getNA_Sales()==null ^ record2.getNA_Sales()==null)
             return false;
         else
-            return record1.getNA_Sales() == record2.getNA_Sales();
+            return record1.getNA_Sales().equals(record2.getNA_Sales());
     }
 
     @Override

@@ -15,7 +15,7 @@ public class JpSalesEvaluation extends EvaluationRule<Game, Attribute> {
         else if(record1.getJP_Sales()==null ^ record2.getJP_Sales()==null)
             return false;
         else
-            return record1.getJP_Sales() == record2.getJP_Sales();
+            return record1.getJP_Sales().equals(record2.getJP_Sales());
     }
 
     @Override

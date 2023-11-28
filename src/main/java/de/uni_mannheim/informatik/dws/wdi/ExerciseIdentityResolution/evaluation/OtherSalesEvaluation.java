@@ -15,7 +15,7 @@ public class OtherSalesEvaluation extends EvaluationRule<Game, Attribute> {
         else if(record1.getOther_Sales()==null ^ record2.getOther_Sales()==null)
             return false;
         else
-            return record1.getOther_Sales() == record2.getOther_Sales();
+            return record1.getOther_Sales().equals(record2.getOther_Sales());
     }
 
     @Override

@@ -15,7 +15,7 @@ public class GlobalSalesEvaluation  extends EvaluationRule<Game, Attribute> {
         else if(record1.getGlobal_Sales()==null ^ record2.getGlobal_Sales()==null)
             return false;
         else
-            return record1.getGlobal_Sales() == record2.getGlobal_Sales();
+            return record1.getGlobal_Sales().equals(record2.getGlobal_Sales());
     }
 
     @Override
