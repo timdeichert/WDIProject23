@@ -17,6 +17,16 @@
 		<Developers>
 			<Developer>Capcom</Developer>
 		</Developers>
+		<NA_Sales>0.47</NA_Sales>
+		<EU_Sales>0.55</EU_Sales>
+		<JP_Sales>4.13</JP_Sales>
+		<Other_Sales>0.34</Other_Sales>
+		<Global_Sales>5.48</Global_Sales>
+		<Critic_score>81</Critic_score>
+		<Critic_Count>48</Critic_Count>
+		<User_Score>8.7</User_Score>
+		<User_Count>124</User_Count>
+		<Rating>T</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_15248</ID>
@@ -25,6 +35,7 @@
 		<Release>2003-08-19</Release>
 		<Genres>
 			<Genre>Action-adventure game</Genre>
+			<Genre>Shooter</Genre>
 		</Genres>
 		<modes>
 			<mode>Single-player</mode>
@@ -35,6 +46,15 @@
 		<Developers>
 			<Developer>Outrage Games</Developer>
 		</Developers>
+		<NA_Sales>0.04</NA_Sales>
+		<EU_Sales>0.01</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0</Other_Sales>
+		<Global_Sales>0.05</Global_Sales>
+		<Critic_score>62</Critic_score>
+		<Critic_Count>24</Critic_Count>
+		<User_Score>tbd</User_Score>
+		<Rating>T</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_5639</ID>
@@ -43,6 +63,7 @@
 		<Release>1998-09-30</Release>
 		<Genres>
 			<Genre>Fighting game</Genre>
+			<Genre>Sports</Genre>
 		</Genres>
 		<modes>
 			<mode>Multiplayer</mode>
@@ -54,6 +75,11 @@
 		<Developers>
 			<Developer>Toys for Bob</Developer>
 		</Developers>
+				<NA_Sales>0.07</NA_Sales>
+		<EU_Sales>0.05</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.01</Other_Sales>
+		<Global_Sales>0.13</Global_Sales>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_9596</ID>
@@ -73,6 +99,13 @@
 		<Developers>
 			<Developer>Ubisoft Shanghai</Developer>
 		</Developers>
+				<NA_Sales>0.07</NA_Sales>
+		<EU_Sales>0</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.01</Other_Sales>
+		<Global_Sales>0.08</Global_Sales>
+		<User_Score>tbd</User_Score>
+		<Rating>E</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_9618</ID>
@@ -83,6 +116,7 @@
 			<Genre>Platform game</Genre>
 			<Genre>Role-playing video game</Genre>
 			<Genre>Toys-to-life</Genre>
+				<Genre>Action</Genre>
 		</Genres>
 		<modes>
 			<mode>Multiplayer video game</mode>
@@ -97,6 +131,16 @@
 			<Developer>Vicarious Visions</Developer>
 			<Developer>XPEC Entertainment</Developer>
 		</Developers>
+				<NA_Sales>0.32</NA_Sales>
+		<EU_Sales>0.2</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.05</Other_Sales>
+		<Global_Sales>0.57</Global_Sales>
+		<Critic_score>82</Critic_score>
+		<Critic_Count>8</Critic_Count>
+		<User_Score>4.9</User_Score>
+		<User_Count>62</User_Count>
+		<Rating>E10+</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_9632</ID>
@@ -118,6 +162,12 @@
 			<Developer>Traveller's Tales</Developer>
 			<Developer>Vicarious Visions</Developer>
 		</Developers>
+				<NA_Sales>0.63</NA_Sales>
+		<EU_Sales>0.37</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.11</Other_Sales>
+		<Global_Sales>1.11</Global_Sales>
+		<Developers/>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_11238</ID>
@@ -138,6 +188,11 @@
 		<Developers>
 			<Developer>Omega Force</Developer>
 		</Developers>
+				<NA_Sales>0.04</NA_Sales>
+		<EU_Sales>0.11</EU_Sales>
+		<JP_Sales>0.11</JP_Sales>
+		<Other_Sales>0.03</Other_Sales>
+		<Global_Sales>0.28</Global_Sales>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_11264</ID>
@@ -158,6 +213,11 @@
 		<Developers>
 			<Developer>Rare (company)</Developer>
 		</Developers>
+			<NA_Sales>0.82</NA_Sales>
+		<EU_Sales>0.36</EU_Sales>
+		<JP_Sales>0.25</JP_Sales>
+		<Other_Sales>0.06</Other_Sales>
+		<Global_Sales>1.49</Global_Sales>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_11270</ID>
@@ -167,6 +227,7 @@
 		<Genres>
 			<Genre>Stealth game</Genre>
 			<Genre>Tactical shooter</Genre>
+						<Genre>Shooter</Genre>
 		</Genres>
 		<modes>
 			<mode>Multiplayer video game</mode>
@@ -178,6 +239,16 @@
 		<Developers>
 			<Developer>Rebellion Developments</Developer>
 		</Developers>
+				<NA_Sales>0.24</NA_Sales>
+		<EU_Sales>0.34</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.11</Other_Sales>
+		<Global_Sales>0.68</Global_Sales>
+		<Critic_score>67</Critic_score>
+		<Critic_Count>41</Critic_Count>
+		<User_Score>7.1</User_Score>
+		<User_Count>178</User_Count>
+		<Rating>M</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_11276</ID>
@@ -191,6 +262,7 @@
 		<modes>
 			<mode>Multiplayer video game</mode>
 			<mode>Single-player video game</mode>
+			<Genre>Shooter</Genre>
 		</modes>
 		<publishers>
 			<publisher>Rebellion Developments</publisher>
@@ -199,6 +271,15 @@
 		<Developers>
 			<Developer>Rebellion Developments</Developer>
 		</Developers>
+				<NA_Sales>0.05</NA_Sales>
+		<EU_Sales>0.12</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.03</Other_Sales>
+		<Global_Sales>0.2</Global_Sales>
+		<Critic_score>62</Critic_score>
+		<Critic_Count>26</Critic_Count>
+		<User_Score>6.8</User_Score>
+		<User_Count>88</User_Count>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_13989</ID>
@@ -220,6 +301,16 @@
 			<Developer>2XL Games</Developer>
 			<Developer>BlitWorks</Developer>
 		</Developers>
+				<NA_Sales>0.12</NA_Sales>
+		<EU_Sales>0.06</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.02</Other_Sales>
+		<Global_Sales>0.2</Global_Sales>
+		<Critic_score>65</Critic_score>
+		<Critic_Count>35</Critic_Count>
+		<User_Score>7.1</User_Score>
+		<User_Count>18</User_Count>
+		<Rating>E</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_4451</ID>
@@ -240,6 +331,16 @@
 		<Developers>
 			<Developer>Sega AM2</Developer>
 		</Developers>
+		<NA_Sales>0.09</NA_Sales>
+		<EU_Sales>0.02</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0</Other_Sales>
+		<Global_Sales>0.11</Global_Sales>
+		<Critic_score>52</Critic_score>
+		<Critic_Count>17</Critic_Count>
+		<User_Score>6.8</User_Score>
+		<User_Count>8</User_Count>
+		<Rating>E</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_6013</ID>
@@ -261,6 +362,16 @@
 		<Developers>
 			<Developer>Inti Creates</Developer>
 		</Developers>
+		<NA_Sales>0.22</NA_Sales>
+		<EU_Sales>0</EU_Sales>
+		<JP_Sales>0.09</JP_Sales>
+		<Other_Sales>0.02</Other_Sales>
+		<Global_Sales>0.33</Global_Sales>
+		<Critic_score>78</Critic_score>
+		<Critic_Count>27</Critic_Count>
+		<User_Score>8.6</User_Score>
+		<User_Count>32</User_Count>
+		<Rating>E10+</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_11584</ID>
@@ -281,6 +392,16 @@
 		<Developers>
 			<Developer>San Diego Studio</Developer>
 		</Developers>
+				<NA_Sales>0.35</NA_Sales>
+		<EU_Sales>0</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0.08</Other_Sales>
+		<Global_Sales>0.43</Global_Sales>
+		<Critic_score>81</Critic_score>
+		<Critic_Count>26</Critic_Count>
+		<User_Score>6.8</User_Score>
+		<User_Count>79</User_Count>
+				<Rating>E</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_24835</ID>
@@ -300,5 +421,15 @@
 		<Developers>
 			<Developer>Midway Games</Developer>
 		</Developers>
+				<NA_Sales>0.09</NA_Sales>
+		<EU_Sales>0.02</EU_Sales>
+		<JP_Sales>0</JP_Sales>
+		<Other_Sales>0</Other_Sales>
+		<Global_Sales>0.11</Global_Sales>
+		<Critic_score>77</Critic_score>
+		<Critic_Count>14</Critic_Count>
+		<User_Score>8.9</User_Score>
+		<User_Count>15</User_Count>
+		<Rating>M</Rating>
 	</Game>
 </Games>
