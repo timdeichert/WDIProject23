@@ -28,9 +28,6 @@ public class GameXMLFormatter extends XMLFormatter<Game>{
         game.appendChild(createTextElementWithProvenance("date", record
                 .getRelease().toString(), record
                 .getMergedAttributeProvenance(Game.RELEASE), doc));
-        game.appendChild(createTextElementWithProvenance("genres",
-                record.getGenre() != null ? record.getGenre().toString() : "",
-                record.getMergedAttributeProvenance(Game.GENRES), doc));
         game.appendChild(createTextElementWithProvenance("global_sales", record
                 .getGlobal_Sales().toString(), record
                 .getMergedAttributeProvenance(Game.GLOBALSALES), doc));
