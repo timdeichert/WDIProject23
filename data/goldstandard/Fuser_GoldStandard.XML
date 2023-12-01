@@ -18,10 +18,10 @@
 			<Developer>Capcom</Developer>
 		</Developers>
 		<NA_Sales>0.47</NA_Sales>
-		<EU_Sales>0.55</EU_Sales>
+		<EU_Sales>0.57</EU_Sales>
 		<JP_Sales>4.13</JP_Sales>
 		<Other_Sales>0.34</Other_Sales>
-		<Global_Sales>5.48</Global_Sales>
+		<Global_Sales>5.5</Global_Sales>
 		<Critic_score>81</Critic_score>
 		<Critic_Count>48</Critic_Count>
 		<User_Score>8.7</User_Score>
@@ -46,11 +46,11 @@
 		<Developers>
 			<Developer>Outrage Games</Developer>
 		</Developers>
-		<NA_Sales>0.04</NA_Sales>
-		<EU_Sales>0.01</EU_Sales>
+		<NA_Sales>0.06</NA_Sales>
+		<EU_Sales>0.05</EU_Sales>
 		<JP_Sales>0</JP_Sales>
-		<Other_Sales>0</Other_Sales>
-		<Global_Sales>0.05</Global_Sales>
+		<Other_Sales>0.02</Other_Sales>
+		<Global_Sales>0.13</Global_Sales>
 		<Critic_score>62</Critic_score>
 		<Critic_Count>24</Critic_Count>
 		<User_Score>tbd</User_Score>
@@ -75,7 +75,7 @@
 		<Developers>
 			<Developer>Toys for Bob</Developer>
 		</Developers>
-				<NA_Sales>0.07</NA_Sales>
+		<NA_Sales>0.07</NA_Sales>
 		<EU_Sales>0.05</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.01</Other_Sales>
@@ -99,7 +99,7 @@
 		<Developers>
 			<Developer>Ubisoft Shanghai</Developer>
 		</Developers>
-				<NA_Sales>0.07</NA_Sales>
+		<NA_Sales>0.07</NA_Sales>
 		<EU_Sales>0</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.01</Other_Sales>
@@ -131,7 +131,7 @@
 			<Developer>Vicarious Visions</Developer>
 			<Developer>XPEC Entertainment</Developer>
 		</Developers>
-				<NA_Sales>0.32</NA_Sales>
+		<NA_Sales>0.32</NA_Sales>
 		<EU_Sales>0.2</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.05</Other_Sales>
@@ -162,7 +162,7 @@
 			<Developer>Traveller's Tales</Developer>
 			<Developer>Vicarious Visions</Developer>
 		</Developers>
-				<NA_Sales>0.63</NA_Sales>
+		<NA_Sales>0.63</NA_Sales>
 		<EU_Sales>0.37</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.11</Other_Sales>
@@ -188,7 +188,7 @@
 		<Developers>
 			<Developer>Omega Force</Developer>
 		</Developers>
-				<NA_Sales>0.04</NA_Sales>
+		<NA_Sales>0.04</NA_Sales>
 		<EU_Sales>0.11</EU_Sales>
 		<JP_Sales>0.11</JP_Sales>
 		<Other_Sales>0.03</Other_Sales>
@@ -213,7 +213,7 @@
 		<Developers>
 			<Developer>Rare (company)</Developer>
 		</Developers>
-			<NA_Sales>0.82</NA_Sales>
+		<NA_Sales>0.82</NA_Sales>
 		<EU_Sales>0.36</EU_Sales>
 		<JP_Sales>0.25</JP_Sales>
 		<Other_Sales>0.06</Other_Sales>
@@ -239,11 +239,11 @@
 		<Developers>
 			<Developer>Rebellion Developments</Developer>
 		</Developers>
-				<NA_Sales>0.24</NA_Sales>
-		<EU_Sales>0.34</EU_Sales>
+		<NA_Sales>0.1</NA_Sales>
+		<EU_Sales>0.15</EU_Sales>
 		<JP_Sales>0</JP_Sales>
-		<Other_Sales>0.11</Other_Sales>
-		<Global_Sales>0.68</Global_Sales>
+		<Other_Sales>0.06</Other_Sales>
+		<Global_Sales>0.31</Global_Sales>
 		<Critic_score>67</Critic_score>
 		<Critic_Count>41</Critic_Count>
 		<User_Score>7.1</User_Score>
@@ -271,7 +271,7 @@
 		<Developers>
 			<Developer>Rebellion Developments</Developer>
 		</Developers>
-				<NA_Sales>0.05</NA_Sales>
+		<NA_Sales>0.05</NA_Sales>
 		<EU_Sales>0.12</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.03</Other_Sales>
@@ -301,11 +301,11 @@
 			<Developer>2XL Games</Developer>
 			<Developer>BlitWorks</Developer>
 		</Developers>
-				<NA_Sales>0.12</NA_Sales>
-		<EU_Sales>0.06</EU_Sales>
+		<NA_Sales>0.1</NA_Sales>
+		<EU_Sales>0.08</EU_Sales>
 		<JP_Sales>0</JP_Sales>
-		<Other_Sales>0.02</Other_Sales>
-		<Global_Sales>0.2</Global_Sales>
+		<Other_Sales>0.04</Other_Sales>
+		<Global_Sales>0.21</Global_Sales>
 		<Critic_score>65</Critic_score>
 		<Critic_Count>35</Critic_Count>
 		<User_Score>7.1</User_Score>
@@ -362,11 +362,11 @@
 		<Developers>
 			<Developer>Inti Creates</Developer>
 		</Developers>
-		<NA_Sales>0.22</NA_Sales>
+		<NA_Sales>0.23</NA_Sales>
 		<EU_Sales>0</EU_Sales>
 		<JP_Sales>0.09</JP_Sales>
 		<Other_Sales>0.02</Other_Sales>
-		<Global_Sales>0.33</Global_Sales>
+		<Global_Sales>0.35</Global_Sales>
 		<Critic_score>78</Critic_score>
 		<Critic_Count>27</Critic_Count>
 		<User_Score>8.6</User_Score>
@@ -392,7 +392,7 @@
 		<Developers>
 			<Developer>San Diego Studio</Developer>
 		</Developers>
-				<NA_Sales>0.35</NA_Sales>
+		<NA_Sales>0.35</NA_Sales>
 		<EU_Sales>0</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0.08</Other_Sales>
@@ -401,7 +401,7 @@
 		<Critic_Count>26</Critic_Count>
 		<User_Score>6.8</User_Score>
 		<User_Count>79</User_Count>
-				<Rating>E</Rating>
+		<Rating>E</Rating>
 	</Game>
 	<Game>
 		<ID>DBpedia_Video_Game_24835</ID>
@@ -421,7 +421,7 @@
 		<Developers>
 			<Developer>Midway Games</Developer>
 		</Developers>
-				<NA_Sales>0.09</NA_Sales>
+		<NA_Sales>0.09</NA_Sales>
 		<EU_Sales>0.02</EU_Sales>
 		<JP_Sales>0</JP_Sales>
 		<Other_Sales>0</Other_Sales>

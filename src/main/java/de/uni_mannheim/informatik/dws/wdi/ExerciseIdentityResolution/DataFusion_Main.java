@@ -44,8 +44,8 @@ public class DataFusion_Main
         ds3.printDataSetDensityReport();
 
         ds1.setScore(3.0);
-        ds2.setScore(2.0);
-        ds3.setScore(1.0);
+        ds2.setScore(1.0);
+        ds3.setScore(2.0);
 
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .appendPattern("yyyy-MM-dd")
@@ -60,8 +60,8 @@ public class DataFusion_Main
 
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(DBpediaKaggle1_decisionTree).csv"),ds1, ds3);
-        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(Kaggle1Kaggle2_decisionTree).csv"),ds3, ds2);
+        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(decisionTree).csv"),ds1, ds3);
+        correspondences.loadCorrespondences(new File("data/output/Kaggle1Kaggle2_correspondences(decisionTree).csv"),ds3, ds2);
 
         correspondences.printGroupSizeDistribution();
 

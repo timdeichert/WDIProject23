@@ -17,10 +17,8 @@ import java.util.Map;
 public class GameXMLLoader {
 
     public static void main(String[] args) {
-        // Create a HashedDataSet to store Game objects
         HashedDataSet<Game, Attribute> ds = new HashedDataSet<>();
 
-        // Map the XML element names to attribute names in the data set
         Map<String, Attribute> nodeMapping = new HashMap<>();
         nodeMapping.put("Name", new Attribute("Name"));
         nodeMapping.put("Platform", new Attribute("Platform"));
@@ -38,12 +36,10 @@ public class GameXMLLoader {
         nodeMapping.put("User_Score", new Attribute("User_Score"));
         nodeMapping.put("Rating", new Attribute("Rating"));
 
-        // Adjust the path to the XML file as necessary with the below lines
 
         File sourceFile = new File("data/input/DBpedia_Video_Game(Final).XML");
-        String elementPath = "/Games/Game"; // Adjust the element path as per your XML structure
+        String elementPath = "/Games/Game";
 
-        // Load data from the XML file into the dataset
         try {
             new GameXMLReader().loadFromXML(sourceFile,elementPath,ds);
         } catch (ParserConfigurationException e) {
@@ -55,8 +51,5 @@ public class GameXMLLoader {
         } catch (XPathExpressionException e) {
             throw new RuntimeException(e);
         }
-       // new XMLRecordReader("id", nodeMapping).loadFromXML(sourceFile, elementPath, ds);
-
-        //'ds' contains the Game objects with data from the XML file
     }
 }

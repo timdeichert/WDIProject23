@@ -1,15 +1,13 @@
 package de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.Comparators;
 
+import java.util.List;
+import de.uni_mannheim.informatik.dws.winter.model.Matchable;
+import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
+import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.wdi.ExerciseIdentityResolution.model.Game;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.comparators.Comparator;
 import de.uni_mannheim.informatik.dws.winter.matching.rules.comparators.ComparatorLogger;
-import de.uni_mannheim.informatik.dws.winter.model.Correspondence;
-import de.uni_mannheim.informatik.dws.winter.model.Matchable;
-import de.uni_mannheim.informatik.dws.winter.model.defaultmodel.Attribute;
 import de.uni_mannheim.informatik.dws.winter.similarity.string.TokenizingJaccardSimilarity;
-
-import java.util.List;
-
 
 public class GameDevComparatorJaccard implements Comparator<Game, Attribute> {
 
@@ -27,14 +25,11 @@ public class GameDevComparatorJaccard implements Comparator<Game, Attribute> {
         List<String> s1 = game1.getDeveloper();
         List<String> s2 = game2.getDeveloper();
 
-        // Check if s1 or s2 is null and handle it
         String te1 = (s1 != null) ? String.join(" ", s1).toLowerCase() : "";
         String te2 = (s2 != null) ? String.join(" ", s2).toLowerCase() : "";
 
-        // calculate similarity
         double similarity = sim.calculate(te1, te2);
 
-        // postprocessing
         double postSimilarity = similarity > 0.3 ? similarity : 0;
 
         if(this.comparisonLog != null){
