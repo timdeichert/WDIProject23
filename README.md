@@ -1,4 +1,4 @@
-# Web Data Integration Project 23
+# Web Data Integration Project 23 (Group 9)
 
 ## Introduction
 This project focuses on integrating web data, utilizing datasets from various sources and employing advanced data integration techniques. Our goal is to create a unified, accurate, and comprehensive dataset from disparate sources.
