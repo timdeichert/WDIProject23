@@ -60,8 +60,8 @@ public class DataFusion_Main
 
         logger.info("*\tLoading correspondences\t*");
         CorrespondenceSet<Game, Attribute> correspondences = new CorrespondenceSet<>();
-        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(decisionTree).csv"),ds1, ds3);
-        correspondences.loadCorrespondences(new File("data/output/Kaggle1Kaggle2_correspondences(decisionTree).csv"),ds3, ds2);
+        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(DBpediaKaggle1_decisionTree).csv"),ds1, ds3);
+        correspondences.loadCorrespondences(new File("data/output/DBpedia_Kaggle1_correspondences(Kaggle1Kaggle2_decisionTree).csv"),ds3, ds2);
 
         correspondences.printGroupSizeDistribution();
 
@@ -105,5 +105,6 @@ public class DataFusion_Main
         double accuracy = evaluator.evaluate(fusedDataSet, gs, null);
 
         logger.info(String.format("*\tAccuracy: %.2f", accuracy));
+        fusedDataSet.printDataSetDensityReport();
     }
 }
