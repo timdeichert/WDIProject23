@@ -69,7 +69,7 @@ public class IR_decisionTree_dbpediaKaggle2 {
         Processable<Correspondence<Game, Attribute>> correspondences = engine.runIdentityResolution(
                 ds1, ds2, null, matchingRule, blocker);
 
-        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpedia_Kaggle2_correspondences(decisionTree).csv"), correspondences);
+        new CSVCorrespondenceFormatter().writeCSV(new File("data/output/DBpediaKaggle2_correspondences(decisionTree).csv"), correspondences);
 
         logger.info("*\tLoading gold standard\t*");
         MatchingGoldStandard gsTest = new MatchingGoldStandard();
